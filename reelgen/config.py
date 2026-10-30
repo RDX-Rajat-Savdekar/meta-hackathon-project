@@ -14,8 +14,10 @@ class Settings(BaseSettings):
     muse_model: str = "muse-spark-1.3"
 
     gemini_api_key: str = ""
+    gemini_api_keys: str = ""  # optional comma-separated pool, rotated as keys hit their quota
     gemini_tts_model: str = "gemini-2.5-flash-preview-tts"
     gemini_tts_voice: str = "Puck"
+    fallback_voice: str = "Samantha"  # macOS `say` voice used when Gemini's quota is exhausted; "" disables
 
     fps: int = 30
     width: int = 1080
@@ -37,6 +39,12 @@ class Settings(BaseSettings):
     caption_fonts_dir: str = "/System/Library/Fonts/Supplemental"
     music_path: Path | None = None  # optional background bed, ducked under the narration
     remotion_concurrency: int = 2  # parallel Remotion renders (each uses several Chrome tabs)
+
+
+    @property
+    def gemini_keys(self) -> list[str]:
+        pool = [k.strip() for k in self.gemini_api_keys.split(",")]
+        return list(dict.fromkeys(k for k in [*pool, self.gemini_api_key] if k))
 
 
 @lru_cache

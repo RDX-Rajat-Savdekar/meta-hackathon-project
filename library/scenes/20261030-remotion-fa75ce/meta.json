@@ -1,0 +1,40 @@
+{
+  "id": "20261030-remotion-fa75ce",
+  "renderer": "remotion",
+  "topic": "How do vaccines train the immune system?",
+  "role": "payoff",
+  "narration": "So when the real virus arrives, memory cells strike in hours, not days. You're protected before you even feel sick.",
+  "description": "Vertical remotion payoff, same bloodstream style for continuity. Center 30-65%: 3 dormant good=green memory cells dimly bobbing center-right; 6 accent2 magenta-red spiky viruses rush from left; dense fg=white Y antibodies flood; finale large accent=cyan shield with fg=white 'PROTECTED' text at 25% from top. SAVED GAME checkpoint banner at start.",
+  "beats": [
+    {
+      "t": 0.24,
+      "word": "So",
+      "action": "'SAVED GAME' checkpoint banner pops top-center with 3 dim good=green memory cells sleeping center"
+    },
+    {
+      "t": 0.74,
+      "word": "real",
+      "action": "6 accent2 spiky viruses rush fast left-to-center in arrow formation"
+    },
+    {
+      "t": 2.12,
+      "word": "memory",
+      "action": "memory cells flash bright good=green awake with expanding shockwave rings"
+    },
+    {
+      "t": 3.26,
+      "word": "hours,",
+      "action": "awake cells spray dense flood of fg=white Y antibodies flying left to coat each virus"
+    },
+    {
+      "t": 4.82,
+      "word": "You're",
+      "action": "coated viruses shrivel to muted=grey puffs and dissolve, accent=cyan shield with PROTECTED slams in center"
+    }
+  ],
+  "duration": 7.022,
+  "attempts": 1,
+  "source": "45e5568954d2",
+  "created": "2026-10-30T23:11:08+00:00",
+  "starred": false
+}

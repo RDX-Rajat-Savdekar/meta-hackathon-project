@@ -1,0 +1,45 @@
+{
+  "id": "20261030-remotion-ba1cea",
+  "renderer": "remotion",
+  "topic": "How do vaccines train the immune system?",
+  "role": "setup",
+  "narration": "Your immune system is slow the first time it meets a new virus. It takes days to build the right antibodies. Meanwhile the virus is multiplying like crazy.",
+  "description": "Vertical remotion bloodstream scene in middle band 15-70%. Muted=grey pink wash vessel background. Four large soft fg=white blood cells drifting slowly left-right at 40-55% center. Small accent2 magenta-red spiky viruses on right-center that double. Pill counter 'DAY 1' in fg=white on dark at 15% from top center ticking to DAY 4. Small fg=white Y antibodies assembling slowly below center.",
+  "beats": [
+    {
+      "t": 0.2,
+      "word": "Your",
+      "action": "bloodstream washes in, 4 fg=white blood cells drift slowly across mid-frame, DAY 1 pill appears top-center"
+    },
+    {
+      "t": 1.12,
+      "word": "slow",
+      "action": "cell drift drops to slow-motion crawl, clock icon pulses over cells"
+    },
+    {
+      "t": 2.68,
+      "word": "virus.",
+      "action": "single small accent2 spiky virus fades in center-right pulsing"
+    },
+    {
+      "t": 3.82,
+      "word": "days",
+      "action": "DAY counter ticks fast DAY 1 to DAY 4 while cells keep crawling"
+    },
+    {
+      "t": 4.88,
+      "word": "antibodies.",
+      "action": "one tiny fg=white Y antibody assembles dot-by-dot below center, very slow"
+    },
+    {
+      "t": 7.06,
+      "word": "multiplying",
+      "action": "accent2 viruses double rapidly 1-2-4-8-16 filling right-center bouncing"
+    }
+  ],
+  "duration": 8.52,
+  "attempts": 1,
+  "source": "45e5568954d2",
+  "created": "2026-10-30T23:11:19+00:00",
+  "starred": false
+}

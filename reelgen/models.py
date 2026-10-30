@@ -93,5 +93,8 @@ class JobState(BaseModel):
     topic: str
     status: JobStatus = JobStatus.queued
     stage: str = ""
+    log: list[str] = []  # every stage message, in order (the UI rebuilds per-segment progress from it)
     error: str = ""
     video: Path | None = None
+    created: float = 0.0
+    finished: float = 0.0

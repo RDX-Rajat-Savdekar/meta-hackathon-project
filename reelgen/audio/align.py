@@ -74,3 +74,12 @@ def align_to_script(script_text: str, heard: list[WordTiming], duration: float) 
 
 def align(wav: Path, script_text: str, duration: float) -> list[WordTiming]:
     return align_to_script(script_text, transcribe_words(wav), duration)
+
+
+def segment_cuts(words: list[WordTiming], counts: list[int]) -> list[float]:
+    """Cut points between consecutive segments: the middle of the pause after each segment's last word."""
+    cuts, k = [], 0
+    for n in counts[:-1]:
+        k += n
+        cuts.append(round((words[k - 1].end + words[k].start) / 2, 3))
+    return cuts

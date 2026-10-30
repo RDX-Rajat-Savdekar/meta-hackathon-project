@@ -21,3 +21,27 @@ def test_offset_words_shifts_by_previous_durations(tmp_path):
     seg = lambda i, d: SegmentAudio(index=i, wav=tmp_path / "x.wav", duration=d, words=[WordTiming(word="w", start=0.5, end=0.7)])
     out = offset_words([seg(0, 2.0), seg(1, 3.0)])
     assert [x.start for x in out] == [0.5, 2.5]
+
+
+def test_segment_cuts_split_in_the_pause_between_segments():
+    from reelgen.audio.align import segment_cuts
+
+    ws = [WordTiming(word=x, start=s, end=e) for x, s, e in [("a", 0, 0.4), ("b", 0.5, 1.0), ("c", 1.6, 2.0), ("d", 2.2, 2.5)]]
+    assert segment_cuts(ws, [2, 1, 1]) == [1.3, 2.1]
+
+
+def test_split_wav_roundtrip(tmp_path):
+    import wave
+
+    from reelgen.audio.tts import concat_wavs, split_wav
+
+    src = tmp_path / "a.wav"
+    with wave.open(str(src), "wb") as w:
+        w.setnchannels(1); w.setsampwidth(2); w.setframerate(24000)
+        w.writeframes(bytes(range(256)) * 375)  # 2s
+    outs = [tmp_path / f"{i}.wav" for i in range(3)]
+    split_wav(src, [0.5, 1.25], outs)
+    lens = [wave.open(str(o)).getnframes() for o in outs]
+    assert lens == [12000, 18000, 18000]
+    concat_wavs(outs, tmp_path / "b.wav")
+    assert wave.open(str(tmp_path / "b.wav")).readframes(48000) == wave.open(str(src)).readframes(48000)

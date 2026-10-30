@@ -25,7 +25,18 @@ def make(topic: str, out: Path = typer.Option(None, help="Job directory (default
     logging.basicConfig(level=logging.WARNING, format="%(levelname)s %(name)s: %(message)s")
     job = out or get_settings().outputs_dir / _slug(topic)
     t0 = time.time()
-    final = run(topic, job, progress=lambda s: typer.echo(f"[{time.time() - t0:6.1f}s] {s}"))
+    def emit(type: str, **d) -> None:
+        if type == "stage":
+            msg = d["label"]
+        elif type == "scene":
+            msg = f"scene {d['index']} ({d['renderer']}): {d['status']}" + (f" — {d['error']}" if d.get("error") else "")
+        elif type == "voice":
+            msg = f"voice: {d['duration']}s via {d['provider']}"
+        else:
+            return
+        typer.echo(f"[{time.time() - t0:6.1f}s] {msg}")
+
+    final = run(topic, job, emit=emit)
     typer.echo(f"\n✓ {final}")
 
 
@@ -59,6 +70,24 @@ def voice(text: str, out: Path = Path("outputs/voice.wav")):
     for w in align(out, text, dur):
         typer.echo(f"{w.start:6.2f} {w.end:6.2f}  {w.word}")
     typer.echo(f"✓ {out} ({dur:.2f}s)")
+
+
+@app.command()
+def keys():
+    """Show the Gemini key pool (no API calls are made)."""
+    from datetime import datetime
+
+    from reelgen.audio.keys import get_pool
+
+    for k in get_pool().status():
+        if k["available"]:
+            state = "ready"
+        elif k["until"] == float("inf"):
+            state = f"disabled ({k['reason']})"
+        else:
+            state = f"{k['reason']} until {datetime.fromtimestamp(k['until']):%b %d %H:%M}"
+        mark = "→" if k["current"] else " "
+        typer.echo(f"{mark} key {k['n']} {k['hint']}  {state:40} used {k['uses']}x")
 
 
 @lib.command("list")
