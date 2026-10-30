@@ -1,0 +1,60 @@
+{
+  "id": "20261030-manim-dda6f0",
+  "renderer": "manim",
+  "topic": "why quicksort is fast",
+  "role": "mechanism",
+  "narration": "Say you've got five numbers, four, one, five, three, two. Pick three as pivot. Sweep once. Ones smaller go left, bigger go right. You've done five checks and now you've got two tiny piles, one and two, and four and five. Recurse on each pile. That's the whole trick. Each level touches each item once. And a random pivot usually splits piles roughly in half. So you only need about log levels to shrink to one.",
+  "description": "Manim 2D algorithm scene, dark background, all action in middle 15%-72% height. Horizontal track mid-frame with five vertical bars labeled 4,1,5,3,2 in fg-white, heights proportional to value. Center pivot bar 3 in accent3-yellow glow. Below track, shallow binary tree nodes form: left pile good-green (1,2) and right pile accent-cyan (4,5) branching lines. Level highlight bands sweep horizontally to show work per level.",
+  "beats": [
+    {
+      "t": 0.0,
+      "word": "Say",
+      "action": "five labeled bars 4,1,5,3,2 slide in left-to-right onto center track"
+    },
+    {
+      "t": 4.14,
+      "word": "Pick",
+      "action": "bar 3 slides to exact center, turns accent3-yellow and lifts with glow pulse"
+    },
+    {
+      "t": 5.66,
+      "word": "Sweep",
+      "action": "thin fg-white scan line sweeps left-to-right across all five bars, each bar flashes as touched"
+    },
+    {
+      "t": 8.04,
+      "word": "bigger",
+      "action": "bars 1 and 2 snap left of pivot, bars 4 and 5 snap right of pivot with spring motion"
+    },
+    {
+      "t": 11.42,
+      "word": "tiny",
+      "action": "branch lines grow down from pivot splitting into two pile labels: left pile 1,2 and right pile 4,5"
+    },
+    {
+      "t": 14.6,
+      "word": "Recurse",
+      "action": "both piles pulse, mini accent-cyan pivots light up inside each pile"
+    },
+    {
+      "t": 17.36,
+      "word": "Each",
+      "action": "horizontal highlight band washes across full width showing one level touching each bar once"
+    },
+    {
+      "t": 19.66,
+      "word": "random",
+      "action": "pivot shuffles randomly between piles showing roughly even half splits with balance scale wobble"
+    },
+    {
+      "t": 23.54,
+      "word": "log",
+      "action": "tree depth indicator appears right of tree showing 'log levels -> 1' with shrinking pile icons"
+    }
+  ],
+  "duration": 25.411,
+  "attempts": 1,
+  "source": "e2e-quicksort",
+  "created": "2026-10-30T22:55:06+00:00",
+  "starred": false
+}

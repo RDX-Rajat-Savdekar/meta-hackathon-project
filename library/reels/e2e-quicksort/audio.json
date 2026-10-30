@@ -1,0 +1,675 @@
+[
+  {
+    "index": 0,
+    "wav": "outputs/e2e-quicksort/seg0.wav",
+    "duration": 3.730958333333333,
+    "words": [
+      {
+        "word": "Sorting",
+        "start": 0.0,
+        "end": 0.48
+      },
+      {
+        "word": "a",
+        "start": 0.48,
+        "end": 0.68
+      },
+      {
+        "word": "million",
+        "start": 0.68,
+        "end": 0.96
+      },
+      {
+        "word": "items?",
+        "start": 0.96,
+        "end": 1.62
+      },
+      {
+        "word": "Don't",
+        "start": 1.62,
+        "end": 2.18
+      },
+      {
+        "word": "actually",
+        "start": 2.18,
+        "end": 2.76
+      },
+      {
+        "word": "sort",
+        "start": 2.76,
+        "end": 3.06
+      },
+      {
+        "word": "them.",
+        "start": 3.06,
+        "end": 3.32
+      }
+    ]
+  },
+  {
+    "index": 1,
+    "wav": "outputs/e2e-quicksort/seg1.wav",
+    "duration": 10.010958333333333,
+    "words": [
+      {
+        "word": "Sorting",
+        "start": 0.0,
+        "end": 0.58
+      },
+      {
+        "word": "feels",
+        "start": 0.58,
+        "end": 0.96
+      },
+      {
+        "word": "slow",
+        "start": 0.96,
+        "end": 1.42
+      },
+      {
+        "word": "because",
+        "start": 1.42,
+        "end": 1.82
+      },
+      {
+        "word": "you'd",
+        "start": 1.82,
+        "end": 2.04
+      },
+      {
+        "word": "compare",
+        "start": 2.04,
+        "end": 2.3
+      },
+      {
+        "word": "every",
+        "start": 2.3,
+        "end": 2.74
+      },
+      {
+        "word": "item",
+        "start": 2.74,
+        "end": 3.26
+      },
+      {
+        "word": "to",
+        "start": 3.26,
+        "end": 3.46
+      },
+      {
+        "word": "every",
+        "start": 3.46,
+        "end": 3.78
+      },
+      {
+        "word": "other.",
+        "start": 3.78,
+        "end": 4.08
+      },
+      {
+        "word": "Quicksort",
+        "start": 4.08,
+        "end": 5.16
+      },
+      {
+        "word": "dodges",
+        "start": 5.16,
+        "end": 5.76
+      },
+      {
+        "word": "that.",
+        "start": 5.76,
+        "end": 6.0
+      },
+      {
+        "word": "It",
+        "start": 6.54,
+        "end": 6.6
+      },
+      {
+        "word": "picks",
+        "start": 6.6,
+        "end": 6.8
+      },
+      {
+        "word": "one",
+        "start": 6.8,
+        "end": 7.16
+      },
+      {
+        "word": "pivot",
+        "start": 7.16,
+        "end": 7.42
+      },
+      {
+        "word": "value",
+        "start": 7.42,
+        "end": 7.78
+      },
+      {
+        "word": "and",
+        "start": 7.78,
+        "end": 8.08
+      },
+      {
+        "word": "just",
+        "start": 8.08,
+        "end": 8.26
+      },
+      {
+        "word": "decides",
+        "start": 8.26,
+        "end": 8.56
+      },
+      {
+        "word": "what's",
+        "start": 8.56,
+        "end": 8.92
+      },
+      {
+        "word": "smaller",
+        "start": 8.92,
+        "end": 9.18
+      },
+      {
+        "word": "or",
+        "start": 9.18,
+        "end": 9.48
+      },
+      {
+        "word": "bigger.",
+        "start": 9.48,
+        "end": 9.7
+      }
+    ]
+  },
+  {
+    "index": 2,
+    "wav": "outputs/e2e-quicksort/seg2.wav",
+    "duration": 25.410958333333333,
+    "words": [
+      {
+        "word": "Say",
+        "start": 0.0,
+        "end": 0.38
+      },
+      {
+        "word": "you've",
+        "start": 0.38,
+        "end": 0.6
+      },
+      {
+        "word": "got",
+        "start": 0.6,
+        "end": 0.72
+      },
+      {
+        "word": "five",
+        "start": 0.72,
+        "end": 1.2
+      },
+      {
+        "word": "numbers,",
+        "start": 1.2,
+        "end": 1.52
+      },
+      {
+        "word": "four,",
+        "start": 2.04,
+        "end": 2.1
+      },
+      {
+        "word": "one,",
+        "start": 2.42,
+        "end": 2.46
+      },
+      {
+        "word": "five,",
+        "start": 2.7,
+        "end": 2.92
+      },
+      {
+        "word": "three,",
+        "start": 2.92,
+        "end": 3.22
+      },
+      {
+        "word": "two.",
+        "start": 3.38,
+        "end": 3.52
+      },
+      {
+        "word": "Pick",
+        "start": 4.14,
+        "end": 4.18
+      },
+      {
+        "word": "three",
+        "start": 4.18,
+        "end": 4.52
+      },
+      {
+        "word": "as",
+        "start": 4.52,
+        "end": 4.88
+      },
+      {
+        "word": "pivot.",
+        "start": 4.88,
+        "end": 5.1
+      },
+      {
+        "word": "Sweep",
+        "start": 5.66,
+        "end": 5.9
+      },
+      {
+        "word": "once.",
+        "start": 5.9,
+        "end": 6.14
+      },
+      {
+        "word": "Ones",
+        "start": 6.14,
+        "end": 6.78
+      },
+      {
+        "word": "smaller",
+        "start": 6.78,
+        "end": 7.18
+      },
+      {
+        "word": "go",
+        "start": 7.18,
+        "end": 7.44
+      },
+      {
+        "word": "left,",
+        "start": 7.44,
+        "end": 7.62
+      },
+      {
+        "word": "bigger",
+        "start": 8.04,
+        "end": 8.08
+      },
+      {
+        "word": "go",
+        "start": 8.08,
+        "end": 8.36
+      },
+      {
+        "word": "right.",
+        "start": 8.36,
+        "end": 8.58
+      },
+      {
+        "word": "You've",
+        "start": 9.1,
+        "end": 9.24
+      },
+      {
+        "word": "done",
+        "start": 9.24,
+        "end": 9.36
+      },
+      {
+        "word": "five",
+        "start": 9.36,
+        "end": 9.72
+      },
+      {
+        "word": "checks",
+        "start": 9.72,
+        "end": 10.0
+      },
+      {
+        "word": "and",
+        "start": 10.44,
+        "end": 10.54
+      },
+      {
+        "word": "now",
+        "start": 10.54,
+        "end": 10.76
+      },
+      {
+        "word": "you've",
+        "start": 10.76,
+        "end": 11.04
+      },
+      {
+        "word": "got",
+        "start": 11.04,
+        "end": 11.16
+      },
+      {
+        "word": "two",
+        "start": 11.16,
+        "end": 11.42
+      },
+      {
+        "word": "tiny",
+        "start": 11.42,
+        "end": 11.74
+      },
+      {
+        "word": "piles,",
+        "start": 11.74,
+        "end": 12.04
+      },
+      {
+        "word": "one",
+        "start": 12.48,
+        "end": 12.68
+      },
+      {
+        "word": "and",
+        "start": 12.68,
+        "end": 12.78
+      },
+      {
+        "word": "two,",
+        "start": 12.78,
+        "end": 13.02
+      },
+      {
+        "word": "and",
+        "start": 13.26,
+        "end": 13.4
+      },
+      {
+        "word": "four",
+        "start": 13.4,
+        "end": 13.64
+      },
+      {
+        "word": "and",
+        "start": 13.64,
+        "end": 13.78
+      },
+      {
+        "word": "five.",
+        "start": 13.78,
+        "end": 14.02
+      },
+      {
+        "word": "Recurse",
+        "start": 14.6,
+        "end": 14.84
+      },
+      {
+        "word": "on",
+        "start": 14.84,
+        "end": 15.08
+      },
+      {
+        "word": "each",
+        "start": 15.08,
+        "end": 15.26
+      },
+      {
+        "word": "pile.",
+        "start": 15.26,
+        "end": 15.56
+      },
+      {
+        "word": "That's",
+        "start": 15.98,
+        "end": 16.3
+      },
+      {
+        "word": "the",
+        "start": 16.3,
+        "end": 16.4
+      },
+      {
+        "word": "whole",
+        "start": 16.4,
+        "end": 16.52
+      },
+      {
+        "word": "trick.",
+        "start": 16.52,
+        "end": 16.78
+      },
+      {
+        "word": "Each",
+        "start": 17.36,
+        "end": 17.44
+      },
+      {
+        "word": "level",
+        "start": 17.44,
+        "end": 17.74
+      },
+      {
+        "word": "touches",
+        "start": 17.74,
+        "end": 18.02
+      },
+      {
+        "word": "each",
+        "start": 18.02,
+        "end": 18.4
+      },
+      {
+        "word": "item",
+        "start": 18.4,
+        "end": 18.78
+      },
+      {
+        "word": "once.",
+        "start": 18.78,
+        "end": 19.0
+      },
+      {
+        "word": "And",
+        "start": 19.46,
+        "end": 19.56
+      },
+      {
+        "word": "a",
+        "start": 19.56,
+        "end": 19.66
+      },
+      {
+        "word": "random",
+        "start": 19.66,
+        "end": 19.92
+      },
+      {
+        "word": "pivot",
+        "start": 19.92,
+        "end": 20.24
+      },
+      {
+        "word": "usually",
+        "start": 20.24,
+        "end": 20.6
+      },
+      {
+        "word": "splits",
+        "start": 20.6,
+        "end": 21.12
+      },
+      {
+        "word": "piles",
+        "start": 21.12,
+        "end": 21.34
+      },
+      {
+        "word": "roughly",
+        "start": 21.34,
+        "end": 21.76
+      },
+      {
+        "word": "in",
+        "start": 21.76,
+        "end": 22.04
+      },
+      {
+        "word": "half.",
+        "start": 22.04,
+        "end": 22.24
+      },
+      {
+        "word": "So",
+        "start": 22.68,
+        "end": 22.78
+      },
+      {
+        "word": "you",
+        "start": 22.78,
+        "end": 22.86
+      },
+      {
+        "word": "only",
+        "start": 22.86,
+        "end": 23.14
+      },
+      {
+        "word": "need",
+        "start": 23.14,
+        "end": 23.36
+      },
+      {
+        "word": "about",
+        "start": 23.36,
+        "end": 23.54
+      },
+      {
+        "word": "log",
+        "start": 23.54,
+        "end": 23.9
+      },
+      {
+        "word": "levels",
+        "start": 23.9,
+        "end": 24.24
+      },
+      {
+        "word": "to",
+        "start": 24.24,
+        "end": 24.46
+      },
+      {
+        "word": "shrink",
+        "start": 24.46,
+        "end": 24.64
+      },
+      {
+        "word": "to",
+        "start": 24.64,
+        "end": 24.84
+      },
+      {
+        "word": "one.",
+        "start": 24.84,
+        "end": 25.02
+      }
+    ]
+  },
+  {
+    "index": 3,
+    "wav": "outputs/e2e-quicksort/seg3.wav",
+    "duration": 7.5709583333333335,
+    "words": [
+      {
+        "word": "So",
+        "start": 0.0,
+        "end": 0.28
+      },
+      {
+        "word": "it",
+        "start": 0.28,
+        "end": 0.38
+      },
+      {
+        "word": "never",
+        "start": 0.38,
+        "end": 0.64
+      },
+      {
+        "word": "fully",
+        "start": 0.64,
+        "end": 1.08
+      },
+      {
+        "word": "sorts.",
+        "start": 1.08,
+        "end": 1.4
+      },
+      {
+        "word": "It",
+        "start": 1.88,
+        "end": 1.9
+      },
+      {
+        "word": "just",
+        "start": 1.9,
+        "end": 2.14
+      },
+      {
+        "word": "keeps",
+        "start": 2.14,
+        "end": 2.42
+      },
+      {
+        "word": "halving.",
+        "start": 2.42,
+        "end": 3.05
+      },
+      {
+        "word": "Five",
+        "start": 3.05,
+        "end": 3.68
+      },
+      {
+        "word": "million",
+        "start": 3.68,
+        "end": 3.94
+      },
+      {
+        "word": "checks",
+        "start": 3.94,
+        "end": 4.3
+      },
+      {
+        "word": "beat",
+        "start": 4.3,
+        "end": 4.66
+      },
+      {
+        "word": "twenty-five",
+        "start": 4.66,
+        "end": 5.06
+      },
+      {
+        "word": "trillion.",
+        "start": 5.06,
+        "end": 5.68
+      },
+      {
+        "word": "That's",
+        "start": 6.3,
+        "end": 6.54
+      },
+      {
+        "word": "why",
+        "start": 6.54,
+        "end": 6.66
+      },
+      {
+        "word": "it's",
+        "start": 6.66,
+        "end": 6.8
+      },
+      {
+        "word": "fast.",
+        "start": 6.8,
+        "end": 7.06
+      }
+    ]
+  }
+]

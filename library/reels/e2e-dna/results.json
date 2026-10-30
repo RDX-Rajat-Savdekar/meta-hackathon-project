@@ -1,0 +1,38 @@
+[
+  {
+    "index": 0,
+    "renderer": "three",
+    "ok": true,
+    "video": "outputs/e2e-dna/seg0.mp4",
+    "attempts": 1,
+    "error": "",
+    "fallback": false
+  },
+  {
+    "index": 1,
+    "renderer": "remotion",
+    "ok": true,
+    "video": "outputs/e2e-dna/seg1.mp4",
+    "attempts": 1,
+    "error": "",
+    "fallback": false
+  },
+  {
+    "index": 2,
+    "renderer": "remotion",
+    "ok": true,
+    "video": "outputs/e2e-dna/seg2.mp4",
+    "attempts": 2,
+    "error": "",
+    "fallback": false
+  },
+  {
+    "index": 3,
+    "renderer": "three",
+    "ok": true,
+    "video": "outputs/e2e-dna/seg3.mp4",
+    "attempts": 1,
+    "error": "",
+    "fallback": false
+  }
+]

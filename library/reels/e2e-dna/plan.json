@@ -1,0 +1,164 @@
+[
+  {
+    "index": 0,
+    "renderer": "three",
+    "duration": 3.8509583333333333,
+    "description": "Vertical 1080x1920 dark background. Frame 0: large glowing accent=cyan DNA double helix in vertical center (35-65% height), rotating slowly, base-pair rungs in fg=white and accent2=magenta. Below it in lower-middle a small metallic grey hard drive for scale. Big bold fg=white text '200 PETABYTES' pops in center. Camera pushes in slightly then helix shrinks rapidly downward into a tiny glowing cyan droplet that hovers above the hard drive. No key elements in top 10% or bottom 25%.",
+    "beats": [
+      {
+        "t": 0.0,
+        "word": "One",
+        "action": "Glowing cyan double helix fills center rotating, bold white '1 GRAM' text slams in above it"
+      },
+      {
+        "t": 1.02,
+        "word": "DNA",
+        "action": "Helix brightens and spins faster, magenta rungs pulse"
+      },
+      {
+        "t": 1.68,
+        "word": "store",
+        "action": "Helix begins rapid shrink toward center-bottom, motion blur trail"
+      },
+      {
+        "t": 1.94,
+        "word": "two",
+        "action": "Helix collapses into tiny cyan droplet hovering above grey hard drive that slides in to middle"
+      },
+      {
+        "t": 2.66,
+        "word": "petabytes",
+        "action": "Huge white '200 PETABYTES' text scales up behind droplet and drive, droplet glows"
+      }
+    ]
+  },
+  {
+    "index": 1,
+    "renderer": "remotion",
+    "duration": 9.250958333333333,
+    "description": "Vertical 1080x1920 dark background with vertical split in middle band (30-70% height). Left panel dark with streaming fg=white binary digits 0 and 1 falling. Right panel dark with four huge floating letters A in good=green, T in accent3=yellow, C in accent=cyan, G in accent2=magenta. Thin muted=grey divider line center. Pulsing fg=white question mark and small file-to-flask icon appear center-bottom of middle band. Kinetic typography, no 3D.",
+    "beats": [
+      {
+        "t": 0.0,
+        "word": "Computers",
+        "action": "Left panel fills middle with cascading white 0s and 1s, right panel empty dark"
+      },
+      {
+        "t": 1.14,
+        "word": "zeros",
+        "action": "Left 0s and 1s enlarge and march left-to-right, zeros glow cyan"
+      },
+      {
+        "t": 2.6,
+        "word": "DNA",
+        "action": "Grey divider wipes in center, right panel slides in empty with DNA label"
+      },
+      {
+        "t": 3.94,
+        "word": "four",
+        "action": "Four giant letters A T C G pop in on right in green yellow cyan magenta with bounce"
+      },
+      {
+        "t": 6.3,
+        "word": "G",
+        "action": "G letter flashes magenta then all four letters glow together"
+      },
+      {
+        "t": 7.06,
+        "word": "how",
+        "action": "White question mark pulses center between panels, file icon morphs toward flask icon below it"
+      }
+    ]
+  },
+  {
+    "index": 2,
+    "renderer": "remotion",
+    "duration": 29.330958333333335,
+    "description": "Vertical 1080x1920 dark background, middle band focus. Top-middle: four mapping cards in a row A=00 in good=green, C=01 in accent=cyan, G=10 in accent2=magenta, T=11 in accent3=yellow, fg=white text. Center: six white bit tiles 0 1 1 0 1 1 in a row. Bottom-middle: horizontal strand slot, grey printer head block above it and cyan scanner light bar. All 2D flat motion graphics.",
+    "beats": [
+      {
+        "t": 0.0,
+        "word": "Here's",
+        "action": "Four dim mapping cards A C G T fade in top-middle row"
+      },
+      {
+        "t": 4.06,
+        "word": "A",
+        "action": "A card lights green and lifts showing 00 in white"
+      },
+      {
+        "t": 5.66,
+        "word": "C",
+        "action": "C card lights cyan and lifts showing 01"
+      },
+      {
+        "t": 7.12,
+        "word": "G",
+        "action": "G card lights magenta showing 10 and T card lights yellow showing 11"
+      },
+      {
+        "t": 9.8,
+        "word": "Take",
+        "action": "Six white bit tiles 0 1 1 0 1 1 slide in center row below cards"
+      },
+      {
+        "t": 13.06,
+        "word": "Split",
+        "action": "Grey brackets snap down grouping tiles into three pairs 01 | 10 | 11 with gap"
+      },
+      {
+        "t": 15.44,
+        "word": "C",
+        "action": "First pair 01 slides up and pops into cyan C block"
+      },
+      {
+        "t": 16.98,
+        "word": "G",
+        "action": "Second pair 10 slides up and pops into magenta G block next to C"
+      },
+      {
+        "t": 18.34,
+        "word": "T",
+        "action": "Third pair 11 slides up and pops into yellow T block forming CGT strand in slot"
+      },
+      {
+        "t": 22.5,
+        "word": "machine",
+        "action": "Grey printer head sweeps left-to-right building CGT beads bead-by-bead, then cyan scanner light sweeps back turning beads into white bits below"
+      }
+    ]
+  },
+  {
+    "index": 3,
+    "renderer": "three",
+    "duration": 7.290958333333333,
+    "description": "Vertical 1080x1920 dark background. Center-middle single glowing accent=cyan DNA helix vertical. It duplicates into hundreds of small glowing cyan and magenta helices swirling and funneling into a small glass vial centered in middle band. Vial glows good=green. Frozen ice-blue overlay with large fg=white year counter '0 YEARS -> 10,000 YEARS' beside vial and bold white text 'ULTIMATE BACKUP'. No key elements in top 10% or bottom 25%.",
+    "beats": [
+      {
+        "t": 0.0,
+        "word": "Billions",
+        "action": "Single bright cyan helix rotates large in center"
+      },
+      {
+        "t": 0.9,
+        "word": "copies",
+        "action": "Helix duplicates into dozens then hundreds of glowing helices filling center cloud"
+      },
+      {
+        "t": 1.78,
+        "word": "thousands",
+        "action": "Camera pulls back, cloud funnels down into small glass vial center, year counter starts ticking fast"
+      },
+      {
+        "t": 3.28,
+        "word": "power",
+        "action": "Grey power plug icon appears and fades with red X, vial glows green and freezes with ice shine"
+      },
+      {
+        "t": 4.98,
+        "word": "ultimate",
+        "action": "Bold white 'ULTIMATE BACKUP DRIVE' text scales up behind vial, vial pulses"
+      }
+    ]
+  }
+]

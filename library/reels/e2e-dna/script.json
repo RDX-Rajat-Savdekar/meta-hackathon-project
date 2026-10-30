@@ -1,0 +1,26 @@
+{
+  "title": "DNA Is a Hard Drive",
+  "idea": "Digital bits can be stored as DNA because each of the four bases holds exactly two bits.",
+  "segments": [
+    {
+      "role": "hook",
+      "narration": "One gram of DNA can store two hundred petabytes.",
+      "visual_directive": "Close-up of a glowing blue DNA double helix rotating, shrinking rapidly into a tiny droplet above a hard drive for scale."
+    },
+    {
+      "role": "setup",
+      "narration": "Computers speak in zeros and ones, but DNA only speaks in four letters, A, T, C, and G. So how do you turn a file into chemistry?",
+      "visual_directive": "Split screen shows binary zeros and ones on the left morphing into large floating letters A T C G on the right, with a question mark pulse."
+    },
+    {
+      "role": "mechanism",
+      "narration": "Here's the trick. Each DNA letter stores two bits. Say A means zero zero, C means zero one, G means one zero, and T means one one. Take six bits, like zero one one zero one one. Split them into pairs. Zero one becomes C. One zero becomes G. One one becomes T. So those six bits become just C G T. Then a machine builds that exact strand, letter by letter. To read it back, another machine reads the letters and turns them back into bits.",
+      "visual_directive": "Binary pairs slide together and pop into colored blocks labeled C, G, T forming a short strand. A printer head builds the strand bead by bead, then a scanner light reads it back into bits."
+    },
+    {
+      "role": "payoff",
+      "narration": "Billions of copies last for thousands of years with no power, so DNA's the ultimate backup drive for humanity.",
+      "visual_directive": "Zoom out from a single DNA strand multiplying into billions of glowing strands inside a tiny vial that freezes in time as years tick by."
+    }
+  ]
+}

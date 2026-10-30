@@ -1,0 +1,40 @@
+{
+  "id": "20261030-manim-479729",
+  "renderer": "manim",
+  "topic": "why quicksort is fast",
+  "role": "payoff",
+  "narration": "So it never fully sorts. It just keeps halving. Five million checks beat twenty-five trillion. That's why it's fast.",
+  "description": "Continuation of same Manim tree style. Mid-frame holds complete shallow 3-level splitting tree: accent3-yellow root top-center at ~20% height, good-green and accent-cyan branches to 2 piles then 4 leaves, all above bottom 25%. Below tree at ~60% height, large kinetic numbers: good-green '5 MILLION' vs muted-grey giant '25 TRILLION' struck through. Final state morphs leaves into neat sorted row of accent-cyan bars clicking into ascending order.",
+  "beats": [
+    {
+      "t": 0.0,
+      "word": "So",
+      "action": "full shallow tree fades in centered, root glows accent3-yellow"
+    },
+    {
+      "t": 1.9,
+      "word": "just",
+      "action": "camera pulls back slightly, branch lines animate halving pulse down each level"
+    },
+    {
+      "t": 3.05,
+      "word": "Five",
+      "action": "good-green counter '5,000,000 checks' ticks up fast mid-frame below tree"
+    },
+    {
+      "t": 4.66,
+      "word": "twenty-five",
+      "action": "giant muted-grey '25,000,000,000,000' slams behind counter then dims and gets crossed out in accent2-magenta"
+    },
+    {
+      "t": 6.3,
+      "word": "That's",
+      "action": "tree leaves snap into straight ascending accent-cyan sorted bar row that clicks into place with flash"
+    }
+  ],
+  "duration": 7.571,
+  "attempts": 2,
+  "source": "e2e-quicksort",
+  "created": "2026-10-30T22:55:06+00:00",
+  "starred": false
+}

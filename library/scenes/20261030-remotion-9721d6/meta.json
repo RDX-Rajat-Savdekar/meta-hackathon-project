@@ -1,0 +1,65 @@
+{
+  "id": "20261030-remotion-9721d6",
+  "renderer": "remotion",
+  "topic": "how DNA stores data",
+  "role": "mechanism",
+  "narration": "Here's the trick. Each DNA letter stores two bits. Say A means zero zero, C means zero one, G means one zero, and T means one one. Take six bits, like zero one one zero one one. Split them into pairs. Zero one becomes C. One zero becomes G. One one becomes T. So those six bits become just C G T. Then a machine builds that exact strand, letter by letter. To read it back, another machine reads the letters and turns them back into bits.",
+  "description": "Vertical 1080x1920 dark background, middle band focus. Top-middle: four mapping cards in a row A=00 in good=green, C=01 in accent=cyan, G=10 in accent2=magenta, T=11 in accent3=yellow, fg=white text. Center: six white bit tiles 0 1 1 0 1 1 in a row. Bottom-middle: horizontal strand slot, grey printer head block above it and cyan scanner light bar. All 2D flat motion graphics.",
+  "beats": [
+    {
+      "t": 0.0,
+      "word": "Here's",
+      "action": "Four dim mapping cards A C G T fade in top-middle row"
+    },
+    {
+      "t": 4.06,
+      "word": "A",
+      "action": "A card lights green and lifts showing 00 in white"
+    },
+    {
+      "t": 5.66,
+      "word": "C",
+      "action": "C card lights cyan and lifts showing 01"
+    },
+    {
+      "t": 7.12,
+      "word": "G",
+      "action": "G card lights magenta showing 10 and T card lights yellow showing 11"
+    },
+    {
+      "t": 9.8,
+      "word": "Take",
+      "action": "Six white bit tiles 0 1 1 0 1 1 slide in center row below cards"
+    },
+    {
+      "t": 13.06,
+      "word": "Split",
+      "action": "Grey brackets snap down grouping tiles into three pairs 01 | 10 | 11 with gap"
+    },
+    {
+      "t": 15.44,
+      "word": "C",
+      "action": "First pair 01 slides up and pops into cyan C block"
+    },
+    {
+      "t": 16.98,
+      "word": "G",
+      "action": "Second pair 10 slides up and pops into magenta G block next to C"
+    },
+    {
+      "t": 18.34,
+      "word": "T",
+      "action": "Third pair 11 slides up and pops into yellow T block forming CGT strand in slot"
+    },
+    {
+      "t": 22.5,
+      "word": "machine",
+      "action": "Grey printer head sweeps left-to-right building CGT beads bead-by-bead, then cyan scanner light sweeps back turning beads into white bits below"
+    }
+  ],
+  "duration": 29.331,
+  "attempts": 2,
+  "source": "e2e-dna",
+  "created": "2026-10-30T22:55:07+00:00",
+  "starred": false
+}
