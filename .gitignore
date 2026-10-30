@@ -1,0 +1,11 @@
+.env
+outputs/
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+remotion/out/
+.jobs/
+.checks/
+library/**/*.mp4

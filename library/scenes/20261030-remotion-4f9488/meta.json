@@ -1,0 +1,35 @@
+{
+  "id": "20261030-remotion-4f9488",
+  "renderer": "remotion",
+  "topic": "How do vaccines train the immune system?",
+  "role": "hook",
+  "narration": "What if you could lose without getting sick?",
+  "description": "Vertical 1080x1920 remotion kinetic scene. Dark background. Frame 0 bold immediate hook: huge fg=white text 'LOSE WITHOUT GETTING SICK?' at 18% from top (safe below top 10%). Focal center at 45% vertical: cluster of accent2 magenta-red spiky virus balls pulsing and scaling. At end a large accent=cyan glowing shield with lock icon slams from above to cover them. No captions zone violated.",
+  "beats": [
+    {
+      "t": 0.0,
+      "word": "What",
+      "action": "huge fg=white headline 'LOSE WITHOUT GETTING SICK?' pops in at upper-middle and single accent2 spiky virus ball pops in center"
+    },
+    {
+      "t": 0.54,
+      "word": "lose",
+      "action": "center virus splits fast 1 to 4 accent2 spiky copies scaling up with jitter"
+    },
+    {
+      "t": 0.72,
+      "word": "without",
+      "action": "all viruses freeze mid-jitter, desaturate slightly, motion stops with freeze-frame ring"
+    },
+    {
+      "t": 1.32,
+      "word": "sick?",
+      "action": "large accent=cyan glowing shield slams down from top over frozen viruses with shockwave and lock flash"
+    }
+  ],
+  "duration": 1.94,
+  "attempts": 1,
+  "source": "45e5568954d2",
+  "created": "2026-10-30T23:11:19+00:00",
+  "starred": false
+}

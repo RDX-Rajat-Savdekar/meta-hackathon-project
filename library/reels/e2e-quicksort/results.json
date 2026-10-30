@@ -1,0 +1,38 @@
+[
+  {
+    "index": 0,
+    "renderer": "remotion",
+    "ok": true,
+    "video": "outputs/e2e-quicksort/seg0.mp4",
+    "attempts": 3,
+    "error": "Command failed: /Users/aditya/Projects/meta-hackathon-project/remotion/node_modules/.bin/tsc -p /Users/aditya/Projects/meta-hackathon-project/remotion/.checks/3a70a60f-c619-492b-95d9-7d56ad2aa4b6\nenv: node: No such file or directory",
+    "fallback": true
+  },
+  {
+    "index": 1,
+    "renderer": "remotion",
+    "ok": true,
+    "video": "outputs/e2e-quicksort/seg1.mp4",
+    "attempts": 3,
+    "error": "Command failed: /Users/aditya/Projects/meta-hackathon-project/remotion/node_modules/.bin/tsc -p /Users/aditya/Projects/meta-hackathon-project/remotion/.checks/472d3169-e6d1-42a5-8cb9-c709089280e6\nenv: node: No such file or directory",
+    "fallback": true
+  },
+  {
+    "index": 2,
+    "renderer": "manim",
+    "ok": true,
+    "video": "outputs/e2e-quicksort/seg2.mp4",
+    "attempts": 1,
+    "error": "",
+    "fallback": false
+  },
+  {
+    "index": 3,
+    "renderer": "manim",
+    "ok": true,
+    "video": "outputs/e2e-quicksort/seg3.mp4",
+    "attempts": 2,
+    "error": "",
+    "fallback": false
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "title": "Why Quicksort Is Fast",
+  "idea": "Quicksort stays fast because one quick partition with a random pivot usually halves the problem, so total work stays low.",
+  "segments": [
+    {
+      "role": "hook",
+      "narration": "Sorting a million items? Don't actually sort them.",
+      "visual_directive": "Dark background with hundreds of tiny vertical bars shaking chaotically. One large golden bar slams into the center and everything freezes around it."
+    },
+    {
+      "role": "setup",
+      "narration": "Sorting feels slow because you'd compare every item to every other. Quicksort dodges that. It picks one pivot value and just decides what's smaller or bigger.",
+      "visual_directive": "A dense grid of crossing comparison lines fades out. A single pivot bar glows while other bars slide left if smaller and right if bigger."
+    },
+    {
+      "role": "mechanism",
+      "narration": "Say you've got five numbers, four, one, five, three, two. Pick three as pivot. Sweep once. Ones smaller go left, bigger go right. You've done five checks and now you've got two tiny piles, one and two, and four and five. Recurse on each pile. That's the whole trick. Each level touches each item once. And a random pivot usually splits piles roughly in half. So you only need about log levels to shrink to one.",
+      "visual_directive": "Five labeled number bars, 4, 1, 5, 3, 2, animate on a track. The 3 locks center and glows, smaller numbers snap left, larger snap right, then split into two branching piles forming a shallow tree."
+    },
+    {
+      "role": "payoff",
+      "narration": "So it never fully sorts. It just keeps halving. Five million checks beat twenty-five trillion. That's why it's fast.",
+      "visual_directive": "Camera pulls back to reveal the full splitting tree, only a few levels deep. A small counter ticks up fast while the sorted line of bars clicks into place."
+    }
+  ]
+}

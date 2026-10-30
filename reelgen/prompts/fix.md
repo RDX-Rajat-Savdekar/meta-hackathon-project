@@ -1,0 +1,1 @@
+The scene code below failed. Fix it so it passes the checks and renders, keeping the same visual intent and timing. If the error is caused by an API you are unsure of, replace it with a simpler construct you are certain exists. Return the COMPLETE corrected file in ONE code block and nothing else.

@@ -1,0 +1,40 @@
+{
+  "id": "20261030-three-0cc2b3",
+  "renderer": "three",
+  "topic": "how DNA stores data",
+  "role": "payoff",
+  "narration": "Billions of copies last for thousands of years with no power, so DNA's the ultimate backup drive for humanity.",
+  "description": "Vertical 1080x1920 dark background. Center-middle single glowing accent=cyan DNA helix vertical. It duplicates into hundreds of small glowing cyan and magenta helices swirling and funneling into a small glass vial centered in middle band. Vial glows good=green. Frozen ice-blue overlay with large fg=white year counter '0 YEARS -> 10,000 YEARS' beside vial and bold white text 'ULTIMATE BACKUP'. No key elements in top 10% or bottom 25%.",
+  "beats": [
+    {
+      "t": 0.0,
+      "word": "Billions",
+      "action": "Single bright cyan helix rotates large in center"
+    },
+    {
+      "t": 0.9,
+      "word": "copies",
+      "action": "Helix duplicates into dozens then hundreds of glowing helices filling center cloud"
+    },
+    {
+      "t": 1.78,
+      "word": "thousands",
+      "action": "Camera pulls back, cloud funnels down into small glass vial center, year counter starts ticking fast"
+    },
+    {
+      "t": 3.28,
+      "word": "power",
+      "action": "Grey power plug icon appears and fades with red X, vial glows green and freezes with ice shine"
+    },
+    {
+      "t": 4.98,
+      "word": "ultimate",
+      "action": "Bold white 'ULTIMATE BACKUP DRIVE' text scales up behind vial, vial pulses"
+    }
+  ],
+  "duration": 7.291,
+  "attempts": 1,
+  "source": "e2e-dna",
+  "created": "2026-10-30T22:55:07+00:00",
+  "starred": false
+}

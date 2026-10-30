@@ -1,0 +1,2 @@
+{"renderer": "manim", "error": "NameError: name 'UpdateFromAlpha' is not defined", "note": "use UpdateFromAlphaFunc, or ValueTracker + always_redraw", "at": 1793400908}
+{"renderer": "remotion", "error": "error TS2353: 'damping' does not exist in type ... spring()", "note": "pass damping inside config: spring({frame, fps, config: {damping: 14}})", "at": 1793400908}

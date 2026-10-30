@@ -1,0 +1,740 @@
+[
+  {
+    "index": 0,
+    "wav": "outputs/e2e-dna/seg0.wav",
+    "duration": 3.8509583333333333,
+    "words": [
+      {
+        "word": "One",
+        "start": 0.0,
+        "end": 0.54
+      },
+      {
+        "word": "gram",
+        "start": 0.54,
+        "end": 0.8
+      },
+      {
+        "word": "of",
+        "start": 0.8,
+        "end": 1.02
+      },
+      {
+        "word": "DNA",
+        "start": 1.02,
+        "end": 1.34
+      },
+      {
+        "word": "can",
+        "start": 1.34,
+        "end": 1.68
+      },
+      {
+        "word": "store",
+        "start": 1.68,
+        "end": 1.94
+      },
+      {
+        "word": "two",
+        "start": 1.94,
+        "end": 2.3
+      },
+      {
+        "word": "hundred",
+        "start": 2.3,
+        "end": 2.66
+      },
+      {
+        "word": "petabytes.",
+        "start": 2.66,
+        "end": 3.24
+      }
+    ]
+  },
+  {
+    "index": 1,
+    "wav": "outputs/e2e-dna/seg1.wav",
+    "duration": 9.250958333333333,
+    "words": [
+      {
+        "word": "Computers",
+        "start": 0.0,
+        "end": 0.66
+      },
+      {
+        "word": "speak",
+        "start": 0.66,
+        "end": 0.9
+      },
+      {
+        "word": "in",
+        "start": 0.9,
+        "end": 1.14
+      },
+      {
+        "word": "zeros",
+        "start": 1.14,
+        "end": 1.58
+      },
+      {
+        "word": "and",
+        "start": 1.58,
+        "end": 1.84
+      },
+      {
+        "word": "ones,",
+        "start": 1.84,
+        "end": 2.08
+      },
+      {
+        "word": "but",
+        "start": 2.58,
+        "end": 2.6
+      },
+      {
+        "word": "DNA",
+        "start": 2.6,
+        "end": 2.84
+      },
+      {
+        "word": "only",
+        "start": 2.84,
+        "end": 3.38
+      },
+      {
+        "word": "speaks",
+        "start": 3.38,
+        "end": 3.68
+      },
+      {
+        "word": "in",
+        "start": 3.68,
+        "end": 3.94
+      },
+      {
+        "word": "four",
+        "start": 3.94,
+        "end": 4.22
+      },
+      {
+        "word": "letters,",
+        "start": 4.22,
+        "end": 4.58
+      },
+      {
+        "word": "A,",
+        "start": 5.02,
+        "end": 5.1
+      },
+      {
+        "word": "T,",
+        "start": 5.32,
+        "end": 5.52
+      },
+      {
+        "word": "C,",
+        "start": 5.9,
+        "end": 6.0
+      },
+      {
+        "word": "and",
+        "start": 6.26,
+        "end": 6.3
+      },
+      {
+        "word": "G.",
+        "start": 6.3,
+        "end": 6.5
+      },
+      {
+        "word": "So",
+        "start": 7.02,
+        "end": 7.06
+      },
+      {
+        "word": "how",
+        "start": 7.06,
+        "end": 7.26
+      },
+      {
+        "word": "do",
+        "start": 7.26,
+        "end": 7.38
+      },
+      {
+        "word": "you",
+        "start": 7.38,
+        "end": 7.46
+      },
+      {
+        "word": "turn",
+        "start": 7.46,
+        "end": 7.64
+      },
+      {
+        "word": "a",
+        "start": 7.64,
+        "end": 7.72
+      },
+      {
+        "word": "file",
+        "start": 7.72,
+        "end": 8.08
+      },
+      {
+        "word": "into",
+        "start": 8.08,
+        "end": 8.42
+      },
+      {
+        "word": "chemistry?",
+        "start": 8.42,
+        "end": 8.74
+      }
+    ]
+  },
+  {
+    "index": 2,
+    "wav": "outputs/e2e-dna/seg2.wav",
+    "duration": 29.330958333333335,
+    "words": [
+      {
+        "word": "Here's",
+        "start": 0.0,
+        "end": 0.5
+      },
+      {
+        "word": "the",
+        "start": 0.5,
+        "end": 0.6
+      },
+      {
+        "word": "trick.",
+        "start": 0.6,
+        "end": 0.76
+      },
+      {
+        "word": "Each",
+        "start": 1.48,
+        "end": 1.56
+      },
+      {
+        "word": "DNA",
+        "start": 1.56,
+        "end": 1.84
+      },
+      {
+        "word": "letter",
+        "start": 1.84,
+        "end": 2.22
+      },
+      {
+        "word": "stores",
+        "start": 2.22,
+        "end": 2.56
+      },
+      {
+        "word": "two",
+        "start": 2.56,
+        "end": 2.96
+      },
+      {
+        "word": "bits.",
+        "start": 2.96,
+        "end": 3.28
+      },
+      {
+        "word": "Say",
+        "start": 3.78,
+        "end": 4.06
+      },
+      {
+        "word": "A",
+        "start": 4.06,
+        "end": 4.38
+      },
+      {
+        "word": "means",
+        "start": 4.38,
+        "end": 4.62
+      },
+      {
+        "word": "zero",
+        "start": 4.62,
+        "end": 4.98
+      },
+      {
+        "word": "zero,",
+        "start": 5.22,
+        "end": 5.28
+      },
+      {
+        "word": "C",
+        "start": 5.66,
+        "end": 5.82
+      },
+      {
+        "word": "means",
+        "start": 5.82,
+        "end": 6.04
+      },
+      {
+        "word": "zero",
+        "start": 6.04,
+        "end": 6.36
+      },
+      {
+        "word": "one,",
+        "start": 6.64,
+        "end": 6.74
+      },
+      {
+        "word": "G",
+        "start": 7.12,
+        "end": 7.2
+      },
+      {
+        "word": "means",
+        "start": 7.2,
+        "end": 7.46
+      },
+      {
+        "word": "one",
+        "start": 7.46,
+        "end": 7.7
+      },
+      {
+        "word": "zero,",
+        "start": 7.84,
+        "end": 8.04
+      },
+      {
+        "word": "and",
+        "start": 8.34,
+        "end": 8.36
+      },
+      {
+        "word": "T",
+        "start": 8.36,
+        "end": 8.58
+      },
+      {
+        "word": "means",
+        "start": 8.58,
+        "end": 8.82
+      },
+      {
+        "word": "one",
+        "start": 8.82,
+        "end": 9.04
+      },
+      {
+        "word": "one.",
+        "start": 9.18,
+        "end": 9.26
+      },
+      {
+        "word": "Take",
+        "start": 9.8,
+        "end": 10.02
+      },
+      {
+        "word": "six",
+        "start": 10.02,
+        "end": 10.32
+      },
+      {
+        "word": "bits,",
+        "start": 10.32,
+        "end": 10.66
+      },
+      {
+        "word": "like",
+        "start": 10.98,
+        "end": 11.14
+      },
+      {
+        "word": "zero",
+        "start": 11.14,
+        "end": 11.36
+      },
+      {
+        "word": "one",
+        "start": 11.6,
+        "end": 11.7
+      },
+      {
+        "word": "one",
+        "start": 11.86,
+        "end": 11.92
+      },
+      {
+        "word": "zero",
+        "start": 12.08,
+        "end": 12.22
+      },
+      {
+        "word": "one",
+        "start": 12.3,
+        "end": 12.52
+      },
+      {
+        "word": "one.",
+        "start": 12.74,
+        "end": 12.74
+      },
+      {
+        "word": "Split",
+        "start": 13.06,
+        "end": 13.36
+      },
+      {
+        "word": "them",
+        "start": 13.36,
+        "end": 13.62
+      },
+      {
+        "word": "into",
+        "start": 13.62,
+        "end": 13.8
+      },
+      {
+        "word": "pairs.",
+        "start": 13.8,
+        "end": 14.0
+      },
+      {
+        "word": "Zero",
+        "start": 14.92,
+        "end": 14.92
+      },
+      {
+        "word": "one",
+        "start": 15.08,
+        "end": 15.18
+      },
+      {
+        "word": "becomes",
+        "start": 15.18,
+        "end": 15.44
+      },
+      {
+        "word": "C.",
+        "start": 15.44,
+        "end": 15.72
+      },
+      {
+        "word": "One",
+        "start": 16.28,
+        "end": 16.38
+      },
+      {
+        "word": "zero",
+        "start": 16.5,
+        "end": 16.68
+      },
+      {
+        "word": "becomes",
+        "start": 16.68,
+        "end": 16.98
+      },
+      {
+        "word": "G.",
+        "start": 16.98,
+        "end": 17.24
+      },
+      {
+        "word": "One",
+        "start": 17.74,
+        "end": 17.88
+      },
+      {
+        "word": "one",
+        "start": 18.0,
+        "end": 18.1
+      },
+      {
+        "word": "becomes",
+        "start": 18.1,
+        "end": 18.34
+      },
+      {
+        "word": "T.",
+        "start": 18.34,
+        "end": 18.68
+      },
+      {
+        "word": "So",
+        "start": 19.02,
+        "end": 19.24
+      },
+      {
+        "word": "those",
+        "start": 19.24,
+        "end": 19.48
+      },
+      {
+        "word": "six",
+        "start": 19.48,
+        "end": 19.72
+      },
+      {
+        "word": "bits",
+        "start": 19.72,
+        "end": 19.98
+      },
+      {
+        "word": "become",
+        "start": 19.98,
+        "end": 20.36
+      },
+      {
+        "word": "just",
+        "start": 20.36,
+        "end": 20.62
+      },
+      {
+        "word": "C",
+        "start": 20.62,
+        "end": 20.88
+      },
+      {
+        "word": "G",
+        "start": 21.04,
+        "end": 21.18
+      },
+      {
+        "word": "T.",
+        "start": 21.4,
+        "end": 21.5
+      },
+      {
+        "word": "Then",
+        "start": 22.04,
+        "end": 22.26
+      },
+      {
+        "word": "a",
+        "start": 22.36,
+        "end": 22.5
+      },
+      {
+        "word": "machine",
+        "start": 22.5,
+        "end": 22.7
+      },
+      {
+        "word": "builds",
+        "start": 22.7,
+        "end": 23.08
+      },
+      {
+        "word": "that",
+        "start": 23.08,
+        "end": 23.32
+      },
+      {
+        "word": "exact",
+        "start": 23.32,
+        "end": 23.46
+      },
+      {
+        "word": "strand,",
+        "start": 23.46,
+        "end": 23.88
+      },
+      {
+        "word": "letter",
+        "start": 24.24,
+        "end": 24.34
+      },
+      {
+        "word": "by",
+        "start": 24.34,
+        "end": 24.56
+      },
+      {
+        "word": "letter.",
+        "start": 24.56,
+        "end": 24.78
+      },
+      {
+        "word": "To",
+        "start": 24.78,
+        "end": 25.4
+      },
+      {
+        "word": "read",
+        "start": 25.4,
+        "end": 25.54
+      },
+      {
+        "word": "it",
+        "start": 25.54,
+        "end": 25.66
+      },
+      {
+        "word": "back,",
+        "start": 25.66,
+        "end": 25.88
+      },
+      {
+        "word": "another",
+        "start": 26.16,
+        "end": 26.42
+      },
+      {
+        "word": "machine",
+        "start": 26.42,
+        "end": 26.86
+      },
+      {
+        "word": "reads",
+        "start": 26.86,
+        "end": 27.1
+      },
+      {
+        "word": "the",
+        "start": 27.1,
+        "end": 27.32
+      },
+      {
+        "word": "letters",
+        "start": 27.32,
+        "end": 27.5
+      },
+      {
+        "word": "and",
+        "start": 27.5,
+        "end": 27.76
+      },
+      {
+        "word": "turns",
+        "start": 27.76,
+        "end": 27.98
+      },
+      {
+        "word": "them",
+        "start": 27.98,
+        "end": 28.18
+      },
+      {
+        "word": "back",
+        "start": 28.18,
+        "end": 28.46
+      },
+      {
+        "word": "into",
+        "start": 28.46,
+        "end": 28.64
+      },
+      {
+        "word": "bits.",
+        "start": 28.64,
+        "end": 28.9
+      }
+    ]
+  },
+  {
+    "index": 3,
+    "wav": "outputs/e2e-dna/seg3.wav",
+    "duration": 7.290958333333333,
+    "words": [
+      {
+        "word": "Billions",
+        "start": 0.0,
+        "end": 0.76
+      },
+      {
+        "word": "of",
+        "start": 0.76,
+        "end": 0.9
+      },
+      {
+        "word": "copies",
+        "start": 0.9,
+        "end": 1.06
+      },
+      {
+        "word": "last",
+        "start": 1.06,
+        "end": 1.54
+      },
+      {
+        "word": "for",
+        "start": 1.54,
+        "end": 1.78
+      },
+      {
+        "word": "thousands",
+        "start": 1.78,
+        "end": 2.16
+      },
+      {
+        "word": "of",
+        "start": 2.16,
+        "end": 2.6
+      },
+      {
+        "word": "years",
+        "start": 2.6,
+        "end": 2.8
+      },
+      {
+        "word": "with",
+        "start": 2.8,
+        "end": 3.02
+      },
+      {
+        "word": "no",
+        "start": 3.02,
+        "end": 3.28
+      },
+      {
+        "word": "power,",
+        "start": 3.28,
+        "end": 3.72
+      },
+      {
+        "word": "so",
+        "start": 4.18,
+        "end": 4.24
+      },
+      {
+        "word": "DNA's",
+        "start": 4.24,
+        "end": 4.86
+      },
+      {
+        "word": "the",
+        "start": 4.86,
+        "end": 4.98
+      },
+      {
+        "word": "ultimate",
+        "start": 4.98,
+        "end": 5.36
+      },
+      {
+        "word": "backup",
+        "start": 5.36,
+        "end": 5.88
+      },
+      {
+        "word": "drive",
+        "start": 5.88,
+        "end": 6.2
+      },
+      {
+        "word": "for",
+        "start": 6.2,
+        "end": 6.52
+      },
+      {
+        "word": "humanity.",
+        "start": 6.52,
+        "end": 6.94
+      }
+    ]
+  }
+]

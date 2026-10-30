@@ -1,0 +1,45 @@
+{
+  "id": "20261030-remotion-6e9324",
+  "renderer": "remotion",
+  "topic": "how DNA stores data",
+  "role": "setup",
+  "narration": "Computers speak in zeros and ones, but DNA only speaks in four letters, A, T, C, and G. So how do you turn a file into chemistry?",
+  "description": "Vertical 1080x1920 dark background with vertical split in middle band (30-70% height). Left panel dark with streaming fg=white binary digits 0 and 1 falling. Right panel dark with four huge floating letters A in good=green, T in accent3=yellow, C in accent=cyan, G in accent2=magenta. Thin muted=grey divider line center. Pulsing fg=white question mark and small file-to-flask icon appear center-bottom of middle band. Kinetic typography, no 3D.",
+  "beats": [
+    {
+      "t": 0.0,
+      "word": "Computers",
+      "action": "Left panel fills middle with cascading white 0s and 1s, right panel empty dark"
+    },
+    {
+      "t": 1.14,
+      "word": "zeros",
+      "action": "Left 0s and 1s enlarge and march left-to-right, zeros glow cyan"
+    },
+    {
+      "t": 2.6,
+      "word": "DNA",
+      "action": "Grey divider wipes in center, right panel slides in empty with DNA label"
+    },
+    {
+      "t": 3.94,
+      "word": "four",
+      "action": "Four giant letters A T C G pop in on right in green yellow cyan magenta with bounce"
+    },
+    {
+      "t": 6.3,
+      "word": "G",
+      "action": "G letter flashes magenta then all four letters glow together"
+    },
+    {
+      "t": 7.06,
+      "word": "how",
+      "action": "White question mark pulses center between panels, file icon morphs toward flask icon below it"
+    }
+  ],
+  "duration": 9.251,
+  "attempts": 1,
+  "source": "e2e-dna",
+  "created": "2026-10-30T22:55:07+00:00",
+  "starred": false
+}

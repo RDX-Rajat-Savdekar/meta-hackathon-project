@@ -1,0 +1,154 @@
+[
+  {
+    "index": 0,
+    "renderer": "remotion",
+    "duration": 1.94,
+    "description": "Vertical 1080x1920 remotion kinetic scene. Dark background. Frame 0 bold immediate hook: huge fg=white text 'LOSE WITHOUT GETTING SICK?' at 18% from top (safe below top 10%). Focal center at 45% vertical: cluster of accent2 magenta-red spiky virus balls pulsing and scaling. At end a large accent=cyan glowing shield with lock icon slams from above to cover them. No captions zone violated.",
+    "beats": [
+      {
+        "t": 0.0,
+        "word": "What",
+        "action": "huge fg=white headline 'LOSE WITHOUT GETTING SICK?' pops in at upper-middle and single accent2 spiky virus ball pops in center"
+      },
+      {
+        "t": 0.54,
+        "word": "lose",
+        "action": "center virus splits fast 1 to 4 accent2 spiky copies scaling up with jitter"
+      },
+      {
+        "t": 0.72,
+        "word": "without",
+        "action": "all viruses freeze mid-jitter, desaturate slightly, motion stops with freeze-frame ring"
+      },
+      {
+        "t": 1.32,
+        "word": "sick?",
+        "action": "large accent=cyan glowing shield slams down from top over frozen viruses with shockwave and lock flash"
+      }
+    ]
+  },
+  {
+    "index": 1,
+    "renderer": "remotion",
+    "duration": 8.52,
+    "description": "Vertical remotion bloodstream scene in middle band 15-70%. Muted=grey pink wash vessel background. Four large soft fg=white blood cells drifting slowly left-right at 40-55% center. Small accent2 magenta-red spiky viruses on right-center that double. Pill counter 'DAY 1' in fg=white on dark at 15% from top center ticking to DAY 4. Small fg=white Y antibodies assembling slowly below center.",
+    "beats": [
+      {
+        "t": 0.2,
+        "word": "Your",
+        "action": "bloodstream washes in, 4 fg=white blood cells drift slowly across mid-frame, DAY 1 pill appears top-center"
+      },
+      {
+        "t": 1.12,
+        "word": "slow",
+        "action": "cell drift drops to slow-motion crawl, clock icon pulses over cells"
+      },
+      {
+        "t": 2.68,
+        "word": "virus.",
+        "action": "single small accent2 spiky virus fades in center-right pulsing"
+      },
+      {
+        "t": 3.82,
+        "word": "days",
+        "action": "DAY counter ticks fast DAY 1 to DAY 4 while cells keep crawling"
+      },
+      {
+        "t": 4.88,
+        "word": "antibodies.",
+        "action": "one tiny fg=white Y antibody assembles dot-by-dot below center, very slow"
+      },
+      {
+        "t": 7.06,
+        "word": "multiplying",
+        "action": "accent2 viruses double rapidly 1-2-4-8-16 filling right-center bouncing"
+      }
+    ]
+  },
+  {
+    "index": 2,
+    "renderer": "remotion",
+    "duration": 24.12,
+    "description": "Vertical remotion staged tutorial in center 20-70%. Background dark with vignette. Objects: single accent3=yellow 3-prong spike bobbing center; large muted=grey amoeba patrol cell left-center; large accent2=magenta glowing oval lymph node right-center; accent=cyan round B cells inside node; many small fg=white Y antibodies; final good=green glowing memory cells with MEMORY badges. Focus shifts left to right then to army then to survivors, one focal at a time.",
+    "beats": [
+      {
+        "t": 0.3,
+        "word": "vaccine",
+        "action": "syringe icon slides in left-center and injects, 'SAFE PRACTICE ROUND' label pops in fg=white"
+      },
+      {
+        "t": 3.5,
+        "word": "one",
+        "action": "single accent3 yellow spike floats in center bobbing alone"
+      },
+      {
+        "t": 5.7,
+        "word": "can't",
+        "action": "split-arrow duplicate icon over spike gets crossed by fg=white X and fades, spike stays one"
+      },
+      {
+        "t": 7.12,
+        "word": "Patrol",
+        "action": "muted=grey amoeba patrol cell slides in from left and engulfs yellow spike"
+      },
+      {
+        "t": 9.56,
+        "word": "lymph",
+        "action": "patrol docks to accent2 magenta lymph node right-center and flashes yellow spike mugshot icon 3 times above it"
+      },
+      {
+        "t": 10.6,
+        "word": "matching",
+        "action": "single accent=cyan B cell inside node pops scale with wake-up ring"
+      },
+      {
+        "t": 14.32,
+        "word": "clones",
+        "action": "B cell clones to 12-cell accent=cyan army grid firing streams of fg=white Y antibodies outward that lock onto spike copies"
+      },
+      {
+        "t": 19.56,
+        "word": "most",
+        "action": "9 of 12 clones turn muted=grey fade and sink down, Y streams stop"
+      },
+      {
+        "t": 21.42,
+        "word": "stay",
+        "action": "remaining 3 cells turn good=green glowing with MEMORY badge and resume slow patrol bob"
+      }
+    ]
+  },
+  {
+    "index": 3,
+    "renderer": "remotion",
+    "duration": 7.022,
+    "description": "Vertical remotion payoff, same bloodstream style for continuity. Center 30-65%: 3 dormant good=green memory cells dimly bobbing center-right; 6 accent2 magenta-red spiky viruses rush from left; dense fg=white Y antibodies flood; finale large accent=cyan shield with fg=white 'PROTECTED' text at 25% from top. SAVED GAME checkpoint banner at start.",
+    "beats": [
+      {
+        "t": 0.24,
+        "word": "So",
+        "action": "'SAVED GAME' checkpoint banner pops top-center with 3 dim good=green memory cells sleeping center"
+      },
+      {
+        "t": 0.74,
+        "word": "real",
+        "action": "6 accent2 spiky viruses rush fast left-to-center in arrow formation"
+      },
+      {
+        "t": 2.12,
+        "word": "memory",
+        "action": "memory cells flash bright good=green awake with expanding shockwave rings"
+      },
+      {
+        "t": 3.26,
+        "word": "hours,",
+        "action": "awake cells spray dense flood of fg=white Y antibodies flying left to coat each virus"
+      },
+      {
+        "t": 4.82,
+        "word": "You're",
+        "action": "coated viruses shrivel to muted=grey puffs and dissolve, accent=cyan shield with PROTECTED slams in center"
+      }
+    ]
+  }
+]

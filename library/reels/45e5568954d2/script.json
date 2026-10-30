@@ -1,0 +1,26 @@
+{
+  "title": "Vaccines Are a Saved Game",
+  "idea": "Vaccines train immunity with a harmless preview so memory cells can crush the real virus in hours",
+  "segments": [
+    {
+      "role": "hook",
+      "narration": "What if you could lose without getting sick?",
+      "visual_directive": "A red spiky virus multiplies fast, then freezes as a glowing shield slams down over it."
+    },
+    {
+      "role": "setup",
+      "narration": "Your immune system is slow the first time it meets a new virus. It takes days to build the right antibodies. Meanwhile the virus is multiplying like crazy.",
+      "visual_directive": "Drifting white blood cells in a bloodstream while a day counter ticks and small red viruses double again and again."
+    },
+    {
+      "role": "mechanism",
+      "narration": "A vaccine gives you a safe practice round. Say, just one harmless spike from the virus, that can't multiply. Patrol cells grab it and flash its mugshot to your lymph nodes. A matching B cell wakes up and clones itself thousands of times. Those clones pump out Y shaped antibodies that stick to the spike and block it. When the drill ends, most clones die off. But a handful stay as memory cells, on guard for years.",
+      "visual_directive": "A single yellow spike floats in and a patrol cell carries it to a glowing lymph node. One blue B cell clones into an army firing Y shaped antibodies that lock onto spikes."
+    },
+    {
+      "role": "payoff",
+      "narration": "So when the real virus arrives, memory cells strike in hours, not days. You're protected before you even feel sick.",
+      "visual_directive": "Real red viruses rush back but dormant memory cells flash awake and flood them with antibodies until they dissolve."
+    }
+  ]
+}

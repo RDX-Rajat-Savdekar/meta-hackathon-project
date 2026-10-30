@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>reelgen — any question, a 60-second reel</title>
+  <meta name="description" content="Ask anything about science or computer science and get a narrated, animated 60-second explainer reel." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='g'><stop offset='0' stop-color='%234CC9F0'/><stop offset='1' stop-color='%23F72585'/></linearGradient></defs><rect width='32' height='32' rx='9' fill='url(%23g)'/><path d='M12 9v14l11-7z' fill='%23050608'/></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="bg" aria-hidden="true"></canvas>
+
+  <!-- ===================== HOME ===================== -->
+  <div class="view" id="home" hidden>
+    <nav class="nav">
+      <div class="wrap">
+        <a class="brand" href="#/"><span class="logo" aria-hidden="true"></span>reelgen</a>
+        <div class="nav-links">
+          <a href="#examples" data-scroll>Examples</a>
+          <a href="#engines" data-scroll>Engines</a>
+          <a href="#how" data-scroll>How it works</a>
+        </div>
+        <button class="btn btn-3d" type="button" data-toggle3d aria-pressed="false" title="Toggle the Three.js background"><span class="dot" aria-hidden="true"></span>3D</button>
+        <a class="cta small" href="#/create"><span>Create<span class="long"> video</span></span></a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="wrap">
+        <div>
+          <span class="eyebrow"><b>NEW</b> Manim · Motion graphics · Three.js — in one reel</span>
+          <h1>Any question.<br /><span class="grad">A 60-second reel.</span></h1>
+          <p class="lede">Type what you want to understand. reelgen writes the script, voices it, animates every beat in code, and hands you a captioned vertical video — ready to post.</p>
+          <div class="actions">
+            <a class="cta" href="#/create">
+              Create your own video
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="btn" href="#examples" data-scroll style="height:52px;padding:0 22px">Watch examples</a>
+          </div>
+          <div class="stack-meta">
+            <div><strong>~3 min</strong>from question to reel</div>
+            <div><strong>1080×1920</strong>captioned, 30fps</div>
+            <div><strong>3 engines</strong>chosen per scene</div>
+          </div>
+        </div>
+        <div class="phones" id="heroPhones" aria-label="Example reels"></div>
+      </div>
+    </header>
+
+    <div class="marquee" aria-label="Try a topic"><div class="track" id="marquee"></div></div>
+
+    <section class="block" id="examples">
+      <div class="wrap">
+        <div class="block-head">
+          <div>
+            <h2>Made with reelgen</h2>
+            <p>Every one of these was generated end-to-end from a single question — script, voice, animation and captions. Tap to watch with sound.</p>
+          </div>
+          <a class="btn" href="#/create">Make your own →</a>
+        </div>
+        <div class="reels-grid" id="reelsGrid"></div>
+      </div>
+    </section>
+
+    <section class="block" id="engines">
+      <div class="wrap">
+        <div class="block-head">
+          <div>
+            <h2>Three engines. One story.</h2>
+            <p>A director model picks the right engine for every scene, then writes the animation code itself. These clips came out of real runs.</p>
+          </div>
+        </div>
+        <div class="engines" id="engineGrid"></div>
+      </div>
+    </section>
+
+    <section class="block" id="how">
+      <div class="wrap">
+        <div class="block-head"><div><h2>How it works</h2><p>Audio first, so every animation lands on the exact word that motivates it.</p></div></div>
+        <div class="steps-row">
+          <div class="step-card"><h4>Script</h4><p>Hook, setup, mechanism, payoff — one sharp idea per reel.</p><small>Muse Spark</small></div>
+          <div class="step-card"><h4>Voice</h4><p>Narration is recorded, then every word is timestamped.</p><small>Gemini TTS · Whisper</small></div>
+          <div class="step-card"><h4>Direct</h4><p>Each scene gets an engine and beats tied to spoken words.</p><small>Muse Spark</small></div>
+          <div class="step-card"><h4>Animate</h4><p>Code is written, checked, rendered — and self-fixed if it breaks.</p><small>Manim · Remotion · Three.js</small></div>
+          <div class="step-card"><h4>Assemble</h4><p>Clips, narration and word-by-word captions become one reel.</p><small>FFmpeg</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap control">
+        <div>
+          <div class="block-head" style="margin:0"><div><h2>You're in control.</h2></div></div>
+          <ul>
+            <li>Watch every stage stream live — script, voice, and each scene as it renders.</li>
+            <li>See exactly which scene failed, on which attempt, and the error it hit.</li>
+            <li>Redo any scene with a note (“bigger text”, “show it in 3D”) or switch its engine — the reel reassembles itself.</li>
+            <li>Everything that works is saved to a library, so each reel makes the next one better.</li>
+          </ul>
+        </div>
+        <div class="reels-grid" id="controlDemo" style="grid-template-columns:1fr 1fr"></div>
+      </div>
+    </section>
+
+    <div class="final-cta">
+      <h2>What do you want<br />to understand?</h2>
+      <a class="cta" href="#/create">Create your own video
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <footer>reelgen — built for the Meta hackathon · Muse Spark · Gemini · Manim · Remotion · Three.js</footer>
+  </div>
+
+  <!-- ===================== STUDIO ===================== -->
+  <div class="view studio" id="studio" hidden>
+    <nav class="nav">
+      <div class="wrap">
+        <a class="brand" href="#/"><span class="logo" aria-hidden="true"></span>reelgen</a>
+        <div class="nav-links">
+          <a href="#/">Home</a>
+          <a href="#/create" aria-current="page">Studio</a>
+        </div>
+        <button class="btn btn-3d" type="button" data-toggle3d aria-pressed="false" title="Toggle the Three.js background"><span class="dot" aria-hidden="true"></span>3D</button>
+        <button class="btn" type="button" id="newChat">New chat</button>
+      </div>
+    </nav>
+
+    <div class="thread-wrap" id="threadWrap">
+      <main class="thread" id="thread" aria-live="polite">
+        <section class="studio-empty" id="studioEmpty">
+          <h2>What should we explain?</h2>
+          <p>Describe the idea you want to understand — a question, a concept, or what you're confused about. You'll see every step as it happens.</p>
+          <div class="chips" id="studioChips"></div>
+        </section>
+      </main>
+    </div>
+
+    <div class="composer">
+      <form id="form">
+        <label class="sr-only" for="input">What do you want to learn?</label>
+        <textarea id="input" rows="1" placeholder="What should we explain?" autocomplete="off"></textarea>
+        <button class="send" id="send" type="submit" aria-label="Make a reel" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
+      <div class="hint">Each reel takes about 3–5 minutes<span class="keys"> · Enter to send, Shift+Enter for a new line</span></div>
+    </div>
+  </div>
+
+  <dialog class="player" id="player">
+    <video id="playerVideo" controls playsinline></video>
+    <div class="row">
+      <span id="playerTitle"></span>
+      <div style="display:flex;gap:8px">
+        <button class="cta small" type="button" id="playerMake">Make one like this</button>
+        <form method="dialog"><button class="btn" type="submit">Close</button></form>
+      </div>
+    </div>
+  </dialog>
+
+  <script type="module" src="bg3d.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

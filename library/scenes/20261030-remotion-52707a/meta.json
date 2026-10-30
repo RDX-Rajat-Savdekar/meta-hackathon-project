@@ -1,0 +1,60 @@
+{
+  "id": "20261030-remotion-52707a",
+  "renderer": "remotion",
+  "topic": "How do vaccines train the immune system?",
+  "role": "mechanism",
+  "narration": "A vaccine gives you a safe practice round. Say, just one harmless spike from the virus, that can't multiply. Patrol cells grab it and flash its mugshot to your lymph nodes. A matching B cell wakes up and clones itself thousands of times. Those clones pump out Y shaped antibodies that stick to the spike and block it. When the drill ends, most clones die off. But a handful stay as memory cells, on guard for years.",
+  "description": "Vertical remotion staged tutorial in center 20-70%. Background dark with vignette. Objects: single accent3=yellow 3-prong spike bobbing center; large muted=grey amoeba patrol cell left-center; large accent2=magenta glowing oval lymph node right-center; accent=cyan round B cells inside node; many small fg=white Y antibodies; final good=green glowing memory cells with MEMORY badges. Focus shifts left to right then to army then to survivors, one focal at a time.",
+  "beats": [
+    {
+      "t": 0.3,
+      "word": "vaccine",
+      "action": "syringe icon slides in left-center and injects, 'SAFE PRACTICE ROUND' label pops in fg=white"
+    },
+    {
+      "t": 3.5,
+      "word": "one",
+      "action": "single accent3 yellow spike floats in center bobbing alone"
+    },
+    {
+      "t": 5.7,
+      "word": "can't",
+      "action": "split-arrow duplicate icon over spike gets crossed by fg=white X and fades, spike stays one"
+    },
+    {
+      "t": 7.12,
+      "word": "Patrol",
+      "action": "muted=grey amoeba patrol cell slides in from left and engulfs yellow spike"
+    },
+    {
+      "t": 9.56,
+      "word": "lymph",
+      "action": "patrol docks to accent2 magenta lymph node right-center and flashes yellow spike mugshot icon 3 times above it"
+    },
+    {
+      "t": 10.6,
+      "word": "matching",
+      "action": "single accent=cyan B cell inside node pops scale with wake-up ring"
+    },
+    {
+      "t": 14.32,
+      "word": "clones",
+      "action": "B cell clones to 12-cell accent=cyan army grid firing streams of fg=white Y antibodies outward that lock onto spike copies"
+    },
+    {
+      "t": 19.56,
+      "word": "most",
+      "action": "9 of 12 clones turn muted=grey fade and sink down, Y streams stop"
+    },
+    {
+      "t": 21.42,
+      "word": "stay",
+      "action": "remaining 3 cells turn good=green glowing with MEMORY badge and resume slow patrol bob"
+    }
+  ],
+  "duration": 24.12,
+  "attempts": 1,
+  "source": "45e5568954d2",
+  "created": "2026-10-30T23:11:32+00:00",
+  "starred": false
+}

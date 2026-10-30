@@ -1,0 +1,40 @@
+{
+  "id": "20261030-three-653c60",
+  "renderer": "three",
+  "topic": "how DNA stores data",
+  "role": "hook",
+  "narration": "One gram of DNA can store two hundred petabytes.",
+  "description": "Vertical 1080x1920 dark background. Frame 0: large glowing accent=cyan DNA double helix in vertical center (35-65% height), rotating slowly, base-pair rungs in fg=white and accent2=magenta. Below it in lower-middle a small metallic grey hard drive for scale. Big bold fg=white text '200 PETABYTES' pops in center. Camera pushes in slightly then helix shrinks rapidly downward into a tiny glowing cyan droplet that hovers above the hard drive. No key elements in top 10% or bottom 25%.",
+  "beats": [
+    {
+      "t": 0.0,
+      "word": "One",
+      "action": "Glowing cyan double helix fills center rotating, bold white '1 GRAM' text slams in above it"
+    },
+    {
+      "t": 1.02,
+      "word": "DNA",
+      "action": "Helix brightens and spins faster, magenta rungs pulse"
+    },
+    {
+      "t": 1.68,
+      "word": "store",
+      "action": "Helix begins rapid shrink toward center-bottom, motion blur trail"
+    },
+    {
+      "t": 1.94,
+      "word": "two",
+      "action": "Helix collapses into tiny cyan droplet hovering above grey hard drive that slides in to middle"
+    },
+    {
+      "t": 2.66,
+      "word": "petabytes",
+      "action": "Huge white '200 PETABYTES' text scales up behind droplet and drive, droplet glows"
+    }
+  ],
+  "duration": 3.851,
+  "attempts": 1,
+  "source": "e2e-dna",
+  "created": "2026-10-30T22:55:07+00:00",
+  "starred": false
+}
