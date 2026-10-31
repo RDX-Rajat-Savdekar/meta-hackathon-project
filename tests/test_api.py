@@ -101,6 +101,81 @@ def test_unknown_job_404(client):
     assert client.get("/jobs/nope/events").status_code == 404
 
 
+def _wait_pitch(client, pid, timeout=15.0):
+    import time as _time
+
+    end = _time.time() + timeout
+    while _time.time() < end:
+        p = client.get(f"/pitches/{pid}").json()
+        if p["status"] in ("ready", "failed"):
+            return p
+        _time.sleep(0.2)
+    raise AssertionError("pitch never finished")
+
+
+def test_pitch_gate_and_approve(client, monkeypatch, tmp_path):
+    import time as _time
+    from pathlib import Path as _Path
+
+    from reelgen.models import Script as _Script
+
+    def fake_script(llm, topic):
+        return _Script(title="T", idea="I", segments=[
+            {"role": r, "narration": f"{r} narration here", "visual_directive": "d"} for r in
+            ("hook", "setup", "mechanism", "payoff")])
+
+    monkeypatch.setattr("reelgen.agents.script.write_script", fake_script)
+    assert client.post("/pitches", json={"topic": "ab"}).status_code == 422
+    assert client.get("/pitches/nope").status_code == 404
+    pid = client.post("/pitches", json={"topic": "black holes", "target_length": "short"}).json()["id"]
+    pitch = _wait_pitch(client, pid)
+    assert pitch["status"] == "ready" and len(pitch["script"]["segments"]) == 4
+
+    def fake_approved(topic, job_dir, script, emit=None, preferred_renderer=None, note=""):
+        _Path(job_dir).mkdir(parents=True, exist_ok=True)
+        (_Path(job_dir) / "script.json").write_text(script.model_dump_json())
+        out = _Path(job_dir) / "final.mp4"
+        out.write_bytes(b"stub")
+        return out
+
+    monkeypatch.setattr(reelgen.graph, "run_approved", fake_approved)
+    assert client.post("/pitches/nope/approve", json={}).status_code == 404
+    job = client.post(f"/pitches/{pid}/approve", json={}).json()
+    end = _time.time() + 15.0
+    while _time.time() < end:
+        state = client.get(f"/jobs/{job['id']}").json()
+        if state["status"] in ("done", "failed"):
+            break
+        _time.sleep(0.2)
+    assert client.get(f"/jobs/{job['id']}").json()["status"] == "done"
+    assert (_Path(get_settings().outputs_dir) / job["id"] / "script.json").exists()
+
+
+def test_director_note_reaches_planner():
+    import json as _json
+    from pathlib import Path as _Path
+
+    from reelgen.agents.scene_planner import plan_scenes
+    from reelgen.models import Script as _Script, Segment as _Segment, SegmentAudio as _SegAudio
+
+    captured = {}
+
+    class FakeLLM:
+        def complete(self, system, user):
+            captured["user"] = user
+            return _json.dumps({"scenes": [{"renderer": "remotion", "description": "d",
+                                            "beats": [{"t": 0.0, "word": "w", "action": "a"}]}] * 4})
+
+    segs = [_Segment(role=r, narration="n goes here", visual_directive="v")
+            for r in ("hook", "setup", "mechanism", "payoff")]
+    audio = [_SegAudio(index=i, wav=_Path("x.wav"), duration=2.0, words=[]) for i in range(4)]
+    sc = _Script(title="t", idea="i", segments=segs)
+    plan_scenes(FakeLLM(), sc, audio, note="use a timeline view")
+    assert "use a timeline view" in captured["user"]
+    plan_scenes(FakeLLM(), sc, audio)
+    assert "Director note" not in captured["user"]
+
+
 def test_chat_thread_lifecycle(client, monkeypatch, tmp_path):
     monkeypatch.setattr(get_settings(), "chats_dir", tmp_path / "chats")
     monkeypatch.setattr(get_settings(), "outputs_dir", tmp_path)

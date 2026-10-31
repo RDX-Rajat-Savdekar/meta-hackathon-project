@@ -1,0 +1,40 @@
+{
+  "id": "20261030-remotion-dfb2cb",
+  "renderer": "remotion",
+  "topic": "database race condition",
+  "role": "payoff",
+  "narration": "Without that lock, speed creates lies. Two truths at the same time make one expensive fiction.",
+  "description": "Payoff continuation in remotion, dark background, center focus. Center-middle accent=cyan database row box showing '0 / SOLD OUT'. Large fg=white padlock icon clamps over it from above. Left-center small accent=cyan request dot marked FIRST passes through, right-center accent2=magenta request dot marked SECOND waits in dashed queue line behind lock. Two fg=white speech bubbles showing 'true' collide into one accent2=magenta 'FICTION' stamp at bottom-center of safe zone with accent3=yellow expensive tag.",
+  "beats": [
+    {
+      "t": 0.91,
+      "word": "lock,",
+      "action": "Steel padlock drops from above and clamps over center database row with metallic flash"
+    },
+    {
+      "t": 1.45,
+      "word": "speed",
+      "action": "Speed lines streak behind both request dots rushing toward locked row"
+    },
+    {
+      "t": 3.35,
+      "word": "Two",
+      "action": "Two fg=white 'true: 1 left' bubbles pop above first and second requests at same time"
+    },
+    {
+      "t": 4.93,
+      "word": "one",
+      "action": "Bubbles collide and merge into single accent2 stamp 'FICTION x2 sold'"
+    },
+    {
+      "t": 5.23,
+      "word": "expensive",
+      "action": "Accent3 price tag and red SOLD OUT banner slam over receipts as lock holds row at zero"
+    }
+  ],
+  "duration": 6.801,
+  "attempts": 1,
+  "source": "a75c8b5548d4",
+  "created": "2026-10-31T06:10:18+00:00",
+  "starred": false
+}

@@ -56,6 +56,7 @@ class State(TypedDict, total=False):
     job_dir: Path
     topic: str
     preferred_renderer: str | None
+    note: str
     script: Script
     audio: list[SegmentAudio]
     specs: list[SceneSpec]
@@ -122,7 +123,7 @@ def plan_node(state: State, config: RunnableConfig) -> State:
     emit = _emit(config)
     _stage(emit, "plan")
     specs = plan_scenes(MuseClient(), state["script"], state["audio"],
-                        preferred=state.get("preferred_renderer"))
+                        preferred=state.get("preferred_renderer"), note=state.get("note", ""))
     _save(state["job_dir"], "plan.json", [s.model_dump() for s in specs])
     emit("plan", scenes=[
         {"index": s.index, "role": state["script"].segments[s.index].role, "renderer": s.renderer.value,
@@ -193,6 +194,41 @@ def build_graph():
     g.add_edge("scene", "assemble")
     g.add_edge("assemble", END)
     return g.compile()
+
+
+LENGTH_HINTS = {
+    "short": " (aim for about 30 seconds of spoken narration: tight hook, lean mechanism)",
+    "standard": " (aim for 40 to 50 seconds of spoken narration)",
+    "deep": " (aim for 55 to 65 seconds of spoken narration: roomy mechanism with one concrete example)",
+}
+
+
+def build_approved_graph():
+    """Voice → plan → scene → assemble for an already-approved script."""
+    g = StateGraph(State)
+    g.add_node("voice", voice_node)
+    g.add_node("plan", plan_node)
+    g.add_node("scene", scene_node)
+    g.add_node("assemble", assemble_node)
+    g.set_entry_point("voice")
+    g.add_edge("voice", "plan")
+    g.add_conditional_edges("plan", fan_out, ["scene"])
+    g.add_edge("scene", "assemble")
+    g.add_edge("assemble", END)
+    return g.compile()
+
+
+def run_approved(topic: str, job_dir: Path, script: Script, emit: Emit | None = None,
+                 preferred_renderer: str | None = None, note: str = "") -> Path:
+    job_dir.mkdir(parents=True, exist_ok=True)
+    (job_dir / "topic.txt").write_text(topic + "\n")
+    _save(job_dir, "script.json", script.model_dump())
+    state = build_approved_graph().invoke(
+        {"topic": topic, "job_dir": job_dir, "results": [], "script": script,
+         "preferred_renderer": preferred_renderer, "note": note},
+        config={"configurable": {"emit": emit or _noop}, "max_concurrency": 4},
+    )
+    return state["final"]
 
 
 def run(topic: str, job_dir: Path, emit: Emit | None = None, preferred_renderer: str | None = None) -> Path:

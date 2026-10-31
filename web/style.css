@@ -287,6 +287,25 @@ footer { color: var(--muted); font-size: 13px; text-align: center; padding: 28px
 .stat-table th { color: var(--muted); font-weight: 600; }
 .dialog h4 { margin: 14px 0 4px; font-size: 13px; }
 .dialog .err { color: var(--accent2); font-size: 12.5px; }
+.drawer.right { left: auto; right: 0; border-right: 0; border-left: 1px solid var(--line-strong); }
+.drawer h4 { margin: 14px 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.pickrow { display: flex; flex-wrap: wrap; gap: 6px; }
+.pickrow label { cursor: pointer; }
+.pickrow input { position: absolute; opacity: 0; pointer-events: none; }
+.pickrow span { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; font-size: 12.5px; color: var(--muted); }
+.pickrow input:checked + span { color: var(--fg); border-color: rgba(212,255,58,0.55); }
+.pickrow input:focus-visible + span { outline: 2px solid var(--cta); outline-offset: 1px; }
+.linkbtn { background: none; border: 0; padding: 0; cursor: pointer; color: var(--fg); font: inherit; text-decoration: underline; text-decoration-color: rgba(212,255,58,0.55); text-underline-offset: 3px; }
+.pitch .sb { border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; margin-top: 10px; background: rgba(255,255,255,0.02); }
+.pitch .sb-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.pitch .sb-num { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: rgba(212,255,58,0.15); color: var(--cta); font-size: 12px; font-weight: 800; flex: none; }
+.pitch .sb-role { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.pitch .sb textarea { width: 100%; box-sizing: border-box; background: rgba(0,0,0,0.3); border: 1px solid var(--line); border-radius: 10px; color: var(--fg); font: 13.5px/1.5 var(--font); padding: 8px 10px; resize: vertical; min-height: 56px; }
+.pitch .sb textarea:focus { outline: 0; border-color: rgba(212,255,58,0.55); }
+.pitch .sb-visual { color: var(--muted); font-size: 12.5px; margin-top: 6px; }
+.pitch .row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.pitch .approved-note { color: var(--accent3); font-size: 13px; margin-top: 10px; }
+.pitch .sb.note-box { border-color: rgba(212,255,58,0.4); background: rgba(212,255,58,0.04); }
 .scene .preview video { width: 100%; height: 100%; object-fit: cover; }
 .scene .preview .spinner { width: 34px; height: 34px; border-radius: 50%; border: 3px solid rgba(212,255,58,0.25); border-top-color: var(--cta); animation: spin 0.9s linear infinite; }
 .scene .preview .wait { color: var(--muted); font-size: 12.5px; }

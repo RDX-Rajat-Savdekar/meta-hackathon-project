@@ -1,0 +1,35 @@
+{
+  "id": "20261030-remotion-8b5343",
+  "renderer": "remotion",
+  "topic": "database race condition",
+  "role": "hook",
+  "narration": "Two buyers just bought the last seat.",
+  "description": "Bold immediate hook on dark background in safe middle zone. Frame 0 shows huge fg=white headline 'LAST SEAT x2?' at 30% height and one large accent3=yellow ticket icon centered at 55% height. Two glowing pill BUY buttons hover above it: accent=cyan 'BUY A' left-center and accent2=magenta 'BUY B' right-center. Both buttons slam down onto the ticket with screen shake, ticket RGB-glitches and splits into two overlapping accent3=yellow tickets with accent=cyan and accent2=magenta edge ghosts and spark burst.",
+  "beats": [
+    {
+      "t": 0.0,
+      "word": "Two",
+      "action": "Headline and single accent3 ticket pop in centered; accent=cyan left BUY and accent2=magenta right BUY hover above ticket"
+    },
+    {
+      "t": 0.44,
+      "word": "buyers",
+      "action": "Both BUY buttons glow brighter and shake in place to show two actors"
+    },
+    {
+      "t": 1.26,
+      "word": "bought",
+      "action": "Both buttons slam down at once onto ticket, screen shakes, impact flash"
+    },
+    {
+      "t": 1.74,
+      "word": "last",
+      "action": "Single accent3 ticket glitches and splits into two overlapping accent3 tickets with cyan-magenta split"
+    }
+  ],
+  "duration": 2.57,
+  "attempts": 1,
+  "source": "a75c8b5548d4",
+  "created": "2026-10-31T06:10:26+00:00",
+  "starred": false
+}

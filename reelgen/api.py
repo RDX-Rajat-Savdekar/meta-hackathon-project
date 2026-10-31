@@ -6,6 +6,7 @@ import threading
 import time
 import uuid
 from pathlib import Path
+from typing import Literal
 
 from fastapi import BackgroundTasks, FastAPI, HTTPException, Request
 from fastapi.responses import FileResponse, HTMLResponse, StreamingResponse
@@ -13,7 +14,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from reelgen.config import ROOT, get_settings
-from reelgen.models import JobState, JobStatus, Renderer
+from reelgen.models import JobState, JobStatus, Renderer, Script
 
 log = logging.getLogger(__name__)
 JOBS: dict[str, JobState] = {}
@@ -282,6 +283,98 @@ class ThreadCreate(BaseModel):
 
 class ThreadAttach(BaseModel):
     job_id: str = Field(min_length=3, max_length=64)
+
+
+class PitchRequest(BaseModel):
+    topic: str = Field(min_length=3, max_length=500)
+    renderer: Renderer | None = None
+    target_length: Literal["short", "standard", "deep"] = "standard"
+    thread_id: str | None = Field(default=None, max_length=64)
+    note: str = Field(default="", max_length=2000, description="Director's note, e.g. use a timeline view")
+
+
+class PitchApprove(BaseModel):
+    script: Script | None = None
+    renderer: Renderer | None = None
+    thread_id: str | None = Field(default=None, max_length=64)
+    note: str | None = Field(default=None, max_length=2000)
+
+
+def _pitch_dir(pid: str) -> Path:
+    return get_settings().outputs_dir / "pitches" / pid
+
+
+def _run_pitch(pid: str, req: PitchRequest) -> None:
+    """Script-only pass: cheap first iteration for director review."""
+    from reelgen.agents.script import write_script
+    from reelgen.graph import LENGTH_HINTS
+    from reelgen.llm import MuseClient
+
+    d = _pitch_dir(pid)
+    d.mkdir(parents=True, exist_ok=True)
+    pitch = {"id": pid, "topic": req.topic.strip(), "status": "writing",
+             "renderer": req.renderer.value if req.renderer else None,
+             "target_length": req.target_length, "note": req.note or "",
+             "created": time.time(), "script": None, "error": ""}
+    (d / "pitch.json").write_text(json.dumps(pitch))
+    try:
+        hint = LENGTH_HINTS.get(req.target_length, "")
+        script = write_script(MuseClient(), req.topic.strip() + hint)
+        pitch.update(status="ready", script=script.model_dump())
+    except Exception as e:
+        log.exception("pitch %s failed", pid)
+        pitch.update(status="failed", error=_friendly(e))
+    (d / "pitch.json").write_text(json.dumps(pitch, default=str))
+
+
+@app.post("/pitches", status_code=202)
+def create_pitch(req: PitchRequest, background: BackgroundTasks) -> dict:
+    pid = uuid.uuid4().hex[:12]
+    background.add_task(_run_pitch, pid, req)
+    return {"id": pid, "status": "writing", "topic": req.topic.strip()}
+
+
+@app.get("/pitches/{pid}")
+def get_pitch(pid: str) -> dict:
+    if not pid.isalnum():
+        raise HTTPException(404, "unknown pitch")
+    f = _pitch_dir(pid) / "pitch.json"
+    if not f.exists():
+        raise HTTPException(404, "unknown pitch")
+    return json.loads(f.read_text())
+
+
+@app.post("/pitches/{pid}/approve", status_code=202)
+def approve_pitch(pid: str, req: PitchApprove, background: BackgroundTasks) -> JobState:
+    from reelgen.graph import run_approved
+
+    if not pid.isalnum():
+        raise HTTPException(404, "unknown pitch")
+    f = _pitch_dir(pid) / "pitch.json"
+    if not f.exists():
+        raise HTTPException(404, "unknown pitch")
+    pitch = json.loads(f.read_text())
+    if pitch.get("status") != "ready" or not pitch.get("script"):
+        raise HTTPException(409, "pitch is not ready for review yet")
+    script = Script.model_validate(req.script) if req.script else Script.model_validate(pitch["script"])
+    renderer = req.renderer or (Renderer(pitch["renderer"]) if pitch.get("renderer") else None)
+    thread_id = req.thread_id or None
+    note = req.note if req.note is not None else pitch.get("note", "")
+    job = JobState(id=uuid.uuid4().hex[:12], topic=pitch["topic"], preferred_renderer=renderer,
+                   thread_id=thread_id, created=time.time())
+    JOBS[job.id] = job
+    _persist(job)
+    if thread_id:
+        try:
+            from reelgen import chats
+            chats.attach(thread_id, job.id, job.topic)
+        except (ValueError, OSError):
+            job.thread_id = None
+            _persist(job)
+    background.add_task(_execute, job, lambda emit: run_approved(
+        job.topic, _job_dir(job.id), script, emit,
+        preferred_renderer=(renderer.value if renderer else None), note=note or ""))
+    return job
 
 
 @app.post("/chats", status_code=201)

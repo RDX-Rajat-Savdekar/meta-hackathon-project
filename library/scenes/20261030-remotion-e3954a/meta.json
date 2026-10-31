@@ -1,0 +1,65 @@
+{
+  "id": "20261030-remotion-e3954a",
+  "renderer": "remotion",
+  "topic": "database race condition",
+  "role": "mechanism",
+  "narration": "Here's how it breaks. User A reads the count. It says one left. A split second later, user B reads the count. It still says one left. Both pass the check. Then both write back zero. Both charge the card. You've sold one ticket twice. It happens because check then act isn't one step. The fix is to lock the row, so the second read waits till the first write finishes.",
+  "description": "Detailed horizontal timeline explainer in safe middle zone, same remotion style. Long fg=white timeline arrow runs left-to-right at 62% height with tick marks. Two swimlanes: top lane accent=cyan labeled USER A, bottom lane accent2=magenta labeled USER B. Left-center fg=white counter box showing '1' connected to timeline. Animated READ arrows travel from lanes to counter, WRITE arrows travel back, good=green check badges, accent3=yellow charge icons, two fg=white receipt cards at right-center, counter flashing accent2=magenta red on oversell, ending with steel fg=white lock icon clamping counter to show serialized fix with waiting queue.",
+  "beats": [
+    {
+      "t": 0.35,
+      "word": "Here's",
+      "action": "Timeline arrow draws left-to-right with User A cyan lane on top and User B magenta lane below, counter box '1' fades in left-center"
+    },
+    {
+      "t": 2.11,
+      "word": "A",
+      "action": "Cyan READ arrow travels from A lane to counter and grabs '1', counter badge lifts"
+    },
+    {
+      "t": 3.79,
+      "word": "one",
+      "action": "'1' chip flies back along cyan lane and good=green check pops on A lane"
+    },
+    {
+      "t": 6.57,
+      "word": "B",
+      "action": "Magenta READ arrow travels from B lane to same counter still showing '1'"
+    },
+    {
+      "t": 8.29,
+      "word": "one",
+      "action": "'1' chip flies back along magenta lane, second good=green check pops on B lane"
+    },
+    {
+      "t": 9.51,
+      "word": "Both",
+      "action": "Both lane check badges enlarge and lock together to show both pass"
+    },
+    {
+      "t": 11.37,
+      "word": "write",
+      "action": "Cyan and magenta WRITE arrows slam back to counter both dropping '0', counter flashes accent2 red"
+    },
+    {
+      "t": 15.17,
+      "word": "twice",
+      "action": "Two fg=white receipt cards print side-by-side at right-center with charge icons, counter shakes red"
+    },
+    {
+      "t": 17.19,
+      "word": "check",
+      "action": "Labels 'CHECK' and 'ACT' split apart with gap animation to show they are not one step"
+    },
+    {
+      "t": 20.63,
+      "word": "lock",
+      "action": "Steel lock clamps over counter, B magenta arrow pauses in waiting queue then reads '0' after A finishes"
+    }
+  ],
+  "duration": 24.46,
+  "attempts": 1,
+  "source": "a75c8b5548d4",
+  "created": "2026-10-31T06:10:15+00:00",
+  "starred": false
+}

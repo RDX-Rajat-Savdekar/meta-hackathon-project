@@ -207,9 +207,20 @@ const engineBtn = $("#engineBtn");
 const engineMenu = $("#engineMenu");
 const engineLabel = $("#engineLabel");
 let engineValue = "";
+function directLength() {
+  const r = document.querySelector('input[name="dlength"]:checked');
+  return r ? r.value : "standard";
+}
+function syncDirectLabel() {
+  const names = { short: "Short", standard: "Standard", deep: "Deep" };
+  const b = $("#directBtn");
+  if (b) b.textContent = `Direct: ${engineLabel.textContent} · ${names[directLength()] || "Standard"}`;
+}
 function setEngine(v, name, logo) {
   engineValue = v;
   engineLabel.textContent = name;
+  for (const r of $$('input[name="dengine"]')) r.checked = (r.value === v);
+  syncDirectLabel();
   const slot = $(".eng-logo", engineBtn);
   const src = $(`.eng-menu > button[data-v="${CSS.escape(v)}"] .eng-logo`, engineWrap);
   if (slot && src) slot.setAttribute("data-logo", logo);
@@ -263,7 +274,10 @@ function openStudio(jobId) {
     studioReady = true;
     $("#studioChips").innerHTML = SUGGESTIONS.slice(0, 6).map((s) => `<button class="chip" type="button">${esc(s)}</button>`).join("");
     $("#studioChips").onclick = (e) => { const c = e.target.closest(".chip"); if (c) { input.value = c.textContent; autosize(); updateSend(); input.focus(); } };
-    for (const item of chat) mountJob(item.jobId, item.topic, item.renderer);
+    for (const item of chat) {
+      if (item.pitchId) mountPitch(item.pitchId, item.topic, item.renderer);
+      else mountJob(item.jobId, item.topic, item.renderer);
+    }
   }
   if (jobId && !views.has(jobId)) {
     getJSON(`/jobs/${jobId}`).then((job) => {
@@ -303,15 +317,15 @@ async function submit(topic) {
   topic = topic.trim();
   if (topic.length < 3) return;
   const renderer = engineValue || undefined;
+  const target_length = directLength();
   input.value = ""; autosize(); updateSend();
   try {
-    const body = { topic, thread_id: getThreadId() };
+    const body = { topic, thread_id: getThreadId(), target_length };
     if (renderer) body.renderer = renderer;
-    const job = await getJSON("/jobs", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
-    chat.push({ jobId: job.id, topic, renderer });
+    const pitch = await getJSON("/pitches", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+    chat.push({ pitchId: pitch.id, topic, renderer });
     saveChat();
-    mountJob(job.id, topic, renderer);
-    history.replaceState(null, "", `#/job/${job.id}`);
+    mountPitch(pitch.id, topic, renderer);
   } catch (e) {
     addUser(topic);
     const el = document.createElement("div");
@@ -633,7 +647,7 @@ class JobView {
 
     const redo = canRedo ? (sc.redo ? `
       <form class="redo">
-        <textarea rows="2" name="note" placeholder="What should change? e.g. bigger text, show it as a 3D model, slower"></textarea>
+        <textarea rows="2" name="note" placeholder="Direction for the animator — e.g. move the lock below the text, spread the counters apart, fewer elements"></textarea>
         <div class="row">
           <select name="renderer" aria-label="Engine">
             <option value="">Keep ${esc(RENDERER[sc.renderer])}</option>
@@ -746,33 +760,64 @@ const demoScript = {
   ],
 };
 
+async function demoHappyJob() {
+  const topic = "How does the TCP handshake work?";
+  const picks = await demoClips(4);
+  const urls = { scene: (i) => `/library/scenes/${picks[i].id}/clip`, final: `/library/scenes/${picks[0].id}/clip` };
+  const view = mountDemoView(topic, urls);
+  const plan = picks.map((p, i) => ({ index: i, role: p.role || ["hook", "setup", "mechanism", "payoff"][i], renderer: p.renderer, duration: 3.0, description: (p.description || "").slice(0, 140) }));
+  const steps = [
+    [100, (q, t) => ({ type: "queued", t, seq: q, topic })],
+    [500, (q, t) => ({ type: "stage", t, seq: q, stage: "script", label: "Writing the script" })],
+    [1200, (q, t) => ({ type: "script", t, seq: q, script: demoScript })],
+    [1600, (q, t) => ({ type: "stage", t, seq: q, stage: "voice", label: "Recording the voiceover" })],
+    [2400, (q, t) => ({ type: "voice", t, seq: q, duration: 41.0, provider: "gemini" })],
+    [2800, (q, t) => ({ type: "stage", t, seq: q, stage: "plan", label: "Directing the scenes" })],
+    [3400, (q, t) => ({ type: "plan", t, seq: q, scenes: plan })],
+    [3800, (q, t) => ({ type: "stage", t, seq: q, stage: "render", label: "Animating scenes" })],
+  ];
+  plan.forEach((p, i) => {
+    const b = 4200 + i * 1600;
+    steps.push([b, (q, t) => ({ type: "scene", t, seq: q, index: i, renderer: p.renderer, status: "coding", attempt: 1, max_attempts: 3 })]);
+    steps.push([b + 500, (q, t) => ({ type: "scene", t, seq: q, index: i, renderer: p.renderer, status: "rendering", attempt: 1, max_attempts: 3 })]);
+    steps.push([b + 1100, (q, t) => ({ type: "scene", t, seq: q, index: i, renderer: p.renderer, status: "done", attempt: 1, max_attempts: 3 })]);
+  });
+  steps.push([4200 + plan.length * 1600 + 400, (q, t) => ({ type: "done", t, seq: q, duration: 41.0 })]);
+  feedDemo(view, steps);
+  return view;
+}
+
+function mountDemoPitch(kind) {
+  const topic = "How does the TCP handshake work?";
+  $("#studioEmpty")?.remove();
+  const el = document.createElement("div");
+  el.className = "msg bot";
+  thread.append(el);
+  const pid = `demo-pitch-${Date.now().toString(36)}`;
+  const view = new PitchView(el, pid, topic, undefined);
+  clearInterval(view.timer);
+  if (kind === "pitch-failed") {
+    view.pitch = { id: pid, topic, status: "failed", error: "Demo error — the model didn't respond. Try again." };
+  } else if (kind === "pitch-ready") {
+    view.pitch = { id: pid, topic, status: "ready", renderer: null, script: demoScript };
+  } else {
+    view.pitch = null; // writing spinner; approve hidden until content lands
+  }
+  views.set(`pitch:${pid}`, view);
+  view.render();
+  el.scrollIntoView({ block: "start" });
+  return view;
+}
+
 async function runDemo(kind) {
   if ($("#studio").hidden) { location.hash = "#/create"; await new Promise((r) => setTimeout(r, 400)); }
   const topic = "How does the TCP handshake work?";
   try {
-    if (kind === "happy") {
-      const picks = await demoClips(4);
-      const urls = { scene: (i) => `/library/scenes/${picks[i].id}/clip`, final: `/library/scenes/${picks[0].id}/clip` };
-      const view = mountDemoView(topic, urls);
-      const plan = picks.map((p, i) => ({ index: i, role: p.role || ["hook", "setup", "mechanism", "payoff"][i], renderer: p.renderer, duration: 3.0, description: (p.description || "").slice(0, 140) }));
-      const steps = [
-        [100, (q, t) => ({ type: "queued", t, seq: q, topic })],
-        [500, (q, t) => ({ type: "stage", t, seq: q, stage: "script", label: "Writing the script" })],
-        [1200, (q, t) => ({ type: "script", t, seq: q, script: demoScript })],
-        [1600, (q, t) => ({ type: "stage", t, seq: q, stage: "voice", label: "Recording the voiceover" })],
-        [2400, (q, t) => ({ type: "voice", t, seq: q, duration: 41.0, provider: "gemini" })],
-        [2800, (q, t) => ({ type: "stage", t, seq: q, stage: "plan", label: "Directing the scenes" })],
-        [3400, (q, t) => ({ type: "plan", t, seq: q, scenes: plan })],
-        [3800, (q, t) => ({ type: "stage", t, seq: q, stage: "render", label: "Animating scenes" })],
-      ];
-      plan.forEach((p, i) => {
-        const b = 4200 + i * 1600;
-        steps.push([b, (q, t) => ({ type: "scene", t, seq: q, index: i, renderer: p.renderer, status: "coding", attempt: 1, max_attempts: 3 })]);
-        steps.push([b + 500, (q, t) => ({ type: "scene", t, seq: q, index: i, renderer: p.renderer, status: "rendering", attempt: 1, max_attempts: 3 })]);
-        steps.push([b + 1100, (q, t) => ({ type: "scene", t, seq: q, index: i, renderer: p.renderer, status: "done", attempt: 1, max_attempts: 3 })]);
-      });
-      steps.push([4200 + plan.length * 1600 + 400, (q, t) => ({ type: "done", t, seq: q, duration: 41.0 })]);
-      feedDemo(view, steps);
+    if (kind === "happy") { await demoHappyJob(); }
+    else if (kind === "pitch-writing" || kind === "pitch-ready" || kind === "pitch-failed") { mountDemoPitch(kind); }
+    else if (kind === "journey") {
+      const pv = mountDemoPitch("pitch-ready");
+      setTimeout(() => pv.approve(), 2500);
     } else if (kind === "live") {
       const picks = await demoClips(2);
       const urls = { scene: (i) => `/library/scenes/${picks[i].id}/clip`, final: `/library/scenes/${picks[0].id}/clip` };
@@ -837,6 +882,148 @@ async function runDemo(kind) {
     scrollDown();
   }
 }
+
+// --------------------------------------------------------------------
+// Pitch review: storyboard first, pipeline only on approval.
+// --------------------------------------------------------------------
+class PitchView {
+  constructor(el, pid, topic, renderer) {
+    this.el = el;
+    this.pid = pid;
+    this.topic = topic;
+    this.renderer = renderer;
+    this.pitch = null;
+    this.misses = 0;
+    this.timer = setInterval(() => this.refresh(), 2000);
+    this.refresh();
+  }
+  close() { clearInterval(this.timer); }
+  async refresh() {
+    try {
+      const p = await getJSON(`/pitches/${this.pid}`);
+      this.pitch = p;
+      this.render();
+      if (p.status === "ready" || p.status === "failed") clearInterval(this.timer);
+    } catch (e) {
+      // The pitch file lands a beat after POST returns; tolerate early 404s.
+      if (!String((e && e.message) || e).includes("404") || ++this.misses > 15) clearInterval(this.timer);
+      else this.render();
+    }
+  }
+  segEdits() {
+    return [...this.el.querySelectorAll("textarea[data-seg]")].map((t) => t.value);
+  }
+  async approve() {
+    const p = this.pitch;
+    // Demo pitches animate a canned run instead of hitting the pipeline.
+    if (String(this.pid).startsWith("demo-")) {
+      const btn = this.el.querySelector("[data-approve]");
+      if (btn) { btn.disabled = true; btn.textContent = "Starting…"; }
+      this.el.querySelector(".pitch").insertAdjacentHTML("beforeend",
+        `<p class="approved-note">Approved — animating below (demo run).</p>`);
+      this.el.querySelectorAll("button, textarea").forEach((n) => { n.disabled = true; });
+      views.delete(`pitch:${this.pid}`);
+      await demoHappyJob();
+      return;
+    }
+    const btn = this.el.querySelector("[data-approve]");
+    if (btn) { btn.disabled = true; btn.textContent = "Starting…"; }
+    try {
+      const segments = p.script.segments.map((s, i) => ({ ...s, narration: this.segEdits()[i] ?? s.narration }));
+      const noteEl = this.el.querySelector("textarea[data-note]");
+      const job = await getJSON(`/pitches/${this.pid}/approve`, {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ script: { ...p.script, segments },
+          ...(this.renderer ? { renderer: this.renderer } : {}), thread_id: getThreadId(),
+          note: noteEl ? noteEl.value : "" }),
+      });
+      const item = chat.find((c) => c.pitchId === this.pid);
+      if (item) { delete item.pitchId; item.jobId = job.id; saveChat(); }
+      views.delete(`pitch:${this.pid}`);
+      this.el.querySelector(".pitch").insertAdjacentHTML("beforeend",
+        `<p class="approved-note">Approved — animating below.</p>`);
+      this.el.querySelectorAll("button, textarea").forEach((n) => { n.disabled = true; });
+      mountJob(job.id, this.topic, this.renderer);
+      history.replaceState(null, "", `#/job/${job.id}`);
+    } catch (e) {
+      if (btn) { btn.disabled = false; btn.textContent = "Approve & animate"; }
+      this.el.querySelector(".pitch").insertAdjacentHTML("beforeend",
+        `<p style="color:var(--accent2);font-size:13px">Couldn't start: ${esc(e.message)}</p>`);
+    }
+  }
+  render() {
+    const p = this.pitch;
+    if (!p) {
+      this.el.innerHTML = `<div class="bubble pitch"><div class="spinner" aria-hidden="true"></div><p style="color:var(--muted)">Writing the pitch…</p></div>`;
+      scrollDown();
+      return;
+    }
+    if (p.status === "failed") {
+      this.el.innerHTML = `<div class="bubble pitch"><div class="failbox"><strong>Pitch failed</strong><p>${esc(p.error || "the model didn't respond")}</p><button class="cta small" type="button" data-retry>Try again</button></div></div>`;
+      this.el.querySelector("[data-retry]").onclick = () => { input.value = this.topic; autosize(); updateSend(); input.focus(); };
+      return;
+    }
+    if (p.status !== "ready") {
+      this.el.innerHTML = `<div class="bubble pitch"><div class="spinner" aria-hidden="true"></div><p style="color:var(--muted)">Writing the pitch… first iteration, nothing renders yet.</p></div>`;
+      return;
+    }
+    const s = p.script;
+    const cards = s.segments.map((seg, i) => `
+      <div class="sb">
+        <div class="sb-head"><span class="sb-num">${i + 1}</span><span class="sb-role">${esc(seg.role)}</span>${this.renderer ? `<span class="tag" data-r="${esc(this.renderer)}">${esc(RENDERER[this.renderer] || this.renderer)}</span>` : `<span class="tag">auto engine</span>`}</div>
+        <textarea data-seg="${i}" rows="2">${esc(seg.narration)}</textarea>
+        <div class="sb-visual">Visual: ${esc(seg.visual_directive || "")}</div>
+      </div>`).join("");
+    this.el.innerHTML = `<div class="bubble pitch">
+      <div class="kicker">Storyboard — review before anything renders</div>
+      <h3 style="margin:6px 0 2px">${esc(s.title)}</h3>
+      <p style="color:var(--muted);font-size:13px;margin:0 0 4px">${esc(s.idea || "")}</p>
+      <div class="sb note-box">
+        <div class="sb-head"><span class="sb-role">Director's note</span></div>
+        <textarea data-note rows="2" placeholder="Direction for the animator — e.g. use a timeline view in the mechanism">${esc(p.note || "")}</textarea>
+      </div>
+      ${cards}
+      <div class="row">
+        <button class="cta small" type="button" data-approve>Approve &amp; animate</button>
+        <button class="btn sm" type="button" data-repitch>New pitch</button>
+      </div>
+      <p style="color:var(--muted);font-size:12px;margin:8px 0 0">Edit any narration above — your words go straight into the voiceover.</p>
+    </div>`;
+    this.el.querySelector("[data-approve]").onclick = () => this.approve();
+    this.el.querySelector("[data-repitch]").onclick = () => submit(this.topic);
+    scrollDown();
+  }
+}
+
+function mountPitch(pid, topic, renderer) {
+  const key = `pitch:${pid}`;
+  if (views.has(key)) return;
+  addUser(topic, renderer);
+  const el = document.createElement("div");
+  el.className = "msg bot";
+  thread.append(el);
+  views.set(key, new PitchView(el, pid, topic, renderer));
+  scrollDown();
+}
+
+// --------------------------------------------------------------------
+// Director panel: brief inputs shared by composer + pitch.
+// --------------------------------------------------------------------
+const directDrawer = $("#directDrawer");
+$("#directBtn")?.addEventListener("click", () => { directDrawer.hidden = false; });
+$("#directClose")?.addEventListener("click", () => { directDrawer.hidden = true; });
+document.addEventListener("click", (e) => {
+  if (!directDrawer.hidden && !e.target.closest("#directDrawer") && !e.target.closest("#directBtn")) directDrawer.hidden = true;
+});
+document.querySelectorAll('input[name="dengine"]').forEach((r) => r.addEventListener("change", () => {
+  const names = { "": "Auto", manim: "Manim", remotion: "2D motion", three: "3D" };
+  const logos = { "": "auto", manim: "manim", remotion: "motion", three: "three" };
+  setEngine(r.value, names[r.value], logos[r.value]);
+  const menuSvg = document.querySelector(`.eng-menu > button[data-v="${CSS.escape(r.value)}"] .eng-logo svg`);
+  if (menuSvg) document.querySelector("#engineBtn .eng-logo").innerHTML = menuSvg.outerHTML;
+}));
+document.querySelectorAll('input[name="dlength"]').forEach((r) => r.addEventListener("change", syncDirectLabel));
+syncDirectLabel();
 
 // --------------------------------------------------------------------
 // Chats drawer (server-side threads) + run-analytics dialog.

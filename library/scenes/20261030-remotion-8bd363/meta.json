@@ -1,0 +1,50 @@
+{
+  "id": "20261030-remotion-8bd363",
+  "renderer": "remotion",
+  "topic": "database race condition",
+  "role": "setup",
+  "narration": "You've got one concert ticket left. Two users click buy at the same instant. Both checks see one ticket. That's a database race condition.",
+  "description": "Continuous remotion style, dark background, safe middle zone. Center-middle large accent=cyan database cylinder holding a fg=white counter badge '1' and small accent3=yellow ticket icon on top. Left-mid accent=cyan phone outline labeled USER A, right-mid accent2=magenta phone labeled USER B. Thin animated connection lines from each phone to cylinder. Center kinetic captions and twin magnifier check callouts. Red accent2 warning banner for race condition at end.",
+  "beats": [
+    {
+      "t": 0.37,
+      "word": "You've",
+      "action": "Central accent=cyan cylinder scales in at center with counter badge '1'"
+    },
+    {
+      "t": 0.67,
+      "word": "one",
+      "action": "Small accent3 ticket pops above cylinder and counter pulses white"
+    },
+    {
+      "t": 2.57,
+      "word": "Two",
+      "action": "Accent=cyan left phone and accent2=magenta right phone slide in with connection lines to cylinder"
+    },
+    {
+      "t": 3.05,
+      "word": "click",
+      "action": "Both phone BUY buttons flash and cyan and magenta packets travel along lines to cylinder"
+    },
+    {
+      "t": 5.33,
+      "word": "Both",
+      "action": "Two magnifier check icons pop over phones and cylinder showing read of count"
+    },
+    {
+      "t": 6.23,
+      "word": "one",
+      "action": "Twin callout bubbles 'sees 1' appear above both phones, counter stays '1'"
+    },
+    {
+      "t": 7.29,
+      "word": "That's",
+      "action": "Accent2 warning banner 'RACE CONDITION' slams in below cylinder and pulses red"
+    }
+  ],
+  "duration": 9.14,
+  "attempts": 1,
+  "source": "a75c8b5548d4",
+  "created": "2026-10-31T06:10:24+00:00",
+  "starred": false
+}

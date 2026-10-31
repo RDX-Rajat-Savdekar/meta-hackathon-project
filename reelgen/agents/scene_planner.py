@@ -8,9 +8,11 @@ def format_timed_words(audio: SegmentAudio) -> str:
 
 
 def plan_scenes(llm: LLMClient, script: Script, audio: list[SegmentAudio],
-                preferred: str | Renderer | None = None) -> list[SceneSpec]:
+                preferred: str | Renderer | None = None, note: str = "") -> list[SceneSpec]:
     preferred = Renderer(preferred) if preferred else None
     parts = [f"Reel: {script.title}\nCore idea: {script.idea}\n"]
+    if note.strip():
+        parts.append(f"Director note (must follow it): {note.strip()}")
     for seg, a in zip(script.segments, audio):
         parts.append(
             f"## Segment {a.index} — {seg.role} — duration {a.duration:.2f}s\n"

@@ -1,0 +1,620 @@
+[
+  {
+    "index": 0,
+    "wav": "/Users/rajatsavdekar/Documents/GitHub/meta-hackathon-project/outputs/a75c8b5548d4/seg0.wav",
+    "duration": 2.57,
+    "words": [
+      {
+        "word": "Two",
+        "start": 0.0,
+        "end": 0.44
+      },
+      {
+        "word": "buyers",
+        "start": 0.44,
+        "end": 0.7
+      },
+      {
+        "word": "just",
+        "start": 0.7,
+        "end": 1.26
+      },
+      {
+        "word": "bought",
+        "start": 1.26,
+        "end": 1.56
+      },
+      {
+        "word": "the",
+        "start": 1.56,
+        "end": 1.74
+      },
+      {
+        "word": "last",
+        "start": 1.74,
+        "end": 1.9
+      },
+      {
+        "word": "seat.",
+        "start": 1.9,
+        "end": 2.2
+      }
+    ]
+  },
+  {
+    "index": 1,
+    "wav": "/Users/rajatsavdekar/Documents/GitHub/meta-hackathon-project/outputs/a75c8b5548d4/seg1.wav",
+    "duration": 9.14,
+    "words": [
+      {
+        "word": "You've",
+        "start": 0.37,
+        "end": 0.51
+      },
+      {
+        "word": "got",
+        "start": 0.51,
+        "end": 0.67
+      },
+      {
+        "word": "one",
+        "start": 0.67,
+        "end": 0.95
+      },
+      {
+        "word": "concert",
+        "start": 0.95,
+        "end": 1.45
+      },
+      {
+        "word": "ticket",
+        "start": 1.45,
+        "end": 1.73
+      },
+      {
+        "word": "left.",
+        "start": 1.73,
+        "end": 1.97
+      },
+      {
+        "word": "Two",
+        "start": 2.57,
+        "end": 2.69
+      },
+      {
+        "word": "users",
+        "start": 2.69,
+        "end": 3.05
+      },
+      {
+        "word": "click",
+        "start": 3.05,
+        "end": 3.43
+      },
+      {
+        "word": "buy",
+        "start": 3.43,
+        "end": 3.71
+      },
+      {
+        "word": "at",
+        "start": 3.71,
+        "end": 3.99
+      },
+      {
+        "word": "the",
+        "start": 3.99,
+        "end": 4.13
+      },
+      {
+        "word": "same",
+        "start": 4.13,
+        "end": 4.37
+      },
+      {
+        "word": "instant.",
+        "start": 4.37,
+        "end": 4.77
+      },
+      {
+        "word": "Both",
+        "start": 5.33,
+        "end": 5.51
+      },
+      {
+        "word": "checks",
+        "start": 5.51,
+        "end": 5.81
+      },
+      {
+        "word": "see",
+        "start": 5.81,
+        "end": 6.23
+      },
+      {
+        "word": "one",
+        "start": 6.23,
+        "end": 6.47
+      },
+      {
+        "word": "ticket.",
+        "start": 6.47,
+        "end": 6.79
+      },
+      {
+        "word": "That's",
+        "start": 7.29,
+        "end": 7.65
+      },
+      {
+        "word": "a",
+        "start": 7.65,
+        "end": 7.73
+      },
+      {
+        "word": "database",
+        "start": 7.73,
+        "end": 7.99
+      },
+      {
+        "word": "race",
+        "start": 7.99,
+        "end": 8.43
+      },
+      {
+        "word": "condition.",
+        "start": 8.43,
+        "end": 8.79
+      }
+    ]
+  },
+  {
+    "index": 2,
+    "wav": "/Users/rajatsavdekar/Documents/GitHub/meta-hackathon-project/outputs/a75c8b5548d4/seg2.wav",
+    "duration": 24.46,
+    "words": [
+      {
+        "word": "Here's",
+        "start": 0.35,
+        "end": 0.69
+      },
+      {
+        "word": "how",
+        "start": 0.69,
+        "end": 0.83
+      },
+      {
+        "word": "it",
+        "start": 0.83,
+        "end": 0.93
+      },
+      {
+        "word": "breaks.",
+        "start": 0.93,
+        "end": 1.11
+      },
+      {
+        "word": "User",
+        "start": 2.11,
+        "end": 2.11
+      },
+      {
+        "word": "A",
+        "start": 2.11,
+        "end": 2.39
+      },
+      {
+        "word": "reads",
+        "start": 2.39,
+        "end": 2.75
+      },
+      {
+        "word": "the",
+        "start": 2.75,
+        "end": 2.97
+      },
+      {
+        "word": "count.",
+        "start": 2.97,
+        "end": 3.21
+      },
+      {
+        "word": "It",
+        "start": 3.59,
+        "end": 3.65
+      },
+      {
+        "word": "says",
+        "start": 3.65,
+        "end": 3.79
+      },
+      {
+        "word": "one",
+        "start": 3.79,
+        "end": 4.11
+      },
+      {
+        "word": "left.",
+        "start": 4.11,
+        "end": 4.33
+      },
+      {
+        "word": "A",
+        "start": 5.07,
+        "end": 5.15
+      },
+      {
+        "word": "split",
+        "start": 5.15,
+        "end": 5.37
+      },
+      {
+        "word": "second",
+        "start": 5.37,
+        "end": 5.79
+      },
+      {
+        "word": "later,",
+        "start": 5.79,
+        "end": 6.11
+      },
+      {
+        "word": "user",
+        "start": 6.39,
+        "end": 6.57
+      },
+      {
+        "word": "B",
+        "start": 6.57,
+        "end": 6.79
+      },
+      {
+        "word": "reads",
+        "start": 6.79,
+        "end": 7.07
+      },
+      {
+        "word": "the",
+        "start": 7.07,
+        "end": 7.21
+      },
+      {
+        "word": "count.",
+        "start": 7.21,
+        "end": 7.45
+      },
+      {
+        "word": "It",
+        "start": 7.81,
+        "end": 7.83
+      },
+      {
+        "word": "still",
+        "start": 7.83,
+        "end": 8.03
+      },
+      {
+        "word": "says",
+        "start": 8.03,
+        "end": 8.29
+      },
+      {
+        "word": "one",
+        "start": 8.29,
+        "end": 8.47
+      },
+      {
+        "word": "left.",
+        "start": 8.47,
+        "end": 8.71
+      },
+      {
+        "word": "Both",
+        "start": 9.51,
+        "end": 9.51
+      },
+      {
+        "word": "pass",
+        "start": 9.51,
+        "end": 9.83
+      },
+      {
+        "word": "the",
+        "start": 9.83,
+        "end": 10.09
+      },
+      {
+        "word": "check.",
+        "start": 10.09,
+        "end": 10.27
+      },
+      {
+        "word": "Then",
+        "start": 11.01,
+        "end": 11.09
+      },
+      {
+        "word": "both",
+        "start": 11.09,
+        "end": 11.37
+      },
+      {
+        "word": "write",
+        "start": 11.37,
+        "end": 11.67
+      },
+      {
+        "word": "back",
+        "start": 11.67,
+        "end": 11.89
+      },
+      {
+        "word": "zero.",
+        "start": 11.89,
+        "end": 12.17
+      },
+      {
+        "word": "Both",
+        "start": 12.81,
+        "end": 12.95
+      },
+      {
+        "word": "charge",
+        "start": 12.95,
+        "end": 13.23
+      },
+      {
+        "word": "the",
+        "start": 13.23,
+        "end": 13.49
+      },
+      {
+        "word": "card.",
+        "start": 13.49,
+        "end": 13.69
+      },
+      {
+        "word": "You've",
+        "start": 14.27,
+        "end": 14.39
+      },
+      {
+        "word": "sold",
+        "start": 14.39,
+        "end": 14.51
+      },
+      {
+        "word": "one",
+        "start": 14.51,
+        "end": 14.83
+      },
+      {
+        "word": "ticket",
+        "start": 14.83,
+        "end": 15.17
+      },
+      {
+        "word": "twice.",
+        "start": 15.17,
+        "end": 15.53
+      },
+      {
+        "word": "It",
+        "start": 16.22,
+        "end": 16.49
+      },
+      {
+        "word": "happens",
+        "start": 16.49,
+        "end": 16.71
+      },
+      {
+        "word": "because",
+        "start": 16.71,
+        "end": 17.19
+      },
+      {
+        "word": "check",
+        "start": 17.19,
+        "end": 17.45
+      },
+      {
+        "word": "then",
+        "start": 17.45,
+        "end": 17.79
+      },
+      {
+        "word": "act",
+        "start": 17.79,
+        "end": 17.99
+      },
+      {
+        "word": "isn't",
+        "start": 17.99,
+        "end": 18.63
+      },
+      {
+        "word": "one",
+        "start": 18.63,
+        "end": 18.81
+      },
+      {
+        "word": "step.",
+        "start": 18.81,
+        "end": 19.15
+      },
+      {
+        "word": "The",
+        "start": 19.85,
+        "end": 19.91
+      },
+      {
+        "word": "fix",
+        "start": 19.91,
+        "end": 20.17
+      },
+      {
+        "word": "is",
+        "start": 20.17,
+        "end": 20.45
+      },
+      {
+        "word": "to",
+        "start": 20.45,
+        "end": 20.63
+      },
+      {
+        "word": "lock",
+        "start": 20.63,
+        "end": 20.85
+      },
+      {
+        "word": "the",
+        "start": 20.85,
+        "end": 21.09
+      },
+      {
+        "word": "row,",
+        "start": 21.09,
+        "end": 21.29
+      },
+      {
+        "word": "so",
+        "start": 21.67,
+        "end": 21.69
+      },
+      {
+        "word": "the",
+        "start": 21.69,
+        "end": 21.81
+      },
+      {
+        "word": "second",
+        "start": 21.81,
+        "end": 22.13
+      },
+      {
+        "word": "read",
+        "start": 22.13,
+        "end": 22.33
+      },
+      {
+        "word": "waits",
+        "start": 22.33,
+        "end": 22.59
+      },
+      {
+        "word": "till",
+        "start": 22.59,
+        "end": 22.97
+      },
+      {
+        "word": "the",
+        "start": 22.97,
+        "end": 23.07
+      },
+      {
+        "word": "first",
+        "start": 23.07,
+        "end": 23.33
+      },
+      {
+        "word": "write",
+        "start": 23.33,
+        "end": 23.59
+      },
+      {
+        "word": "finishes.",
+        "start": 23.59,
+        "end": 24.07
+      }
+    ]
+  },
+  {
+    "index": 3,
+    "wav": "/Users/rajatsavdekar/Documents/GitHub/meta-hackathon-project/outputs/a75c8b5548d4/seg3.wav",
+    "duration": 6.801,
+    "words": [
+      {
+        "word": "Without",
+        "start": 0.39,
+        "end": 0.57
+      },
+      {
+        "word": "that",
+        "start": 0.57,
+        "end": 0.91
+      },
+      {
+        "word": "lock,",
+        "start": 0.91,
+        "end": 1.17
+      },
+      {
+        "word": "speed",
+        "start": 1.45,
+        "end": 1.71
+      },
+      {
+        "word": "creates",
+        "start": 1.71,
+        "end": 2.13
+      },
+      {
+        "word": "lies.",
+        "start": 2.13,
+        "end": 2.51
+      },
+      {
+        "word": "Two",
+        "start": 3.35,
+        "end": 3.37
+      },
+      {
+        "word": "truths",
+        "start": 3.37,
+        "end": 3.63
+      },
+      {
+        "word": "at",
+        "start": 3.63,
+        "end": 3.95
+      },
+      {
+        "word": "the",
+        "start": 3.95,
+        "end": 4.03
+      },
+      {
+        "word": "same",
+        "start": 4.03,
+        "end": 4.25
+      },
+      {
+        "word": "time",
+        "start": 4.25,
+        "end": 4.59
+      },
+      {
+        "word": "make",
+        "start": 4.59,
+        "end": 4.93
+      },
+      {
+        "word": "one",
+        "start": 4.93,
+        "end": 5.23
+      },
+      {
+        "word": "expensive",
+        "start": 5.23,
+        "end": 5.71
+      },
+      {
+        "word": "fiction.",
+        "start": 5.71,
+        "end": 6.27
+      }
+    ]
+  }
+]

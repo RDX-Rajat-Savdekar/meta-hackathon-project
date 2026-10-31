@@ -1,0 +1,26 @@
+{
+  "title": "The Last Ticket Paradox",
+  "idea": "A database race condition happens when two users read the same value at once and both act, selling one item twice unless read and write are locked together.",
+  "segments": [
+    {
+      "role": "hook",
+      "narration": "Two buyers just bought the last seat.",
+      "visual_directive": "Two glowing buy buttons slam down at once on a single gold ticket icon that glitches into two."
+    },
+    {
+      "role": "setup",
+      "narration": "You've got one concert ticket left. Two users click buy at the same instant. Both checks see one ticket. That's a database race condition.",
+      "visual_directive": "Split screen shows two phones on left and right connecting to a central blue database cylinder holding one ticket."
+    },
+    {
+      "role": "mechanism",
+      "narration": "Here's how it breaks. User A reads the count. It says one left. A split second later, user B reads the count. It still says one left. Both pass the check. Then both write back zero. Both charge the card. You've sold one ticket twice. It happens because check then act isn't one step. The fix is to lock the row, so the second read waits till the first write finishes.",
+      "visual_directive": "An animated timeline shows two read arrows both grabbing a one, then two write arrows both dropping a zero. The counter flashes red as two receipts print."
+    },
+    {
+      "role": "payoff",
+      "narration": "Without that lock, speed creates lies. Two truths at the same time make one expensive fiction.",
+      "visual_directive": "A steel lock clamps over the database row while the second request waits in line, then reads zero and shows sold out."
+    }
+  ]
+}

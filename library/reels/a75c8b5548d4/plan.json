@@ -1,0 +1,164 @@
+[
+  {
+    "index": 0,
+    "renderer": "remotion",
+    "duration": 2.57,
+    "description": "Bold immediate hook on dark background in safe middle zone. Frame 0 shows huge fg=white headline 'LAST SEAT x2?' at 30% height and one large accent3=yellow ticket icon centered at 55% height. Two glowing pill BUY buttons hover above it: accent=cyan 'BUY A' left-center and accent2=magenta 'BUY B' right-center. Both buttons slam down onto the ticket with screen shake, ticket RGB-glitches and splits into two overlapping accent3=yellow tickets with accent=cyan and accent2=magenta edge ghosts and spark burst.",
+    "beats": [
+      {
+        "t": 0.0,
+        "word": "Two",
+        "action": "Headline and single accent3 ticket pop in centered; accent=cyan left BUY and accent2=magenta right BUY hover above ticket"
+      },
+      {
+        "t": 0.44,
+        "word": "buyers",
+        "action": "Both BUY buttons glow brighter and shake in place to show two actors"
+      },
+      {
+        "t": 1.26,
+        "word": "bought",
+        "action": "Both buttons slam down at once onto ticket, screen shakes, impact flash"
+      },
+      {
+        "t": 1.74,
+        "word": "last",
+        "action": "Single accent3 ticket glitches and splits into two overlapping accent3 tickets with cyan-magenta split"
+      }
+    ]
+  },
+  {
+    "index": 1,
+    "renderer": "remotion",
+    "duration": 9.14,
+    "description": "Continuous remotion style, dark background, safe middle zone. Center-middle large accent=cyan database cylinder holding a fg=white counter badge '1' and small accent3=yellow ticket icon on top. Left-mid accent=cyan phone outline labeled USER A, right-mid accent2=magenta phone labeled USER B. Thin animated connection lines from each phone to cylinder. Center kinetic captions and twin magnifier check callouts. Red accent2 warning banner for race condition at end.",
+    "beats": [
+      {
+        "t": 0.37,
+        "word": "You've",
+        "action": "Central accent=cyan cylinder scales in at center with counter badge '1'"
+      },
+      {
+        "t": 0.67,
+        "word": "one",
+        "action": "Small accent3 ticket pops above cylinder and counter pulses white"
+      },
+      {
+        "t": 2.57,
+        "word": "Two",
+        "action": "Accent=cyan left phone and accent2=magenta right phone slide in with connection lines to cylinder"
+      },
+      {
+        "t": 3.05,
+        "word": "click",
+        "action": "Both phone BUY buttons flash and cyan and magenta packets travel along lines to cylinder"
+      },
+      {
+        "t": 5.33,
+        "word": "Both",
+        "action": "Two magnifier check icons pop over phones and cylinder showing read of count"
+      },
+      {
+        "t": 6.23,
+        "word": "one",
+        "action": "Twin callout bubbles 'sees 1' appear above both phones, counter stays '1'"
+      },
+      {
+        "t": 7.29,
+        "word": "That's",
+        "action": "Accent2 warning banner 'RACE CONDITION' slams in below cylinder and pulses red"
+      }
+    ]
+  },
+  {
+    "index": 2,
+    "renderer": "remotion",
+    "duration": 24.46,
+    "description": "Detailed horizontal timeline explainer in safe middle zone, same remotion style. Long fg=white timeline arrow runs left-to-right at 62% height with tick marks. Two swimlanes: top lane accent=cyan labeled USER A, bottom lane accent2=magenta labeled USER B. Left-center fg=white counter box showing '1' connected to timeline. Animated READ arrows travel from lanes to counter, WRITE arrows travel back, good=green check badges, accent3=yellow charge icons, two fg=white receipt cards at right-center, counter flashing accent2=magenta red on oversell, ending with steel fg=white lock icon clamping counter to show serialized fix with waiting queue.",
+    "beats": [
+      {
+        "t": 0.35,
+        "word": "Here's",
+        "action": "Timeline arrow draws left-to-right with User A cyan lane on top and User B magenta lane below, counter box '1' fades in left-center"
+      },
+      {
+        "t": 2.11,
+        "word": "A",
+        "action": "Cyan READ arrow travels from A lane to counter and grabs '1', counter badge lifts"
+      },
+      {
+        "t": 3.79,
+        "word": "one",
+        "action": "'1' chip flies back along cyan lane and good=green check pops on A lane"
+      },
+      {
+        "t": 6.57,
+        "word": "B",
+        "action": "Magenta READ arrow travels from B lane to same counter still showing '1'"
+      },
+      {
+        "t": 8.29,
+        "word": "one",
+        "action": "'1' chip flies back along magenta lane, second good=green check pops on B lane"
+      },
+      {
+        "t": 9.51,
+        "word": "Both",
+        "action": "Both lane check badges enlarge and lock together to show both pass"
+      },
+      {
+        "t": 11.37,
+        "word": "write",
+        "action": "Cyan and magenta WRITE arrows slam back to counter both dropping '0', counter flashes accent2 red"
+      },
+      {
+        "t": 15.17,
+        "word": "twice",
+        "action": "Two fg=white receipt cards print side-by-side at right-center with charge icons, counter shakes red"
+      },
+      {
+        "t": 17.19,
+        "word": "check",
+        "action": "Labels 'CHECK' and 'ACT' split apart with gap animation to show they are not one step"
+      },
+      {
+        "t": 20.63,
+        "word": "lock",
+        "action": "Steel lock clamps over counter, B magenta arrow pauses in waiting queue then reads '0' after A finishes"
+      }
+    ]
+  },
+  {
+    "index": 3,
+    "renderer": "remotion",
+    "duration": 6.801,
+    "description": "Payoff continuation in remotion, dark background, center focus. Center-middle accent=cyan database row box showing '0 / SOLD OUT'. Large fg=white padlock icon clamps over it from above. Left-center small accent=cyan request dot marked FIRST passes through, right-center accent2=magenta request dot marked SECOND waits in dashed queue line behind lock. Two fg=white speech bubbles showing 'true' collide into one accent2=magenta 'FICTION' stamp at bottom-center of safe zone with accent3=yellow expensive tag.",
+    "beats": [
+      {
+        "t": 0.91,
+        "word": "lock,",
+        "action": "Steel padlock drops from above and clamps over center database row with metallic flash"
+      },
+      {
+        "t": 1.45,
+        "word": "speed",
+        "action": "Speed lines streak behind both request dots rushing toward locked row"
+      },
+      {
+        "t": 3.35,
+        "word": "Two",
+        "action": "Two fg=white 'true: 1 left' bubbles pop above first and second requests at same time"
+      },
+      {
+        "t": 4.93,
+        "word": "one",
+        "action": "Bubbles collide and merge into single accent2 stamp 'FICTION x2 sold'"
+      },
+      {
+        "t": 5.23,
+        "word": "expensive",
+        "action": "Accent3 price tag and red SOLD OUT banner slam over receipts as lock holds row at zero"
+      }
+    ]
+  }
+]

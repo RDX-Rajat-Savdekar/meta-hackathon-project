@@ -5,3 +5,5 @@
 {"renderer": "manim", "error": "Labels drift under Instagram chrome", "note": "Keep content between SAFE bounds vertically and x<=2.8 (right 18% is the like/comment column); title>=30 body>=20 tags>=18.", "at": 1793422908}
 {"renderer": "remotion", "error": "spring({frame, fps, damping}) rejected", "note": "damping goes inside config: spring({frame, fps, config: {damping: 14}}).", "at": 1793422908}
 {"renderer": "manim", "error": "Bare manim -qh renders 60fps to the wrong folder", "note": "Always render through the locked wrapper (resolution + --fps 30 explicit).", "at": 1793422908}
+{"renderer": "remotion", "error": "Icon drawn on top of its own label (lock over DATABASE ROW)", "note": "LAYOUT CONTRACT: one focal group at a time with fade-out; icons below/beside labels with padding, never covering; everything above y=1300.", "at": 1793427355}
+{"renderer": "remotion", "error": "Diagram collided with burned captions", "note": "Keep all diagram content above y=1300; captions own the bottom band.", "at": 1793427355}

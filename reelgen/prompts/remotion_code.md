@@ -12,6 +12,7 @@ Hard rules (the code is statically checked and rejected otherwise):
 - TypeScript strictness: use `import type { ... }` for type-only imports. In JSX, wrap raw arrow text as `{"->"}` (a bare `->` crashes the bundler).
 - Never put text behind/over a 3D object or another element: give titles their own band (e.g. top 192–420px) and keep 3D content away from it.
 - Never leave the screen static for more than ~1.5s.
+- LAYOUT CONTRACT (overlaps are the #1 quality killer — obey literally): ONE focal group on screen at a time; fade the previous group OUT before the next fades in. Never draw an icon, badge, or glow ON TOP of text — labels get clear padding on all sides (a lock goes BELOW or BESIDE its label, never covering it). Keep every diagram element above y=1300: captions live below, and anything drifting lower will collide with them. Max 3 labeled elements per beat; titles ≤ 6 words. Body text only in near-white, emphasis only in the two accent colors — never mid-gray text on dark, it melts into the scene.
 
 Prefer composing these house components from "@kit" — they are tested and look consistent:
 

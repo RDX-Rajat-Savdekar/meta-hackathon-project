@@ -131,6 +131,10 @@
           <button type="button" data-demo="happy"><span class="eng-name">Full run<small>Script → scenes → ready reel</small></span></button>
           <button type="button" data-demo="live"><span class="eng-name">Mid-run retry<small>Error, fix, render</small></span></button>
           <button type="button" data-demo="fallback"><span class="eng-name">Title card + redo<small>Failed scene recovery</small></span></button>
+          <button type="button" data-demo="pitch-writing"><span class="eng-name">Pitch writing<small>Storyboard spinner</small></span></button>
+          <button type="button" data-demo="pitch-ready"><span class="eng-name">Pitch ready<small>Review + approve</small></span></button>
+          <button type="button" data-demo="pitch-failed"><span class="eng-name">Pitch failed<small>Error + retry</small></span></button>
+          <button type="button" data-demo="journey"><span class="eng-name">Full journey<small>Pitch → approve → reel</small></span></button>
           <button type="button" data-demo="voice"><span class="eng-name">Fallback voice<small>macOS notice path</small></span></button>
           <button type="button" data-demo="failed"><span class="eng-name">Failed run<small>Error box + start over</small></span></button>
         </div>
@@ -151,6 +155,25 @@
       <div class="drawer-head"><strong>Chats</strong><button class="btn sm" type="button" id="chatsClose">Close</button></div>
       <div class="drawer-sub">Every chat is stored on the server with its reels.</div>
       <div id="chatsList"></div>
+    </div>
+    <div class="drawer right" id="directDrawer" hidden>
+      <div class="drawer-head"><strong>Direct</strong><button class="btn sm" type="button" id="directClose">Close</button></div>
+      <div class="drawer-sub">Set the brief before you pitch. Nothing renders until you approve the storyboard.</div>
+      <h4>Engine</h4>
+      <div class="pickrow" id="directEngine">
+        <label><input type="radio" name="dengine" value="" checked><span>Auto</span></label>
+        <label><input type="radio" name="dengine" value="manim"><span>Manim</span></label>
+        <label><input type="radio" name="dengine" value="remotion"><span>2D</span></label>
+        <label><input type="radio" name="dengine" value="three"><span>3D</span></label>
+      </div>
+      <h4>Length</h4>
+      <div class="pickrow" id="directLength">
+        <label><input type="radio" name="dlength" value="short"><span>Short · ~30s</span></label>
+        <label><input type="radio" name="dlength" value="standard" checked><span>Standard · ~45s</span></label>
+        <label><input type="radio" name="dlength" value="deep"><span>Deep · ~60s</span></label>
+      </div>
+      <h4>Voice</h4>
+      <p class="drawer-sub" style="margin-bottom:0">Puck, locked — calm explainer host. Falls back to a system voice only if the quota runs out.</p>
     </div>
     <div class="overlay" id="statsOverlay" hidden>
       <div class="dialog" role="dialog" aria-label="Run analytics">
@@ -179,7 +202,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </button>
       </form>
-      <div class="hint">Each reel takes about 3–5 minutes<span class="keys"> · Enter to send, Shift+Enter for a new line</span></div>
+      <div class="hint"><button class="linkbtn" id="directBtn" type="button">Direct: Auto · Standard</button><span class="keys"> · describe an idea, review the storyboard, approve the animate</span></div>
     </div>
   </div>
 
