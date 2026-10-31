@@ -84,6 +84,15 @@ def save_scene(spec: SceneSpec, code: str, video: Path | None, *, topic: str, ro
     if video and video.exists():
         shutil.copy(video, d / "clip.mp4")
         _thumb(video, d / "thumb.png")
+    if meta.renderer == Renderer.three:
+        # Best-effort interactive preview bundle for the library copy.
+        try:
+            from reelgen.render.player_bundle import build_player_bundle
+            scene_file = d / f"scene{SUFFIX[spec.renderer]}"
+            if scene_file.exists():
+                build_player_bundle(scene_file, meta.duration, d / "player.js")
+        except Exception:
+            pass  # interactive preview is nice-to-have
     return meta
 
 

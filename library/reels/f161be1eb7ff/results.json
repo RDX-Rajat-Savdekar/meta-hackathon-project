@@ -1,0 +1,38 @@
+[
+  {
+    "index": 0,
+    "renderer": "three",
+    "ok": true,
+    "video": "outputs/f161be1eb7ff/seg0.mp4",
+    "attempts": 1,
+    "error": "",
+    "fallback": false
+  },
+  {
+    "index": 1,
+    "renderer": "three",
+    "ok": true,
+    "video": "outputs/f161be1eb7ff/seg1.mp4",
+    "attempts": 1,
+    "error": "",
+    "fallback": false
+  },
+  {
+    "index": 2,
+    "renderer": "three",
+    "ok": true,
+    "video": "/Users/rajatsavdekar/Documents/GitHub/meta-hackathon-project/outputs/f161be1eb7ff/seg2.mp4",
+    "attempts": 1,
+    "error": "",
+    "fallback": false
+  },
+  {
+    "index": 3,
+    "renderer": "three",
+    "ok": true,
+    "video": "/Users/rajatsavdekar/Documents/GitHub/meta-hackathon-project/outputs/f161be1eb7ff/seg3.mp4",
+    "attempts": 1,
+    "error": "",
+    "fallback": false
+  }
+]

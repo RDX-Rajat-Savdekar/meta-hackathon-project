@@ -1,0 +1,650 @@
+[
+  {
+    "index": 0,
+    "wav": "outputs/f161be1eb7ff/seg0.wav",
+    "duration": 4.22,
+    "words": [
+      {
+        "word": "Planes",
+        "start": 0.0,
+        "end": 0.5
+      },
+      {
+        "word": "don't",
+        "start": 0.5,
+        "end": 1.06
+      },
+      {
+        "word": "float.",
+        "start": 1.06,
+        "end": 1.4
+      },
+      {
+        "word": "They're",
+        "start": 2.02,
+        "end": 2.24
+      },
+      {
+        "word": "constantly",
+        "start": 2.24,
+        "end": 2.86
+      },
+      {
+        "word": "pushed",
+        "start": 2.86,
+        "end": 3.3
+      },
+      {
+        "word": "up.",
+        "start": 3.3,
+        "end": 3.8
+      }
+    ]
+  },
+  {
+    "index": 1,
+    "wav": "outputs/f161be1eb7ff/seg1.wav",
+    "duration": 8.46,
+    "words": [
+      {
+        "word": "A",
+        "start": 0.42,
+        "end": 0.5
+      },
+      {
+        "word": "jet",
+        "start": 0.5,
+        "end": 0.72
+      },
+      {
+        "word": "weighs",
+        "start": 0.72,
+        "end": 1.04
+      },
+      {
+        "word": "four",
+        "start": 1.04,
+        "end": 1.39
+      },
+      {
+        "word": "hundred",
+        "start": 1.39,
+        "end": 1.74
+      },
+      {
+        "word": "tons.",
+        "start": 1.74,
+        "end": 2.48
+      },
+      {
+        "word": "Nothing's",
+        "start": 3.08,
+        "end": 3.68
+      },
+      {
+        "word": "holding",
+        "start": 3.68,
+        "end": 3.9
+      },
+      {
+        "word": "it",
+        "start": 3.9,
+        "end": 4.1
+      },
+      {
+        "word": "up.",
+        "start": 4.1,
+        "end": 4.24
+      },
+      {
+        "word": "So",
+        "start": 4.94,
+        "end": 5.0
+      },
+      {
+        "word": "how",
+        "start": 5.0,
+        "end": 5.24
+      },
+      {
+        "word": "does",
+        "start": 5.24,
+        "end": 5.4
+      },
+      {
+        "word": "it",
+        "start": 5.4,
+        "end": 5.54
+      },
+      {
+        "word": "stay",
+        "start": 5.54,
+        "end": 5.84
+      },
+      {
+        "word": "in",
+        "start": 5.84,
+        "end": 6.04
+      },
+      {
+        "word": "the",
+        "start": 6.04,
+        "end": 6.12
+      },
+      {
+        "word": "sky",
+        "start": 6.12,
+        "end": 6.36
+      },
+      {
+        "word": "at",
+        "start": 6.36,
+        "end": 6.68
+      },
+      {
+        "word": "five",
+        "start": 6.68,
+        "end": 6.88
+      },
+      {
+        "word": "hundred",
+        "start": 6.88,
+        "end": 7.08
+      },
+      {
+        "word": "miles",
+        "start": 7.08,
+        "end": 7.58
+      },
+      {
+        "word": "an",
+        "start": 7.58,
+        "end": 7.78
+      },
+      {
+        "word": "hour?",
+        "start": 7.78,
+        "end": 8.06
+      }
+    ]
+  },
+  {
+    "index": 2,
+    "wav": "outputs/f161be1eb7ff/seg2.wav",
+    "duration": 31.47,
+    "words": [
+      {
+        "word": "Picture",
+        "start": 0.4,
+        "end": 0.8
+      },
+      {
+        "word": "one",
+        "start": 0.8,
+        "end": 1.16
+      },
+      {
+        "word": "wing",
+        "start": 1.16,
+        "end": 1.46
+      },
+      {
+        "word": "slicing",
+        "start": 1.46,
+        "end": 1.86
+      },
+      {
+        "word": "forward.",
+        "start": 1.86,
+        "end": 2.52
+      },
+      {
+        "word": "It",
+        "start": 3.06,
+        "end": 3.34
+      },
+      {
+        "word": "meets",
+        "start": 3.34,
+        "end": 3.48
+      },
+      {
+        "word": "still",
+        "start": 3.48,
+        "end": 3.92
+      },
+      {
+        "word": "air",
+        "start": 3.92,
+        "end": 4.24
+      },
+      {
+        "word": "at",
+        "start": 4.24,
+        "end": 4.56
+      },
+      {
+        "word": "a",
+        "start": 4.56,
+        "end": 4.64
+      },
+      {
+        "word": "slight",
+        "start": 4.64,
+        "end": 4.92
+      },
+      {
+        "word": "tilt,",
+        "start": 4.92,
+        "end": 5.28
+      },
+      {
+        "word": "about",
+        "start": 5.92,
+        "end": 6.14
+      },
+      {
+        "word": "three",
+        "start": 6.14,
+        "end": 6.48
+      },
+      {
+        "word": "degrees.",
+        "start": 6.48,
+        "end": 6.76
+      },
+      {
+        "word": "The",
+        "start": 7.46,
+        "end": 8.0
+      },
+      {
+        "word": "bottom",
+        "start": 8.0,
+        "end": 8.32
+      },
+      {
+        "word": "smacks",
+        "start": 8.32,
+        "end": 8.88
+      },
+      {
+        "word": "into",
+        "start": 8.88,
+        "end": 9.08
+      },
+      {
+        "word": "air",
+        "start": 9.08,
+        "end": 9.36
+      },
+      {
+        "word": "and",
+        "start": 9.36,
+        "end": 9.56
+      },
+      {
+        "word": "shoves",
+        "start": 9.56,
+        "end": 9.88
+      },
+      {
+        "word": "it",
+        "start": 9.88,
+        "end": 10.08
+      },
+      {
+        "word": "down.",
+        "start": 10.08,
+        "end": 10.3
+      },
+      {
+        "word": "The",
+        "start": 11.12,
+        "end": 11.22
+      },
+      {
+        "word": "top",
+        "start": 11.22,
+        "end": 11.5
+      },
+      {
+        "word": "curves",
+        "start": 11.5,
+        "end": 11.78
+      },
+      {
+        "word": "away,",
+        "start": 11.78,
+        "end": 12.3
+      },
+      {
+        "word": "so",
+        "start": 12.72,
+        "end": 12.9
+      },
+      {
+        "word": "air",
+        "start": 12.9,
+        "end": 13.04
+      },
+      {
+        "word": "stretches",
+        "start": 13.04,
+        "end": 13.5
+      },
+      {
+        "word": "and",
+        "start": 13.5,
+        "end": 13.88
+      },
+      {
+        "word": "drops",
+        "start": 13.88,
+        "end": 14.12
+      },
+      {
+        "word": "to",
+        "start": 14.12,
+        "end": 14.4
+      },
+      {
+        "word": "follow",
+        "start": 14.4,
+        "end": 14.64
+      },
+      {
+        "word": "it.",
+        "start": 14.64,
+        "end": 14.84
+      },
+      {
+        "word": "Watch",
+        "start": 14.84,
+        "end": 15.86
+      },
+      {
+        "word": "four",
+        "start": 15.86,
+        "end": 16.34
+      },
+      {
+        "word": "puffs",
+        "start": 16.34,
+        "end": 16.68
+      },
+      {
+        "word": "of",
+        "start": 16.68,
+        "end": 16.84
+      },
+      {
+        "word": "air.",
+        "start": 16.84,
+        "end": 17.04
+      },
+      {
+        "word": "They",
+        "start": 17.72,
+        "end": 17.74
+      },
+      {
+        "word": "arrive",
+        "start": 17.74,
+        "end": 17.94
+      },
+      {
+        "word": "level,",
+        "start": 17.94,
+        "end": 18.44
+      },
+      {
+        "word": "then",
+        "start": 18.74,
+        "end": 18.94
+      },
+      {
+        "word": "bend",
+        "start": 18.94,
+        "end": 19.1
+      },
+      {
+        "word": "downward",
+        "start": 19.1,
+        "end": 19.68
+      },
+      {
+        "word": "behind",
+        "start": 19.68,
+        "end": 20.0
+      },
+      {
+        "word": "the",
+        "start": 20.0,
+        "end": 20.18
+      },
+      {
+        "word": "wing.",
+        "start": 20.18,
+        "end": 20.36
+      },
+      {
+        "word": "That",
+        "start": 21.28,
+        "end": 21.46
+      },
+      {
+        "word": "downward",
+        "start": 21.46,
+        "end": 21.88
+      },
+      {
+        "word": "shove",
+        "start": 21.88,
+        "end": 22.2
+      },
+      {
+        "word": "has",
+        "start": 22.2,
+        "end": 22.54
+      },
+      {
+        "word": "a",
+        "start": 22.54,
+        "end": 22.58
+      },
+      {
+        "word": "reaction.",
+        "start": 22.58,
+        "end": 23.0
+      },
+      {
+        "word": "Air",
+        "start": 23.82,
+        "end": 23.92
+      },
+      {
+        "word": "pushes",
+        "start": 23.92,
+        "end": 24.18
+      },
+      {
+        "word": "back",
+        "start": 24.18,
+        "end": 24.64
+      },
+      {
+        "word": "up",
+        "start": 24.64,
+        "end": 24.98
+      },
+      {
+        "word": "on",
+        "start": 24.98,
+        "end": 25.2
+      },
+      {
+        "word": "the",
+        "start": 25.2,
+        "end": 25.3
+      },
+      {
+        "word": "wing.",
+        "start": 25.3,
+        "end": 25.48
+      },
+      {
+        "word": "Do",
+        "start": 26.4,
+        "end": 26.56
+      },
+      {
+        "word": "that",
+        "start": 26.56,
+        "end": 26.76
+      },
+      {
+        "word": "fifty",
+        "start": 26.76,
+        "end": 27.1
+      },
+      {
+        "word": "times",
+        "start": 27.1,
+        "end": 27.6
+      },
+      {
+        "word": "per",
+        "start": 27.6,
+        "end": 27.9
+      },
+      {
+        "word": "second",
+        "start": 27.9,
+        "end": 28.22
+      },
+      {
+        "word": "across",
+        "start": 28.22,
+        "end": 28.5
+      },
+      {
+        "word": "two",
+        "start": 28.5,
+        "end": 28.9
+      },
+      {
+        "word": "huge",
+        "start": 28.9,
+        "end": 29.24
+      },
+      {
+        "word": "wings,",
+        "start": 29.24,
+        "end": 29.52
+      },
+      {
+        "word": "and",
+        "start": 30.3,
+        "end": 30.34
+      },
+      {
+        "word": "you've",
+        "start": 30.34,
+        "end": 30.54
+      },
+      {
+        "word": "got",
+        "start": 30.54,
+        "end": 30.68
+      },
+      {
+        "word": "lift.",
+        "start": 30.68,
+        "end": 30.88
+      }
+    ]
+  },
+  {
+    "index": 3,
+    "wav": "outputs/f161be1eb7ff/seg3.wav",
+    "duration": 6.621,
+    "words": [
+      {
+        "word": "So",
+        "start": 0.59,
+        "end": 0.63
+      },
+      {
+        "word": "flight",
+        "start": 0.63,
+        "end": 0.93
+      },
+      {
+        "word": "isn't",
+        "start": 0.93,
+        "end": 1.53
+      },
+      {
+        "word": "magic.",
+        "start": 1.53,
+        "end": 1.83
+      },
+      {
+        "word": "It's",
+        "start": 2.61,
+        "end": 2.77
+      },
+      {
+        "word": "just",
+        "start": 2.77,
+        "end": 2.91
+      },
+      {
+        "word": "wings",
+        "start": 2.91,
+        "end": 3.13
+      },
+      {
+        "word": "endlessly",
+        "start": 3.13,
+        "end": 3.81
+      },
+      {
+        "word": "throwing",
+        "start": 3.81,
+        "end": 4.31
+      },
+      {
+        "word": "sky",
+        "start": 4.31,
+        "end": 4.61
+      },
+      {
+        "word": "downward",
+        "start": 4.61,
+        "end": 5.17
+      },
+      {
+        "word": "to",
+        "start": 5.17,
+        "end": 5.57
+      },
+      {
+        "word": "hold",
+        "start": 5.57,
+        "end": 5.77
+      },
+      {
+        "word": "themselves",
+        "start": 5.77,
+        "end": 6.03
+      },
+      {
+        "word": "up.",
+        "start": 6.03,
+        "end": 6.39
+      }
+    ]
+  }
+]

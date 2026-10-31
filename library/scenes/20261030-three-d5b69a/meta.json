@@ -1,0 +1,45 @@
+{
+  "id": "20261030-three-d5b69a",
+  "renderer": "three",
+  "topic": "how do planes fly",
+  "role": "payoff",
+  "narration": "So flight isn't magic. It's just wings endlessly throwing sky downward to hold themselves up.",
+  "description": "React Three Fiber wide shot, same jet model now level cruising left-to-right at 45% vertical in dark blue-black sky. Two soft volumetric trails in accent=cyan and muted=grey curl downward below wings and trail behind, curving down to show downwash. fg=white jet with accent2=magenta rim. Gentle god-ray. Camera follows alongside with slow pull-back revealing longer trails, slight orbit for 3D depth. Nothing in top 10% or bottom 25%.",
+  "beats": [
+    {
+      "t": 0.5,
+      "word": "So",
+      "action": "wide jet cruises level center-frame leaving faint level contrails"
+    },
+    {
+      "t": 3.0,
+      "word": "magic",
+      "action": "trails brighten cyan and start curling downward below wings"
+    },
+    {
+      "t": 8.0,
+      "word": "wings",
+      "action": "camera pushes to wings as downwash tubes thicken and glow"
+    },
+    {
+      "t": 14.0,
+      "word": "throwing",
+      "action": "animated cyan particles fire continuously downward from wings"
+    },
+    {
+      "t": 18.0,
+      "word": "downward",
+      "action": "trails curl strongly down and back, jet rides steadily on reaction"
+    },
+    {
+      "t": 24.0,
+      "word": "up",
+      "action": "soft yellow up-glow pulses under wings as jet holds altitude cruising forward"
+    }
+  ],
+  "duration": 31.611,
+  "attempts": 1,
+  "source": "f161be1eb7ff",
+  "created": "2026-10-31T05:34:58+00:00",
+  "starred": false
+}

@@ -1,0 +1,40 @@
+{
+  "id": "20261030-three-ef8c5e",
+  "renderer": "three",
+  "topic": "how do planes fly",
+  "role": "hook",
+  "narration": "Planes don't float. They're constantly pushed up.",
+  "description": "Vertical 1080x1920 React Three Fiber scene, dark void background. Frame 0 shows giant low-poly passenger jet model in fg=white with muted=grey metalness, frozen horizontal centered at 45% vertical (safe middle band, nothing in top 10% or bottom 25%). Cyan rim light left, accent2=magenta rim right. Directly under fuselage a large glowing accent=cyan 3D arrow mesh pointing up, emissive, pulsing. Subtle star dust particles in muted=grey. Camera is front-three-quarter slightly below, slow push-in with slight orbit for depth.",
+  "beats": [
+    {
+      "t": 0.0,
+      "word": "Planes",
+      "action": "giant jet fades in frozen center-frame as large cyan up-arrow fades in below it"
+    },
+    {
+      "t": 1.06,
+      "word": "float",
+      "action": "jet wobbles slightly down then holds, showing it is not floating"
+    },
+    {
+      "t": 2.24,
+      "word": "constantly",
+      "action": "cyan arrow starts pulsing glow rhythmically under fuselage"
+    },
+    {
+      "t": 2.86,
+      "word": "pushed",
+      "action": "arrow scales taller and pushes up into belly, jet lifts a touch"
+    },
+    {
+      "t": 3.3,
+      "word": "up",
+      "action": "camera pushes in as arrow flashes bright cyan and lifts jet visibly"
+    }
+  ],
+  "duration": 0.0,
+  "attempts": 1,
+  "source": "f161be1eb7ff",
+  "created": "2026-10-31T05:34:23+00:00",
+  "starred": false
+}

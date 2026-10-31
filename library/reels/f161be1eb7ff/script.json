@@ -1,0 +1,26 @@
+{
+  "title": "Wings Throw Air Down",
+  "idea": "Plane lift comes from wings deflecting air downward and getting pushed back up in reaction",
+  "segments": [
+    {
+      "role": "hook",
+      "narration": "Planes don't float. They're constantly pushed up.",
+      "visual_directive": "A giant passenger jet frozen mid-air on dark background, with a large glowing arrow pushing up under it."
+    },
+    {
+      "role": "setup",
+      "narration": "A jet weighs four hundred tons. Nothing's holding it up. So how does it stay in the sky at five hundred miles an hour?",
+      "visual_directive": "Side view of a heavy jet sinking slightly, then rushing forward fast with white speed lines streaming past."
+    },
+    {
+      "role": "mechanism",
+      "narration": "Picture one wing slicing forward. It meets still air at a slight tilt, about three degrees. The bottom smacks into air and shoves it down. The top curves away, so air stretches and drops to follow it. Watch four puffs of air. They arrive level, then bend downward behind the wing. That downward shove has a reaction. Air pushes back up on the wing. Do that fifty times per second across two huge wings, and you've got lift.",
+      "visual_directive": "Close-up cross-section of a tilted wing with four glowing blue air dots flowing in level and bending sharply down behind it, while an orange up arrow grows on the wing."
+    },
+    {
+      "role": "payoff",
+      "narration": "So flight isn't magic. It's just wings endlessly throwing sky downward to hold themselves up.",
+      "visual_directive": "Wide shot of a level jet leaving two soft downward air trails curling below it as it cruises forward."
+    }
+  ]
+}

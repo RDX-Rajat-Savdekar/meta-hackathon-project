@@ -30,6 +30,19 @@ def test_segment_cuts_split_in_the_pause_between_segments():
     assert segment_cuts(ws, [2, 1, 1]) == [1.3, 2.1]
 
 
+def test_heard_preamble_does_not_shift_narration_anchors():
+    # TTS sometimes speaks the director-style preamble before the narration.
+    # align_to_script must anchor narration words to their real (later) position:
+    # longest-match wins, so a preamble fragment ("after each …") loses to the
+    # full narration run that follows it.
+    heard = [WordTiming(word=w, start=i * 0.4, end=i * 0.4 + 0.3) for i, w in enumerate(
+        ["leave", "a", "short", "beat", "after", "each", "important", "definition",
+         "after", "each", "test", "today"])]
+    out = align_to_script("after each test today", heard, duration=6.0)
+    assert [x.word for x in out] == ["after", "each", "test", "today"]
+    assert out[0].start >= 3.0, f"first narration word anchored into the preamble: {out[0]}"
+
+
 def test_split_wav_roundtrip(tmp_path):
     import wave
 

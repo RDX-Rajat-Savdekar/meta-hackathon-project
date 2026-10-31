@@ -1,0 +1,45 @@
+{
+  "id": "20261030-three-2b55ed",
+  "renderer": "three",
+  "topic": "how do planes fly",
+  "role": "mechanism",
+  "narration": "Picture one wing slicing forward. It meets still air at a slight tilt, about three degrees. The bottom smacks into air and shoves it down. The top curves away, so air stretches and drops to follow it. Watch four puffs of air. They arrive level, then bend downward behind the wing. That downward shove has a reaction. Air pushes back up on the wing. Do that fifty times per second across two huge wings, and you've got lift.",
+  "description": "React Three Fiber close-up of 3D wing cross-section airfoil extruded in depth, metallic muted=grey with fg=white highlight, tilted about 3 degrees nose-up, centered at 45% vertical. Four small emissive accent=cyan spheres representing air puffs flow in level from left in two rows above and below. Behind wing their trails bend sharply down using tube meshes. Large accent3=yellow 3D up-arrow grows from top center of wing. Dark background, angled camera 20 degrees off side to show depth and thickness, slow dolly in.",
+  "beats": [
+    {
+      "t": 13.08,
+      "word": "Picture",
+      "action": "camera cuts to close-up wing cross-section centered, four cyan puffs appear left"
+    },
+    {
+      "t": 14.14,
+      "word": "slicing",
+      "action": "wing slides forward right while cyan puffs stream toward it level"
+    },
+    {
+      "t": 16.6,
+      "word": "air",
+      "action": "lower puffs hit bottom of wing and deflect down, upper puffs stretch over top"
+    },
+    {
+      "t": 17.6,
+      "word": "tilt",
+      "action": "wing highlights tilt angle with faint yellow arc showing 3-degree tilt"
+    },
+    {
+      "t": 18.6,
+      "word": "about",
+      "action": "all four trails bend sharply downward behind wing forming downwash"
+    },
+    {
+      "t": 18.82,
+      "word": "three",
+      "action": "accent3-yellow up-arrow grows large from wing center as downwash strengthens"
+    }
+  ],
+  "duration": 19.16,
+  "attempts": 1,
+  "source": "f161be1eb7ff",
+  "created": "2026-10-31T05:35:20+00:00",
+  "starred": false
+}

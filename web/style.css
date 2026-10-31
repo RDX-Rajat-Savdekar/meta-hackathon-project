@@ -260,6 +260,33 @@ footer { color: var(--muted); font-size: 13px; text-align: center; padding: 28px
 .scenes { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 14px; align-items: start; }
 .scene { border-radius: 16px; border: 1px solid var(--line); background: rgba(255,255,255,0.025); overflow: hidden; display: grid; grid-template-rows: auto auto 1fr; }
 .scene .preview { aspect-ratio: 9 / 16; max-height: 300px; width: 100%; background: radial-gradient(circle at 50% 40%, #151b2b, #07090e); position: relative; display: grid; place-items: center; overflow: hidden; }
+.scene .td { margin-top: 10px; }
+.scene .td[hidden] { display: none; }
+.scene .td iframe { width: 100%; aspect-ratio: 9 / 16; max-height: 420px; border: 1px solid var(--line-strong); border-radius: 14px; background: #000; }
+.drawer {
+  position: fixed; top: 0; left: 0; bottom: 0; width: min(340px, 88vw); z-index: 120;
+  background: var(--panel-solid); border-right: 1px solid var(--line-strong);
+  padding: 18px 16px; overflow-y: auto;
+}
+.drawer[hidden] { display: none; }
+.drawer-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+.drawer-sub { color: var(--muted); font-size: 12.5px; margin-bottom: 12px; }
+.thread { display: block; width: 100%; text-align: left; background: transparent; border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; margin-bottom: 8px; cursor: pointer; color: var(--fg); font: 13.5px/1.4 var(--font); }
+.thread:hover { border-color: rgba(212,255,58,0.55); }
+.thread small { display: block; color: var(--muted); font-size: 11.5px; margin-top: 2px; }
+.thread.active { border-color: var(--cta); }
+.overlay { position: fixed; inset: 0; z-index: 130; background: rgba(0,0,0,0.6); display: grid; place-items: center; padding: 16px; }
+.overlay[hidden] { display: none; }
+.dialog { width: min(560px, 94vw); max-height: 84vh; overflow-y: auto; background: var(--panel-solid); border: 1px solid var(--line-strong); border-radius: 18px; padding: 18px; }
+.stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 12px 0; }
+.stat { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+.stat b { display: block; font-size: 20px; }
+.stat span { color: var(--muted); font-size: 11.5px; }
+.stat-table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 8px; }
+.stat-table th, .stat-table td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); }
+.stat-table th { color: var(--muted); font-weight: 600; }
+.dialog h4 { margin: 14px 0 4px; font-size: 13px; }
+.dialog .err { color: var(--accent2); font-size: 12.5px; }
 .scene .preview video { width: 100%; height: 100%; object-fit: cover; }
 .scene .preview .spinner { width: 34px; height: 34px; border-radius: 50%; border: 3px solid rgba(212,255,58,0.25); border-top-color: var(--cta); animation: spin 0.9s linear infinite; }
 .scene .preview .wait { color: var(--muted); font-size: 12.5px; }

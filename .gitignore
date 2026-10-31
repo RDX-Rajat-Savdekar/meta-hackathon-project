@@ -6,6 +6,15 @@ __pycache__/
 .venv/
 .pytest_cache/
 remotion/out/
+remotion/.player/
 .jobs/
 .checks/
 library/**/*.mp4
+library/**/player.js
+outputs/**/player.js
+chats/
+analytics/
+outputs/**/*.player-entry.tsx
+library/**/player-entry.tsx
+library/**/player.job.json
+outputs/**/*.job.json

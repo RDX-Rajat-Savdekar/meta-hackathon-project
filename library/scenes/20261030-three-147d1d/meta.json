@@ -1,0 +1,40 @@
+{
+  "id": "20261030-three-147d1d",
+  "renderer": "three",
+  "topic": "how do planes fly",
+  "role": "setup",
+  "narration": "A jet weighs four hundred tons. Nothing's holding it up. So how does it stay in the sky at five hundred miles an hour?",
+  "description": "Same dark void React Three Fiber scene, side-view. fg=white passenger jet profile centered at 45% vertical flying left-to-right, extruded 3D with thickness for depth. muted=grey fog. Hundreds of thin fg=white speed-line streak meshes stream right-to-left past jet. Warm key light. Camera tracks side-on with slight parallax. Jet first sinks then accelerates forward.",
+  "beats": [
+    {
+      "t": 0.3,
+      "word": "weighs",
+      "action": "jet drops slightly down and tilts nose-down to feel heavy"
+    },
+    {
+      "t": 1.32,
+      "word": "tons",
+      "action": "363 Weight label implied by jet scale grows larger, jet sinks lower"
+    },
+    {
+      "t": 3.26,
+      "word": "holding",
+      "action": "empty space below jet emphasized, fog clears to show nothing holding it"
+    },
+    {
+      "t": 5.7,
+      "word": "sky",
+      "action": "white speed-lines burst on and stream fast past jet"
+    },
+    {
+      "t": 7.36,
+      "word": "hour",
+      "action": "camera shakes slightly and streaks stretch longer as jet rushes forward at full speed"
+    }
+  ],
+  "duration": 0.0,
+  "attempts": 1,
+  "source": "f161be1eb7ff",
+  "created": "2026-10-31T05:34:29+00:00",
+  "starred": false
+}

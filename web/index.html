@@ -124,6 +124,8 @@
         </div>
         <button class="btn btn-3d" type="button" data-toggle3d aria-pressed="false" title="Toggle the Three.js background"><span class="dot" aria-hidden="true"></span>3D</button>
         <button class="btn" type="button" id="newChat">New chat</button>
+        <button class="btn" type="button" id="chatsBtn">Chats</button>
+        <button class="btn" type="button" id="statsBtn">Stats</button>
         <button class="btn" type="button" id="demoBtn" aria-haspopup="listbox" aria-expanded="false">Demo UI</button>
         <div class="eng-menu" id="demoMenu" role="listbox" aria-label="Interface demos" hidden>
           <button type="button" data-demo="happy"><span class="eng-name">Full run<small>Script → scenes → ready reel</small></span></button>
@@ -145,6 +147,17 @@
       </main>
     </div>
 
+    <div class="drawer" id="chatsDrawer" hidden>
+      <div class="drawer-head"><strong>Chats</strong><button class="btn sm" type="button" id="chatsClose">Close</button></div>
+      <div class="drawer-sub">Every chat is stored on the server with its reels.</div>
+      <div id="chatsList"></div>
+    </div>
+    <div class="overlay" id="statsOverlay" hidden>
+      <div class="dialog" role="dialog" aria-label="Run analytics">
+        <div class="drawer-head"><strong>Run analytics</strong><button class="btn sm" type="button" id="statsClose">Close</button></div>
+        <div id="statsBody"><p style="color:var(--muted)">Loading…</p></div>
+      </div>
+    </div>
     <div class="composer">
       <form id="form">
         <label class="sr-only" for="input">What do you want to learn?</label>

@@ -27,6 +27,8 @@ class Settings(BaseSettings):
     outputs_dir: Path = ROOT / "outputs"
     remotion_dir: Path = ROOT / "remotion"
     library_dir: Path = ROOT / "library"
+    chats_dir: Path = ROOT / "chats"
+    analytics_dir: Path = ROOT / "analytics"
     use_library: bool = True  # feed past scenes + lessons into coder prompts, save new successes
 
     ffmpeg: str = "/opt/homebrew/opt/ffmpeg-full/bin/ffmpeg"  # needs libass for captions

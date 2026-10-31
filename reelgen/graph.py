@@ -99,7 +99,10 @@ def voice_node(state: State, config: RunnableConfig) -> State:
     duration = synthesize(text, full, info=info)
     emit("voice", duration=round(duration, 2), provider=info.get("provider", "gemini"), note=info.get("note", ""))
     _stage(emit, "align")
-    words = align(full, text, duration)
+    # Align narration ONLY: the styled text above may itself be spoken, and any
+    # preamble words must never leak into segment word lists or timings.
+    script_text = "\n\n".join(s.narration for s in segments)
+    words = align(full, script_text, duration)
     counts = [len(s.narration.split()) for s in segments]
     cuts = segment_cuts(words, counts)
     wavs = [d / f"seg{i}.wav" for i in range(len(segments))]

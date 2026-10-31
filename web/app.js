@@ -305,7 +305,7 @@ async function submit(topic) {
   const renderer = engineValue || undefined;
   input.value = ""; autosize(); updateSend();
   try {
-    const body = { topic };
+    const body = { topic, thread_id: getThreadId() };
     if (renderer) body.renderer = renderer;
     const job = await getJSON("/jobs", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
     chat.push({ jobId: job.id, topic, renderer });
@@ -329,10 +329,26 @@ input.addEventListener("input", () => { autosize(); updateSend(); });
 input.addEventListener("keydown", (e) => {
   if (e.key === "Enter" && !e.shiftKey && !e.isComposing) { e.preventDefault(); if (!send.disabled) submit(input.value); }
 });
+function getThreadId() {
+  let tid = null;
+  try { tid = localStorage.getItem("reelgen.thread"); } catch { tid = null; }
+  if (!tid) {
+    tid = Math.random().toString(36).slice(2, 10);
+    try { localStorage.setItem("reelgen.thread", tid); } catch { /* private mode */ }
+  }
+  return tid;
+}
+function resetThread() {
+  const tid = Math.random().toString(36).slice(2, 10);
+  try { localStorage.setItem("reelgen.thread", tid); } catch { /* private mode */ }
+  return tid;
+}
+
 $("#newChat").onclick = () => {
   for (const v of views.values()) v.close();
   views.clear();
   chat = []; saveChat();
+  resetThread();
   thread.innerHTML = `<section class="studio-empty" id="studioEmpty"><h2>What should we explain?</h2><p>Describe the idea you want to understand. You'll see every step as it happens.</p><div class="chips" id="studioChips"></div></section>`;
   studioReady = false;
   history.replaceState(null, "", "#/create");
@@ -437,12 +453,12 @@ class JobView {
         break;
       case "plan":
         s.plan = ev.scenes;
-        for (const p of ev.scenes) s.scenes[p.index] ??= { status: "queued", renderer: p.renderer, errors: [], attempt: 0, max: 3 };
+        for (const p of ev.scenes) s.scenes[p.index] ??= { status: "queued", renderer: p.renderer, errors: [], attempt: 0, max: 3, player: false };
         this.log(ev, `Directed ${ev.scenes.length} scenes: ${ev.scenes.map((p) => `${cap(p.role)} → ${RENDERER[p.renderer]}`).join(", ")}`);
         break;
       case "scene": {
-        const sc = (s.scenes[ev.index] ??= { status: "queued", renderer: ev.renderer, errors: [], attempt: 0, max: 3 });
-        Object.assign(sc, { status: ev.status, renderer: ev.renderer || sc.renderer, attempt: ev.attempt ?? sc.attempt, max: ev.max_attempts ?? sc.max });
+        const sc = (s.scenes[ev.index] ??= { status: "queued", renderer: ev.renderer, errors: [], attempt: 0, max: 3, player: false });
+        Object.assign(sc, { status: ev.status, renderer: ev.renderer || sc.renderer, attempt: ev.attempt ?? sc.attempt, max: ev.max_attempts ?? sc.max, player: ev.player ?? sc.player ?? false });
         const name = this.sceneLabel(ev.index);
         const R = RENDERER[sc.renderer] || sc.renderer;
         if (ev.status === "coding") this.log(ev, `${name}: writing ${R} code (attempt ${ev.attempt}/${ev.max_attempts})`);
@@ -581,7 +597,8 @@ class JobView {
       box.append(card);
     }
     const canRedo = !s.running && ["done", "fallback", "error", "failed", "queued"].includes(sc.status);
-    const sig = JSON.stringify([sc.status, sc.attempt, sc.errors.length, sc.renderer, sc.v, canRedo, sc.redo]);
+    const canInteract = sc.renderer === "three" && sc.player && ["done", "fallback"].includes(sc.status);
+    const sig = JSON.stringify([sc.status, sc.attempt, sc.errors.length, sc.renderer, sc.v, canRedo, sc.redo, sc.show3d, sc.player]);
     if (card.dataset.sig === sig) return;
     card.dataset.sig = sig;
 
@@ -634,10 +651,13 @@ class JobView {
       <div class="body">
         <div class="status ${statusCls}">${esc(statusText)}</div>
         ${p?.duration ? `<div style="font-size:12px;color:var(--muted)">Scene ${i + 1} · ${p.duration.toFixed(1)}s</div>` : ""}
+        ${canInteract ? `<div style="margin-top:8px"><button class="btn sm" type="button" data-3d>${sc.show3d ? "Hide 3D" : "Explore in 3D"}</button></div>
+        <div class="td" ${sc.show3d ? "" : "hidden"}><iframe title="Interactive 3D scene ${i + 1}" src="/jobs/${this.id}/scenes/${i}/player" loading="lazy" allow="autoplay; fullscreen"></iframe></div>` : ""}
         ${errors ? `<div class="attempts">${errors}</div>` : ""}
         ${redo}
       </div>`;
 
+    $("[data-3d]", card)?.addEventListener("click", () => { sc.show3d = !sc.show3d; this.renderScene(box, i); });
     $("[data-redo]", card)?.addEventListener("click", () => { sc.redo = true; this.renderScene(box, i); $("textarea", card)?.focus(); });
     $("[data-cancel]", card)?.addEventListener("click", () => { sc.redo = false; this.renderScene(box, i); });
     $("form.redo", card)?.addEventListener("submit", async (e) => {
@@ -817,5 +837,84 @@ async function runDemo(kind) {
     scrollDown();
   }
 }
+
+// --------------------------------------------------------------------
+// Chats drawer (server-side threads) + run-analytics dialog.
+// --------------------------------------------------------------------
+const chatsDrawer = $("#chatsDrawer");
+async function openChats() {
+  chatsDrawer.hidden = false;
+  const list = $("#chatsList");
+  list.innerHTML = `<p style="color:var(--muted)">Loading…</p>`;
+  try {
+    const threads = await getJSON("/chats");
+    const cur = (() => { try { return localStorage.getItem("reelgen.thread"); } catch { return null; } })();
+    list.innerHTML = threads.length ? "" : `<p style="color:var(--muted)">No chats yet — your first reel starts one.</p>`;
+    for (const t of threads) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "thread" + (t.id === cur ? " active" : "");
+      const when = t.updated ? new Date(t.updated * 1000).toLocaleString() : "";
+      b.innerHTML = `<span>${esc(t.title)}</span><small>${t.jobs} reel${t.jobs === 1 ? "" : "s"} · ${esc(when)}</small>`;
+      b.addEventListener("click", () => loadThread(t.id));
+      list.append(b);
+    }
+  } catch (e) {
+    list.innerHTML = `<p style="color:var(--accent2)">Couldn't load chats: ${esc(e.message)}</p>`;
+  }
+}
+async function loadThread(tid) {
+  chatsDrawer.hidden = true;
+  const t = await getJSON(`/chats/${tid}`);
+  for (const v of views.values()) v.close();
+  views.clear();
+  chat = [];
+  try { localStorage.setItem("reelgen.thread", tid); } catch { /* private mode */ }
+  for (const s of t.summaries) {
+    chat.push({ jobId: s.id, topic: s.topic });
+    mountJob(s.id, s.topic, undefined);
+  }
+  saveChat();
+  const first = t.summaries[0];
+  history.replaceState(null, "", first ? `#/job/${first.id}` : "#/create");
+  input.focus();
+}
+$("#chatsBtn")?.addEventListener("click", openChats);
+$("#chatsClose")?.addEventListener("click", () => { chatsDrawer.hidden = true; });
+
+const statsOverlay = $("#statsOverlay");
+function fmtSecs(v) { return v == null ? "—" : v >= 60 ? `${Math.floor(v / 60)}m ${Math.round(v % 60)}s` : `${v}s`; }
+async function openStats() {
+  statsOverlay.hidden = false;
+  const body = $("#statsBody");
+  body.innerHTML = `<p style="color:var(--muted)">Loading…</p>`;
+  try {
+    const s = await getJSON("/analytics/summary");
+    const pct = s.success_rate == null ? "—" : `${Math.round(s.success_rate * 100)}%`;
+    const rows = Object.entries(s.renderers || {}).map(([name, r]) =>
+      `<tr><td>${esc(RENDERER[name] || name)}</td><td>${r.scenes}</td><td>${r.attempts}</td><td>${r.done}</td><td>${r.fallback}</td><td>${r.first_try_rate == null ? "—" : Math.round(r.first_try_rate * 100) + "%"}</td></tr>`).join("");
+    const errs = (s.top_errors || []).map(([msg, n]) => `<div style="color:var(--accent2);font-size:12.5px">×${n} — ${esc(msg)}</div>`).join("") || `<p style="color:var(--muted)">No errors recorded.</p>`;
+    const voices = Object.entries(s.voice_providers || {}).map(([p, n]) => `${esc(p)} ×${n}`).join(", ") || "—";
+    body.innerHTML = `
+      <div class="stat-grid">
+        <div class="stat"><b>${s.jobs}</b><span>runs</span></div>
+        <div class="stat"><b>${pct}</b><span>success</span></div>
+        <div class="stat"><b>${fmtSecs(s.avg_total_s)}</b><span>avg run</span></div>
+        <div class="stat"><b>${fmtSecs((s.avg_stage_s || {}).render)}</b><span>avg animate</span></div>
+        <div class="stat"><b>${fmtSecs((s.avg_stage_s || {}).voice)}</b><span>avg voice</span></div>
+        <div class="stat"><b>${fmtSecs((s.avg_stage_s || {}).assemble)}</b><span>avg assemble</span></div>
+      </div>
+      <h4>Engines (scenes · tries · done · cards · 1st-try)</h4>
+      <table class="stat-table"><tr><th>Engine</th><th>Scenes</th><th>Tries</th><th>Done</th><th>Cards</th><th>1st-try</th></tr>${rows || `<tr><td colspan="6" style="color:var(--muted)">No scene data yet.</td></tr>`}</table>
+      <h4>Top errors</h4>${errs}
+      <h4>Voices</h4><p style="font-size:12.5px">${voices}</p>`;
+  } catch (e) {
+    body.innerHTML = `<p style="color:var(--accent2)">Couldn't load stats: ${esc(e.message)}</p>`;
+  }
+}
+$("#statsBtn")?.addEventListener("click", openStats);
+$("#statsClose")?.addEventListener("click", () => { statsOverlay.hidden = true; });
+statsOverlay?.addEventListener("click", (e) => { if (e.target === statsOverlay) statsOverlay.hidden = true; });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") { statsOverlay.hidden = true; chatsDrawer.hidden = true; } });
 
 route();

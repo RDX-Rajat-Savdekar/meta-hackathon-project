@@ -8,7 +8,7 @@ import uuid
 from pathlib import Path
 
 from fastapi import BackgroundTasks, FastAPI, HTTPException, Request
-from fastapi.responses import FileResponse, StreamingResponse
+from fastapi.responses import FileResponse, HTMLResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
@@ -24,6 +24,7 @@ _lock = threading.Lock()
 class JobRequest(BaseModel):
     topic: str = Field(min_length=3, max_length=500)
     renderer: Renderer | None = Field(default=None, description="Preferred engine for every scene; null = director picks")
+    thread_id: str | None = Field(default=None, max_length=64, description="Chat thread to file this job under")
 
 
 class RetryRequest(BaseModel):
@@ -102,6 +103,11 @@ def _execute(job: JobState, work) -> None:
         emit("failed", stage=job.log[-1] if job.log else "", error=job.error, detail=str(e)[-2000:])
     job.finished = time.time()
     _persist(job)
+    try:
+        from reelgen import analytics
+        analytics.record_job(job.id)
+    except Exception:
+        pass  # analytics must never break a job
 
 
 def _mark_orphans() -> None:
@@ -130,9 +136,16 @@ def create_job(req: JobRequest, background: BackgroundTasks) -> JobState:
     from reelgen.graph import run
 
     job = JobState(id=uuid.uuid4().hex[:12], topic=req.topic.strip(), preferred_renderer=req.renderer,
-                   created=time.time())
+                   thread_id=(req.thread_id or None), created=time.time())
     JOBS[job.id] = job
     _persist(job)
+    if job.thread_id:
+        try:
+            from reelgen import chats
+            chats.attach(job.thread_id, job.id, job.topic)
+        except (ValueError, OSError):
+            job.thread_id = None
+            _persist(job)
     _emitter(job)("queued", topic=job.topic,
                   renderer=req.renderer.value if req.renderer else None)
     background.add_task(_execute, job, lambda emit: run(job.topic, _job_dir(job.id), emit,
@@ -207,6 +220,28 @@ def get_scene_clip(job_id: str, index: int) -> FileResponse:
     return FileResponse(f, media_type="video/mp4", headers={"Cache-Control": "no-store"})
 
 
+def _player_bundle(job_id: str, index: int) -> Path:
+    f = _job_dir(job_id) / f"seg{index}.player.js"
+    if not _load(job_id) or not f.exists():
+        raise HTTPException(404, "no interactive preview for this scene")
+    return f
+
+
+@app.get("/jobs/{job_id}/scenes/{index}/player")
+def get_scene_player(job_id: str, index: int) -> HTMLResponse:
+    from reelgen.render.player_bundle import player_page
+
+    _player_bundle(job_id, index)
+    job = _load(job_id)
+    return HTMLResponse(player_page(job.topic if job else f"scene {index}"))
+
+
+@app.get("/jobs/{job_id}/scenes/{index}/player.js")
+def get_scene_player_js(job_id: str, index: int) -> FileResponse:
+    return FileResponse(_player_bundle(job_id, index), media_type="application/javascript",
+                        headers={"Cache-Control": "no-store"})
+
+
 @app.post("/jobs/{job_id}/scenes/{index}/retry", status_code=202)
 def retry_scene(job_id: str, index: int, req: RetryRequest, background: BackgroundTasks) -> JobState:
     """Regenerate one scene (optionally with a note or another renderer) and reassemble the reel."""
@@ -239,6 +274,50 @@ def _reel_dir(name: str) -> Path:
     if d.parent != root or not d.is_dir():
         raise HTTPException(404, "reel not found")
     return d
+
+
+class ThreadCreate(BaseModel):
+    title: str = Field(default="Untitled chat", max_length=120)
+
+
+class ThreadAttach(BaseModel):
+    job_id: str = Field(min_length=3, max_length=64)
+
+
+@app.post("/chats", status_code=201)
+def create_thread(req: ThreadCreate) -> dict:
+    from reelgen import chats
+    return chats.create(req.title)
+
+
+@app.get("/chats")
+def list_threads() -> list[dict]:
+    from reelgen import chats
+    return chats.list_threads()
+
+
+@app.get("/chats/{thread_id}")
+def get_thread(thread_id: str) -> dict:
+    from reelgen import chats
+    t = chats.get(thread_id)
+    if t is None:
+        raise HTTPException(404, "unknown chat")
+    return {**t, "summaries": [s for jid in t["jobs"] for s in [chats.job_summary(jid)] if s]}
+
+
+@app.post("/chats/{thread_id}/jobs", status_code=201)
+def attach_job(thread_id: str, req: ThreadAttach) -> dict:
+    from reelgen import chats
+    try:
+        return chats.attach(thread_id, req.job_id)
+    except ValueError:
+        raise HTTPException(400, "bad thread id")
+
+
+@app.get("/analytics/summary")
+def analytics_summary() -> dict:
+    from reelgen import analytics
+    return analytics.summary()
 
 
 @app.get("/library/reels")
@@ -285,7 +364,8 @@ def list_scenes() -> list[dict]:
 
     return [
         {"id": m.id, "renderer": m.renderer.value, "role": m.role, "topic": m.topic, "description": m.description[:220],
-         "duration": m.duration, "starred": m.starred, "has_clip": (p / "clip.mp4").exists()}
+         "duration": m.duration, "starred": m.starred, "has_clip": (p / "clip.mp4").exists(),
+         "has_player": (p / "player.js").exists()}
         for m, p in library.scenes()
     ]
 
@@ -306,6 +386,19 @@ def scene_clip(scene_id: str) -> FileResponse:
 @app.get("/library/scenes/{scene_id}/thumb")
 def scene_thumb(scene_id: str) -> FileResponse:
     return _scene_file(scene_id, "thumb.png")
+
+
+@app.get("/library/scenes/{scene_id}/player")
+def library_scene_player(scene_id: str) -> HTMLResponse:
+    from reelgen.render.player_bundle import player_page
+
+    _scene_file(scene_id, "player.js")  # 404s unless the bundle exists
+    return HTMLResponse(player_page(scene_id.replace("-", " ")))
+
+
+@app.get("/library/scenes/{scene_id}/player.js")
+def library_scene_player_js(scene_id: str) -> FileResponse:
+    return _scene_file(scene_id, "player.js")
 
 
 # Three.js is already installed for Remotion; serve that copy so the UI works offline.

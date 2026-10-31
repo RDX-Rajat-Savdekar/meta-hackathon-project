@@ -86,7 +86,17 @@ def build_scene(llm: LLMClient, coder: Coder, spec: SceneSpec, audio: SegmentAud
                     library.add_lesson(spec.renderer, e)
                 library.save_scene(spec, code, out, topic=topic or title, role=segment.role if segment else "",
                                    narration=segment.narration if segment else "", attempts=attempt, source=out_dir.name)
-            emit("scene", index=i, renderer=r, status="done", attempt=attempt, max_attempts=attempts)
+            player = False
+            if spec.renderer.value == "three":
+                # Best-effort interactive preview bundle; never fails the scene.
+                from reelgen.render.player_bundle import build_player_bundle
+                seg_tsx = out_dir / f"seg{spec.index}.tsx"
+                if seg_tsx.exists():
+                    res = build_player_bundle(seg_tsx, spec.duration, out_dir / f"seg{spec.index}.player.js")
+                    player = res.ok
+                    if not res.ok:
+                        log.warning("seg%d: no interactive preview: %s", spec.index, res.error)
+            emit("scene", index=i, renderer=r, status="done", attempt=attempt, max_attempts=attempts, player=player)
             return RenderResult(index=spec.index, renderer=spec.renderer, ok=True, video=out, code=code, attempts=attempt)
         err = check.error
         errors.append(err)
