@@ -1,0 +1,60 @@
+{
+  "id": "20261030-remotion-724299",
+  "renderer": "remotion",
+  "topic": "how does the TCP handshake work",
+  "role": "mechanism",
+  "narration": "Say your laptop talks to a server. First, your laptop sends a SYN. Think knock knock. It says, I want to talk, starting at number forty two. Second, the server replies with SYN ACK. That means, heard you, I'm starting at one hundred, and I expect forty three next. Third, your laptop sends a final ACK. Got it, expect one oh one next. Now both sides proved they can send and receive, and locked their counters.",
+  "description": "Clean 2D side view, same dark background, laptop left-mid (accent=cyan) and server right-mid (accent2=magenta) larger. Straight fg=white horizontal wire between them at 45% height. Numbered envelope packets travel along wire: SYN, SYN-ACK, ACK. Above laptop a counter box shows MY SEQ with number 42; above server a counter box shows MY SEQ with number 100 and EXPECT. Counters start muted=grey and turn good=green with lock icon when acknowledged. Single focal packet moves at a time. Kinetic labels SYN, SYN ACK, ACK pop center above wire.",
+  "beats": [
+    {
+      "t": 0.48,
+      "word": "Say",
+      "action": "Clean side view settles: laptop left glows accent, server right glows accent2, empty wire between, empty counter boxes above each in muted."
+    },
+    {
+      "t": 2.76,
+      "word": "First,",
+      "action": "Laptop enlarges and glows brighter; label 'SYN' in accent pops above wire at laptop side."
+    },
+    {
+      "t": 4.42,
+      "word": "SYN.",
+      "action": "Accent envelope labeled SYN SEQ 42 travels laptop to server along wire."
+    },
+    {
+      "t": 8.78,
+      "word": "forty",
+      "action": "Counter above laptop flips from muted to show 42 in fg=white; label 'starting at 42' appears."
+    },
+    {
+      "t": 9.94,
+      "word": "Second,",
+      "action": "Server enlarges and glows brighter; label 'SYN ACK' in accent2 pops above wire at server side."
+    },
+    {
+      "t": 11.95,
+      "word": "ACK.",
+      "action": "Accent2 envelope labeled SYN SEQ 100 ACK 43 travels server to laptop along wire."
+    },
+    {
+      "t": 17.66,
+      "word": "Third,",
+      "action": "Laptop glows again; small accent3 envelope labeled ACK forms at laptop."
+    },
+    {
+      "t": 19.32,
+      "word": "ACK.",
+      "action": "Accent3 envelope labeled ACK 101 travels laptop to server; laptop counter shows EXPECT 101."
+    },
+    {
+      "t": 25.42,
+      "word": "locked",
+      "action": "Both counter boxes flash good=green with white lock icons; wire turns solid good=green showing locked connection."
+    }
+  ],
+  "duration": 26.47,
+  "attempts": 2,
+  "source": "how-does-the-tcp-handshake-work-7ab7d3",
+  "created": "2026-10-31T04:36:51+00:00",
+  "starred": false
+}

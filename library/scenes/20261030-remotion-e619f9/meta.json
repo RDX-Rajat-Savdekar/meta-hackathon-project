@@ -1,0 +1,40 @@
+{
+  "id": "20261030-remotion-e619f9",
+  "renderer": "remotion",
+  "topic": "how does the TCP handshake work",
+  "role": "payoff",
+  "narration": "Three tiny packets kill ghosts, sync counters, and make every later byte countable. No handshake, no reliable internet.",
+  "description": "Same laptop left-mid and server right-mid nodes, now joined by thick solid good=green tube at 45% height representing stable connection. Inside tube small fg=white numbered blocks 1,2,3 flow smoothly left to right in order. At tube entrance a translucent shield arc blocks a grey ghost packet with red outline bouncing off. Counter badges above nodes stay good=green locked. Final bold fg=white text 'No handshake, no reliable internet' centers at 60% height.",
+  "beats": [
+    {
+      "t": 0.39,
+      "word": "Three",
+      "action": "Thick good=green tube snaps into place between nodes replacing thin wire; locked counters remain green."
+    },
+    {
+      "t": 1.59,
+      "word": "ghosts,",
+      "action": "Grey ghost packet with red outline flies in from side and bounces off shield arc at tube entrance with impact ripple."
+    },
+    {
+      "t": 2.61,
+      "word": "counters,",
+      "action": "Both green counter badges pulse larger showing 43 and 101 synced."
+    },
+    {
+      "t": 4.41,
+      "word": "countable.",
+      "action": "Three numbered fg=white blocks 1-2-3 flow smoothly in order through green tube laptop to server."
+    },
+    {
+      "t": 5.49,
+      "word": "handshake,",
+      "action": "Flow freezes, bold text 'No handshake, no reliable internet' pops center with accent3=yellow underline on handshake."
+    }
+  ],
+  "duration": 7.421,
+  "attempts": 1,
+  "source": "how-does-the-tcp-handshake-work-7ab7d3",
+  "created": "2026-10-31T04:35:18+00:00",
+  "starred": false
+}

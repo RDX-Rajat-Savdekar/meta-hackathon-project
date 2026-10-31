@@ -202,6 +202,59 @@ const threadWrap = $("#threadWrap");
 const form = $("#form");
 const input = $("#input");
 const send = $("#send");
+const engineWrap = $("#engineWrap");
+const engineBtn = $("#engineBtn");
+const engineMenu = $("#engineMenu");
+const engineLabel = $("#engineLabel");
+let engineValue = "";
+function setEngine(v, name, logo) {
+  engineValue = v;
+  engineLabel.textContent = name;
+  const slot = $(".eng-logo", engineBtn);
+  const src = $(`.eng-menu > button[data-v="${CSS.escape(v)}"] .eng-logo`, engineWrap);
+  if (slot && src) slot.setAttribute("data-logo", logo);
+  for (const b of $$(".eng-menu > button", engineWrap)) b.setAttribute("aria-selected", String(b.dataset.v === v));
+  engineBtn.setAttribute("aria-label", `Animation engine: ${name}`);
+}
+function placeMenu(menu, anchor, dir) {
+  // Hoist to body + fixed positioning: escapes every ancestor clip/stacking context.
+  if (menu.parentElement !== document.body) document.body.appendChild(menu);
+  menu.hidden = false;
+  const r = anchor.getBoundingClientRect();
+  const w = Math.min(280, innerWidth - 16);
+  menu.style.minWidth = Math.min(248, innerWidth - 16) + "px";
+  menu.style.left = Math.max(8, Math.min(r.right - w, innerWidth - w - 8)) + "px";
+  menu.style.bottom = "auto";
+  if (dir === "up") menu.style.top = Math.max(8, r.top - menu.offsetHeight - 10) + "px";
+  else menu.style.top = Math.min(innerHeight - 16, r.bottom + 10) + "px";
+}
+function engineOpen(open) {
+  if (open) placeMenu(engineMenu, engineBtn, "up");
+  else engineMenu.hidden = true;
+  engineBtn.setAttribute("aria-expanded", String(open));
+}
+function repositionMenus() {
+  if (!engineMenu.hidden && engineBtn) placeMenu(engineMenu, engineBtn, "up");
+  const demoBtn = $("#demoBtn"), demoMenu = $("#demoMenu");
+  if (demoBtn && demoMenu && !demoMenu.hidden) placeMenu(demoMenu, demoBtn, "down");
+}
+addEventListener("resize", repositionMenus);
+threadWrap?.addEventListener("scroll", () => { engineOpen(false); const m = $("#demoMenu"); if (m) m.hidden = true; }, { passive: true });
+engineBtn?.addEventListener("click", (e) => { e.stopPropagation(); engineOpen(engineMenu.hidden); });
+engineMenu?.addEventListener("click", (e) => {
+  const b = e.target.closest("button[data-v]");
+  if (!b) return;
+  setEngine(b.dataset.v, b.dataset.name, b.dataset.logo);
+  const svg = $("svg", $(".eng-logo", engineBtn));
+  if (svg && b.dataset.logo) {
+    const menuSvg = $("svg", $(`.eng-logo[data-logo="${b.dataset.logo}"]`, b));
+    if (menuSvg) $(".eng-logo", engineBtn).innerHTML = menuSvg.outerHTML;
+  }
+  engineOpen(false);
+  input.focus();
+});
+document.addEventListener("click", (e) => { if (!e.target.closest("#engineWrap")) engineOpen(false); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") engineOpen(false); });
 const views = new Map(); // jobId → JobView
 let studioReady = false;
 
@@ -210,13 +263,13 @@ function openStudio(jobId) {
     studioReady = true;
     $("#studioChips").innerHTML = SUGGESTIONS.slice(0, 6).map((s) => `<button class="chip" type="button">${esc(s)}</button>`).join("");
     $("#studioChips").onclick = (e) => { const c = e.target.closest(".chip"); if (c) { input.value = c.textContent; autosize(); updateSend(); input.focus(); } };
-    for (const item of chat) mountJob(item.jobId, item.topic);
+    for (const item of chat) mountJob(item.jobId, item.topic, item.renderer);
   }
   if (jobId && !views.has(jobId)) {
     getJSON(`/jobs/${jobId}`).then((job) => {
-      chat.push({ jobId: job.id, topic: job.topic });
+      chat.push({ jobId: job.id, topic: job.topic, renderer: job.preferred_renderer || undefined });
       saveChat();
-      mountJob(job.id, job.topic);
+      mountJob(job.id, job.topic, job.preferred_renderer || undefined);
       views.get(job.id)?.el.scrollIntoView({ block: "start" });
     }).catch(() => {});
   } else if (jobId) {
@@ -228,17 +281,17 @@ function openStudio(jobId) {
 
 function scrollDown() { requestAnimationFrame(() => (threadWrap.scrollTop = threadWrap.scrollHeight)); }
 
-function addUser(text) {
+function addUser(text, renderer) {
   $("#studioEmpty")?.remove();
   const el = document.createElement("div");
   el.className = "msg user";
-  el.innerHTML = `<div class="bubble">${esc(text)}</div>`;
+  el.innerHTML = `<div class="bubble">${esc(text)}${renderer ? ` <span class="tag" data-r="${esc(renderer)}">${esc(RENDERER[renderer] || renderer)}</span>` : ""}</div>`;
   thread.append(el);
 }
 
-function mountJob(jobId, topic) {
+function mountJob(jobId, topic, renderer) {
   if (views.has(jobId)) return;
-  addUser(topic);
+  addUser(topic, renderer);
   const el = document.createElement("div");
   el.className = "msg bot";
   thread.append(el);
@@ -249,12 +302,15 @@ function mountJob(jobId, topic) {
 async function submit(topic) {
   topic = topic.trim();
   if (topic.length < 3) return;
+  const renderer = engineValue || undefined;
   input.value = ""; autosize(); updateSend();
   try {
-    const job = await getJSON("/jobs", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ topic }) });
-    chat.push({ jobId: job.id, topic });
+    const body = { topic };
+    if (renderer) body.renderer = renderer;
+    const job = await getJSON("/jobs", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+    chat.push({ jobId: job.id, topic, renderer });
     saveChat();
-    mountJob(job.id, topic);
+    mountJob(job.id, topic, renderer);
     history.replaceState(null, "", `#/job/${job.id}`);
   } catch (e) {
     addUser(topic);
@@ -287,10 +343,13 @@ $("#newChat").onclick = () => {
 // One request's live view, driven entirely by the server's event stream.
 // ---------------------------------------------------------------------
 class JobView {
-  constructor(el, id, topic) {
+  constructor(el, id, topic, opts = {}) {
     this.el = el;
     this.id = id;
     this.topic = topic;
+    this.demo = !!opts.demo;
+    this.urls = opts.urls || null;
+    this.demoTimers = [];
     this.s = { stages: {}, scenes: {}, plan: null, script: null, voice: null, done: null, failed: null, t0: null, t1: null, lastSeq: -1, running: true };
     el.innerHTML = `
       <div class="bubble">
@@ -307,10 +366,15 @@ class JobView {
     this.connect();
   }
 
+  sceneClipURL(i, v) { return this.urls ? this.urls.scene(i) : `/jobs/${this.id}/scenes/${i}/clip?v=${v}`; }
+  finalURL(seq) { return this.urls ? this.urls.final : `/jobs/${this.id}/video?v=${seq}#t=0.8`; }
+  finalDownloadURL() { return this.urls ? this.urls.final : `/jobs/${this.id}/video`; }
+
   connect() {
     this.es?.close();
     activeJobs.add(this.id); signal("start");
     this.s.running = true;
+    if (this.demo) return; // demo views are fed canned events, no EventSource
     const es = new EventSource(`/jobs/${this.id}/events?after=${this.s.lastSeq}`);
     this.es = es;
     es.onmessage = (m) => {
@@ -334,7 +398,7 @@ class JobView {
     };
   }
 
-  close() { this.es?.close(); clearInterval(this.tick); activeJobs.delete(this.id); }
+  close() { this.es?.close(); clearInterval(this.tick); activeJobs.delete(this.id); for (const t of this.demoTimers) clearTimeout(t); this.demoTimers = []; }
 
   sceneLabel(i) {
     const p = this.s.plan?.find((x) => x.index === i);
@@ -470,12 +534,13 @@ class JobView {
         const cards = Object.values(s.scenes).filter((x) => x.status === "fallback").length;
         fin.innerHTML = `
           <div class="final">
-            <video src="/jobs/${this.id}/video?v=${s.done.seq}#t=0.8" controls playsinline preload="metadata"></video>
+            <video src="${esc(this.finalURL(s.done.seq))}" controls playsinline preload="metadata"></video>
             <div class="side">
               <h3>${esc(s.script?.title || "Your reel")}</h3>
               <p>${s.done.duration}s · animated with ${esc(engines || "code")}${cards ? ` · ${cards} scene${cards > 1 ? "s" : ""} used a title card — redo ${cards > 1 ? "them" : "it"} above` : ""}.</p>
+              ${this.demo ? `<p style="color:var(--accent3)">Demo preview — clips from the library, no pipeline run.</p>` : ""}
               <div class="row">
-                <a class="cta small" href="/jobs/${this.id}/video" download="reel-${this.id}.mp4">Download MP4</a>
+                <a class="cta small" href="${esc(this.finalDownloadURL())}" download="reel-${this.id}.mp4">Download MP4</a>
                 <button class="btn" type="button" data-share>Copy link</button>
               </div>
               <p>Not quite right? Use <b>Redo scene</b> on any scene above — add a note or switch its engine.</p>
@@ -496,7 +561,10 @@ class JobView {
               ${hasScenes ? `<span style="color:var(--muted);font-size:13px;align-self:center">or redo a single scene above</span>` : ""}
             </div>
           </div>`;
-        $("[data-again]", fin).onclick = () => submit(this.topic);
+        $("[data-again]", fin).onclick = () => {
+        if (this.demo) { input.value = this.topic; autosize(); updateSend(); input.focus(); form.scrollIntoView({ behavior: "smooth", block: "end" }); }
+        else submit(this.topic);
+      };
       } else fin.innerHTML = "";
     }
   }
@@ -535,7 +603,7 @@ class JobView {
     };
     const [statusText, statusCls] = STATUS[sc.status] || [sc.status, ""];
     const preview = sc.v != null
-      ? `<video src="/jobs/${this.id}/scenes/${i}/clip?v=${sc.v}" muted loop autoplay playsinline></video>
+      ? `<video src="${esc(this.sceneClipURL(i, sc.v))}" muted loop autoplay playsinline></video>
          ${sc.status === "fallback" ? `<span class="tag badge" style="color:var(--accent3)">title card</span>` : ""}`
       : working ? `<div class="spinner" aria-hidden="true"></div>` : `<div class="wait">${sc.status === "queued" ? "Queued" : ""}</div>`;
 
@@ -587,6 +655,166 @@ class JobView {
         e.target.querySelector("button[type=submit]").disabled = false;
       }
     });
+  }
+}
+
+// =====================================================================
+// UI demo — canned JobViews for previewing chat states without a pipeline run.
+// =====================================================================
+const demoBtn = $("#demoBtn");
+const demoMenu = $("#demoMenu");
+demoBtn?.addEventListener("click", (e) => {
+  e.stopPropagation();
+  if (demoMenu.hidden) placeMenu(demoMenu, demoBtn, "down");
+  else demoMenu.hidden = true;
+  demoBtn.setAttribute("aria-expanded", String(!demoMenu.hidden));
+});
+document.addEventListener("click", (e) => { if (demoMenu && !e.target.closest("#demoMenu") && !e.target.closest("#demoBtn")) demoMenu.hidden = true; });
+demoMenu?.addEventListener("click", (e) => {
+  const b = e.target.closest("button[data-demo]");
+  if (!b) return;
+  demoMenu.hidden = true;
+  demoBtn.setAttribute("aria-expanded", "false");
+  runDemo(b.dataset.demo);
+});
+
+async function demoClips(n) {
+  const all = await getJSON("/library/scenes");
+  const clips = all.filter((s) => s.has_clip);
+  if (!clips.length) throw new Error("No rendered clips in the library yet — run a reel first.");
+  return Array.from({ length: n }, (_, i) => clips[i % clips.length]);
+}
+
+function mountDemoView(topic, urls) {
+  $("#studioEmpty")?.remove();
+  const el = document.createElement("div");
+  el.className = "msg bot";
+  thread.append(el);
+  const id = `demo-${Date.now().toString(36)}`;
+  const view = new JobView(el, id, `${topic} (demo)`, { demo: true, urls });
+  views.set(id, view);
+  el.scrollIntoView({ block: "start" });
+  return view;
+}
+
+function feedDemo(view, steps) {
+  let seq = 0;
+  const clearEnd = () => {
+    view.s.running = false;
+    activeJobs.delete(view.id);
+    signal(view.s.failed ? "error" : "done");
+    view.render();
+  };
+  steps.forEach(([ms, build], k) => {
+    view.demoTimers.push(setTimeout(() => {
+      const ev = build(seq++, Date.now() / 1000);
+      if (ev === null) { clearEnd(); return; }
+      view.apply(ev);
+      if (k === steps.length - 1 && ev.type !== "failed") clearEnd();
+      if (ev.type === "failed") clearEnd();
+    }, ms));
+  });
+}
+
+const demoScript = {
+  title: "Three knocks: the TCP handshake",
+  segments: [
+    { role: "hook", narration: "The internet starts every chat with three knocks." },
+    { role: "setup", narration: "Two machines must agree on the rules before a single byte flows." },
+    { role: "mechanism", narration: "SYN, SYN-ACK, ACK — each knock answered in turn." },
+    { role: "payoff", narration: "Three packets, and strangers become a connection." },
+  ],
+};
+
+async function runDemo(kind) {
+  if ($("#studio").hidden) { location.hash = "#/create"; await new Promise((r) => setTimeout(r, 400)); }
+  const topic = "How does the TCP handshake work?";
+  try {
+    if (kind === "happy") {
+      const picks = await demoClips(4);
+      const urls = { scene: (i) => `/library/scenes/${picks[i].id}/clip`, final: `/library/scenes/${picks[0].id}/clip` };
+      const view = mountDemoView(topic, urls);
+      const plan = picks.map((p, i) => ({ index: i, role: p.role || ["hook", "setup", "mechanism", "payoff"][i], renderer: p.renderer, duration: 3.0, description: (p.description || "").slice(0, 140) }));
+      const steps = [
+        [100, (q, t) => ({ type: "queued", t, seq: q, topic })],
+        [500, (q, t) => ({ type: "stage", t, seq: q, stage: "script", label: "Writing the script" })],
+        [1200, (q, t) => ({ type: "script", t, seq: q, script: demoScript })],
+        [1600, (q, t) => ({ type: "stage", t, seq: q, stage: "voice", label: "Recording the voiceover" })],
+        [2400, (q, t) => ({ type: "voice", t, seq: q, duration: 41.0, provider: "gemini" })],
+        [2800, (q, t) => ({ type: "stage", t, seq: q, stage: "plan", label: "Directing the scenes" })],
+        [3400, (q, t) => ({ type: "plan", t, seq: q, scenes: plan })],
+        [3800, (q, t) => ({ type: "stage", t, seq: q, stage: "render", label: "Animating scenes" })],
+      ];
+      plan.forEach((p, i) => {
+        const b = 4200 + i * 1600;
+        steps.push([b, (q, t) => ({ type: "scene", t, seq: q, index: i, renderer: p.renderer, status: "coding", attempt: 1, max_attempts: 3 })]);
+        steps.push([b + 500, (q, t) => ({ type: "scene", t, seq: q, index: i, renderer: p.renderer, status: "rendering", attempt: 1, max_attempts: 3 })]);
+        steps.push([b + 1100, (q, t) => ({ type: "scene", t, seq: q, index: i, renderer: p.renderer, status: "done", attempt: 1, max_attempts: 3 })]);
+      });
+      steps.push([4200 + plan.length * 1600 + 400, (q, t) => ({ type: "done", t, seq: q, duration: 41.0 })]);
+      feedDemo(view, steps);
+    } else if (kind === "live") {
+      const picks = await demoClips(2);
+      const urls = { scene: (i) => `/library/scenes/${picks[i].id}/clip`, final: `/library/scenes/${picks[0].id}/clip` };
+      const view = mountDemoView(topic, urls);
+      const r0 = picks[0].renderer, r1 = picks[1].renderer;
+      feedDemo(view, [
+        [100, (q, t) => ({ type: "queued", t, seq: q, topic })],
+        [500, (q, t) => ({ type: "script", t, seq: q, script: demoScript })],
+        [900, (q, t) => ({ type: "voice", t, seq: q, duration: 12.4, provider: "gemini" })],
+        [1300, (q, t) => ({ type: "plan", t, seq: q, scenes: [
+          { index: 0, role: picks[0].role || "hook", renderer: r0, duration: 3.0, description: "" },
+          { index: 1, role: picks[1].role || "setup", renderer: r1, duration: 3.0, description: "" }] })],
+        [1700, (q, t) => ({ type: "scene", t, seq: q, index: 0, renderer: r0, status: "rendering", attempt: 1, max_attempts: 3 })],
+        [2600, (q, t) => ({ type: "scene", t, seq: q, index: 0, renderer: r0, status: "done", attempt: 1, max_attempts: 3 })],
+        [3000, (q, t) => ({ type: "scene", t, seq: q, index: 1, renderer: r1, status: "coding", attempt: 1, max_attempts: 3 })],
+        [3800, (q, t) => ({ type: "scene", t, seq: q, index: 1, renderer: r1, status: "error", attempt: 1, max_attempts: 3, stage: "rendering", error: "TypeError: x is undefined", detail: "Demo error — watch it recover." })],
+        [4600, (q, t) => ({ type: "scene", t, seq: q, index: 1, renderer: r1, status: "fixing", attempt: 2, max_attempts: 3 })],
+        [5600, (q, t) => ({ type: "scene", t, seq: q, index: 1, renderer: r1, status: "rendering", attempt: 2, max_attempts: 3 })],
+        [6800, (q, t) => ({ type: "scene", t, seq: q, index: 1, renderer: r1, status: "done", attempt: 2, max_attempts: 3 })],
+      ]);
+    } else if (kind === "fallback") {
+      const picks = await demoClips(2);
+      const urls = { scene: (i) => `/library/scenes/${picks[i].id}/clip`, final: `/library/scenes/${picks[0].id}/clip` };
+      const view = mountDemoView(topic, urls);
+      const r0 = picks[0].renderer, r1 = picks[1].renderer;
+      feedDemo(view, [
+        [100, (q, t) => ({ type: "queued", t, seq: q, topic })],
+        [500, (q, t) => ({ type: "script", t, seq: q, script: demoScript })],
+        [900, (q, t) => ({ type: "voice", t, seq: q, duration: 12.4, provider: "gemini" })],
+        [1300, (q, t) => ({ type: "plan", t, seq: q, scenes: [
+          { index: 0, role: picks[0].role || "hook", renderer: r0, duration: 3.0, description: "" },
+          { index: 1, role: picks[1].role || "setup", renderer: r1, duration: 3.0, description: "" }] })],
+        [1700, (q, t) => ({ type: "scene", t, seq: q, index: 0, renderer: r0, status: "done", attempt: 1, max_attempts: 3 })],
+        [2100, (q, t) => ({ type: "scene", t, seq: q, index: 1, renderer: r1, status: "error", attempt: 1, max_attempts: 3, stage: "coding", error: "Banned: useFrame from @react-three/fiber", detail: "Demo error." })],
+        [2800, (q, t) => ({ type: "scene", t, seq: q, index: 1, renderer: r1, status: "error", attempt: 2, max_attempts: 3, stage: "rendering", error: "Render timed out", detail: "Demo error." })],
+        [3500, (q, t) => ({ type: "scene", t, seq: q, index: 1, renderer: r1, status: "fallback_rendering", attempt: 3, max_attempts: 3 })],
+        [4300, (q, t) => ({ type: "scene", t, seq: q, index: 1, renderer: r1, status: "fallback", attempt: 3, max_attempts: 3 })],
+        [4900, (q, t) => ({ type: "done", t, seq: q, duration: 12.4 })],
+      ]);
+    } else if (kind === "voice") {
+      const view = mountDemoView(topic, { scene: () => "", final: "" });
+      feedDemo(view, [
+        [100, (q, t) => ({ type: "queued", t, seq: q, topic })],
+        [500, (q, t) => ({ type: "script", t, seq: q, script: demoScript })],
+        [1200, (q, t) => ({ type: "voice", t, seq: q, duration: 9.8, provider: "macos", note: "All Gemini keys are out of quota; used the Samantha voice instead." })],
+        [1800, (q, t) => ({ type: "plan", t, seq: q, scenes: [{ index: 0, role: "hook", renderer: "remotion", duration: 3.0, description: "" }] })],
+      ]);
+    } else if (kind === "failed") {
+      const view = mountDemoView(topic, { scene: () => "", final: "" });
+      feedDemo(view, [
+        [100, (q, t) => ({ type: "queued", t, seq: q, topic })],
+        [600, (q, t) => ({ type: "stage", t, seq: q, stage: "voice", label: "Recording the voiceover" })],
+        [1600, (q, t) => ({ type: "failed", t, seq: q, stage: "voice", error: "429 RESOURCE_EXHAUSTED — Gemini daily quota used up", detail: "Demo error. Keys rotate automatically; try again after reset." })],
+      ]);
+    }
+  } catch (e) {
+    addUser(topic);
+    const el = document.createElement("div");
+    el.className = "msg bot";
+    el.innerHTML = `<div class="bubble"><div class="failbox"><strong>Demo unavailable</strong><p>${esc(e.message)}</p></div></div>`;
+    thread.append(el);
+    scrollDown();
   }
 }
 

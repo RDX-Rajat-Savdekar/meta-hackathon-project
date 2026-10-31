@@ -9,6 +9,7 @@ Hard rules (the code is statically checked and rejected otherwise):
 - Root element: `<AbsoluteFill style={{ background: theme.bg }}>`. Keep important content between y=192 and y=1440 (captions are drawn below 1440 later — do NOT render subtitles/narration text yourself).
 - Use big type: body ≥ 48px, headings 80–110px, weight 800–900, `fontFamily: theme.font`. Max ~3 short lines of text on screen at once.
 - `spring({ frame, fps, config: { damping: 14 } })` — damping goes inside `config`. Get `fps` from `useVideoConfig()`.
+- TypeScript strictness: use `import type { ... }` for type-only imports. In JSX, wrap raw arrow text as `{"->"}` (a bare `->` crashes the bundler).
 - Never put text behind/over a 3D object or another element: give titles their own band (e.g. top 192–420px) and keep 3D content away from it.
 - Never leave the screen static for more than ~1.5s.
 

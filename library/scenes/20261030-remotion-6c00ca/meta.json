@@ -1,0 +1,40 @@
+{
+  "id": "20261030-remotion-6c00ca",
+  "renderer": "remotion",
+  "topic": "how does the TCP handshake work",
+  "role": "payoff",
+  "narration": "Three tiny messages, zero data. But now they've got numbering, so nothing ever gets lost.",
+  "description": "Vertical 1080x1920, same dark stage payoff. Center horizontal tube at y-50% from x-15% to x-85% transforms from thin dashed muted=grey line to thick solid glowing tube accent=cyan with outer glow. Above tube at y-35% three accent=cyan dots plus fg=white ZERO DATA badge. Inside tube small fg=white numbered blocks 101-105 with accent3=yellow numbers flow smoothly left-to-right in perfect order. Final good=green check badge at y-62%. All key visuals y-30% to y-65%, clear of top 10% and bottom 25%. Motion: dashed to solid morph with glow sweep, blocks flow linear, check springs.",
+  "beats": [
+    {
+      "t": 0.33,
+      "word": "Three",
+      "action": "three accent=cyan dots pop in above center representing three messages"
+    },
+    {
+      "t": 1.65,
+      "word": "zero",
+      "action": "fg=white pill ZERO DATA stamps in below dots"
+    },
+    {
+      "t": 2.91,
+      "word": "now",
+      "action": "dashed line morphs to solid glowing accent=cyan tube with light sweep left-to-right"
+    },
+    {
+      "t": 3.45,
+      "word": "numbering,",
+      "action": "numbered blocks 101 102 103 104 flow smoothly through tube in order"
+    },
+    {
+      "t": 4.21,
+      "word": "nothing",
+      "action": "good=green check badge and NOTHING LOST text pop below tube as flow continues perfect"
+    }
+  ],
+  "duration": 5.661,
+  "attempts": 1,
+  "source": "how-does-the-tcp-handshake-work-97734a",
+  "created": "2026-10-31T04:39:46+00:00",
+  "starred": false
+}

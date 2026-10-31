@@ -6,7 +6,7 @@
   <title>reelgen — any question, a 60-second reel</title>
   <meta name="description" content="Ask anything about science or computer science and get a narrated, animated 60-second explainer reel." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><defs><linearGradient id='g'><stop offset='0' stop-color='%234CC9F0'/><stop offset='1' stop-color='%23F72585'/></linearGradient></defs><rect width='32' height='32' rx='9' fill='url(%23g)'/><path d='M12 9v14l11-7z' fill='%23050608'/></svg>" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=2" />
 </head>
 <body>
   <canvas id="bg" aria-hidden="true"></canvas>
@@ -124,6 +124,14 @@
         </div>
         <button class="btn btn-3d" type="button" data-toggle3d aria-pressed="false" title="Toggle the Three.js background"><span class="dot" aria-hidden="true"></span>3D</button>
         <button class="btn" type="button" id="newChat">New chat</button>
+        <button class="btn" type="button" id="demoBtn" aria-haspopup="listbox" aria-expanded="false">Demo UI</button>
+        <div class="eng-menu" id="demoMenu" role="listbox" aria-label="Interface demos" hidden>
+          <button type="button" data-demo="happy"><span class="eng-name">Full run<small>Script → scenes → ready reel</small></span></button>
+          <button type="button" data-demo="live"><span class="eng-name">Mid-run retry<small>Error, fix, render</small></span></button>
+          <button type="button" data-demo="fallback"><span class="eng-name">Title card + redo<small>Failed scene recovery</small></span></button>
+          <button type="button" data-demo="voice"><span class="eng-name">Fallback voice<small>macOS notice path</small></span></button>
+          <button type="button" data-demo="failed"><span class="eng-name">Failed run<small>Error box + start over</small></span></button>
+        </div>
       </div>
     </nav>
 
@@ -141,6 +149,19 @@
       <form id="form">
         <label class="sr-only" for="input">What do you want to learn?</label>
         <textarea id="input" rows="1" placeholder="What should we explain?" autocomplete="off"></textarea>
+        <div class="engine" id="engineWrap">
+          <button class="engine-btn" id="engineBtn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Animation engine">
+            <span class="eng-logo" data-logo="auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.7 4.6L18 9.3l-4.3 1.7L12 15.6l-1.7-4.6L6 9.3l4.3-1.7z"/><path d="M18.5 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg></span>
+            <span class="eng-label" id="engineLabel">Auto</span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="eng-menu" id="engineMenu" role="listbox" aria-label="Animation engine" hidden>
+            <button type="button" role="option" aria-selected="true" data-v="" data-name="Auto" data-logo="auto"><span class="eng-logo" data-logo="auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.7 4.6L18 9.3l-4.3 1.7L12 15.6l-1.7-4.6L6 9.3l4.3-1.7z"/><path d="M18.5 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg></span><span class="eng-name">Auto engine<small>Director picks per scene</small></span><span class="tick" aria-hidden="true">✓</span></button>
+            <button type="button" role="option" aria-selected="false" data-v="manim" data-name="Manim" data-logo="manim"><span class="eng-logo" data-logo="manim"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="draw" d="M17 5H7l6 7-6 7h10"/></svg></span><span class="eng-name">Manim<small>Math-grade animation</small></span><span class="tick" aria-hidden="true">✓</span></button>
+            <button type="button" role="option" aria-selected="false" data-v="remotion" data-name="2D motion" data-logo="motion"><span class="eng-logo" data-logo="motion"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="4" y="9" width="3" height="6" rx="1"/><rect x="9" y="5" width="3" height="14" rx="1"/><rect x="14" y="10" width="3" height="5" rx="1"/><rect x="19" y="7" width="3" height="10" rx="1" transform="translate(-2 0)"/></svg></span><span class="eng-name">2D motion<small>Kinetic type &amp; diagrams</small></span><span class="tick" aria-hidden="true">✓</span></button>
+            <button type="button" role="option" aria-selected="false" data-v="three" data-name="3D" data-logo="three"><span class="eng-logo" data-logo="three"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="spin"><path d="M12 2.5l8 4.6v9.2l-8 4.6-8-4.6V7.1z"/><path d="M12 11.7L4.2 7.2M12 11.7l7.8-4.5M12 11.7v9"/></g></svg></span><span class="eng-name">3D<small>Depth with Three.js</small></span><span class="tick" aria-hidden="true">✓</span></button>
+          </div>
+        </div>
         <button class="send" id="send" type="submit" aria-label="Make a reel" disabled>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </button>
@@ -161,6 +182,6 @@
   </dialog>
 
   <script type="module" src="bg3d.js"></script>
-  <script type="module" src="app.js"></script>
+  <script type="module" src="app.js?v=2"></script>
 </body>
 </html>

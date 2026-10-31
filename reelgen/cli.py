@@ -18,7 +18,8 @@ def _slug(topic: str) -> str:
 
 
 @app.command()
-def make(topic: str, out: Path = typer.Option(None, help="Job directory (default outputs/<slug>)")):
+def make(topic: str, out: Path = typer.Option(None, help="Job directory (default outputs/<slug>)"),
+         renderer: str = typer.Option(None, help="Force one engine for every scene: manim, remotion or three")):
     """Topic → finished 1080x1920 reel."""
     from reelgen.graph import run
 
@@ -36,7 +37,7 @@ def make(topic: str, out: Path = typer.Option(None, help="Job directory (default
             return
         typer.echo(f"[{time.time() - t0:6.1f}s] {msg}")
 
-    final = run(topic, job, emit=emit)
+    final = run(topic, job, emit=emit, preferred_renderer=renderer)
     typer.echo(f"\n✓ {final}")
 
 

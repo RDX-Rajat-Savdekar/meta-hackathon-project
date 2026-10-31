@@ -1,0 +1,40 @@
+{
+  "id": "20261030-remotion-438dac",
+  "renderer": "remotion",
+  "topic": "how does the TCP handshake work",
+  "role": "hook",
+  "narration": "The internet starts every chat with three knocks.",
+  "description": "Vertical 1080x1920 dark black background. Center-safe zone holds two glowing nodes at mid-height: left laptop icon (accent=cyan glow circle with white laptop glyph, label LAPTOP in fg=white below) at 25% width, 40% height, right server stack icon (accent2=magenta glow circle with white server glyph, label SERVER below) at 75% width, 40% height, joined by faint muted=grey horizontal line. Large bold fg=white kinetic title '3 KNOCKS' centered at 50% width, 55% height on frame 0. Three glowing pulses (accent, accent2, accent3=yellow) travel along the line between nodes in rhythm.",
+  "beats": [
+    {
+      "t": 0.0,
+      "word": "The",
+      "action": "Frame opens on bold '3 KNOCKS' title center and both laptop and server nodes glowing; faint connecting line visible."
+    },
+    {
+      "t": 0.68,
+      "word": "starts",
+      "action": "Title scales up slightly; connecting line brightens from muted to fg=white."
+    },
+    {
+      "t": 1.6,
+      "word": "chat",
+      "action": "First accent=cyan pulse launches laptop to server along line, laptop node flashes larger."
+    },
+    {
+      "t": 2.26,
+      "word": "three",
+      "action": "Second accent2=magenta pulse launches server to laptop, server node flashes; first pulse arrives with knock ripple."
+    },
+    {
+      "t": 2.54,
+      "word": "knocks",
+      "action": "Third accent3=yellow pulse launches laptop to server, all three pulses visible in sequence with knock ripples on arrival."
+    }
+  ],
+  "duration": 3.11,
+  "attempts": 1,
+  "source": "how-does-the-tcp-handshake-work-7ab7d3",
+  "created": "2026-10-31T04:35:10+00:00",
+  "starred": false
+}

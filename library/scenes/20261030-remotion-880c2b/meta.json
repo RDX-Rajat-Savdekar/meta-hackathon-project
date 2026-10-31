@@ -1,0 +1,50 @@
+{
+  "id": "20261030-remotion-880c2b",
+  "renderer": "remotion",
+  "topic": "how does the TCP handshake work",
+  "role": "setup",
+  "narration": "Before computers send data, they need to agree they're both ready and awake. But packets can get lost, duplicated, or arrive late. So how do they start safely?",
+  "description": "Same dark background and same laptop left-mid and server right-mid nodes from hook for continuity, now zoomed out slightly. Center dotted muted=grey path connects them with slight wobble animation. Small rectangular data packets (fg=white) move along path. Red-tinted duplicate and out-of-order copies appear on cue. Large fg=white question text 'start safely?' fades in center-bottom of safe area at end. No elements in top 10% or bottom 25%.",
+  "beats": [
+    {
+      "t": 0.33,
+      "word": "Before",
+      "action": "Camera pulls back revealing full dotted path between laptop and server nodes, both idle cyan and magenta."
+    },
+    {
+      "t": 0.95,
+      "word": "send",
+      "action": "White data packet forms above laptop and starts moving toward server along path."
+    },
+    {
+      "t": 3.19,
+      "word": "ready",
+      "action": "Laptop and server nodes pulse awake with soft fg=white halos; READY checkmarks blink above each."
+    },
+    {
+      "t": 4.97,
+      "word": "packets",
+      "action": "Path turns shaky wavy; three white packets in flight along dotted line."
+    },
+    {
+      "t": 5.79,
+      "word": "lost",
+      "action": "Leading packet fades to transparent mid-flight and disappears."
+    },
+    {
+      "t": 6.43,
+      "word": "duplicated,",
+      "action": "Trailing packet splits into two overlapping red-tinted copies wobbling side by side."
+    },
+    {
+      "t": 7.61,
+      "word": "late.",
+      "action": "A red packet arrives out of order jumping ahead, flashing red border to mark late arrival."
+    }
+  ],
+  "duration": 10.09,
+  "attempts": 1,
+  "source": "how-does-the-tcp-handshake-work-7ab7d3",
+  "created": "2026-10-31T04:35:12+00:00",
+  "starred": false
+}

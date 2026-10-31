@@ -33,7 +33,7 @@ def sse(client, url):
     return events
 
 
-def fake_run(topic, job_dir, emit):
+def fake_run(topic, job_dir, emit, preferred_renderer=None):
     emit("stage", stage="script", label="Writing the script")
     emit("plan", scenes=[{"index": 0, "role": "hook", "renderer": "three", "duration": 3.0, "description": "d"}])
     emit("scene", index=0, renderer="three", status="error", attempt=1, max_attempts=3, stage="rendering",
@@ -61,7 +61,7 @@ def test_job_streams_events_then_ends(client, monkeypatch):
 
 
 def test_failure_is_reported_as_event(client, monkeypatch):
-    def boom(topic, job_dir, emit):
+    def boom(topic, job_dir, emit, preferred_renderer=None):
         emit("stage", stage="voice", label="Recording the voiceover")
         raise RuntimeError("429 RESOURCE_EXHAUSTED quota")
 

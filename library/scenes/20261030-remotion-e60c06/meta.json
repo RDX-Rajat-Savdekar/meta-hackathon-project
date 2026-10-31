@@ -1,0 +1,45 @@
+{
+  "id": "20261030-remotion-e60c06",
+  "renderer": "remotion",
+  "topic": "how does the TCP handshake work",
+  "role": "setup",
+  "narration": "The internet can lose packets. So before sending data, your laptop and a server must agree they're both ready. That's what the handshake solves.",
+  "description": "Vertical 1080x1920, same dark style for continuity. Left laptop illustration accent=cyan at x-20% y-45%, right server rack accent2=magenta at x-80% y-45%. Thin horizontal path at y-52% between them. Three small accent=cyan cubes travel laptop to server along path. One vanishes mid-flight with flash. Large fg=white question mark at x-50% y-38% pops over broken stream. Bottom-center dashed pill label. All focal content y-30% to y-65%, clear of top 10% and bottom 25%. Motion: cubes move linear left-to-right, middle cube scales to zero, flash expands, question mark springs in.",
+  "beats": [
+    {
+      "t": 0.47,
+      "word": "The",
+      "action": "three accent=cyan packet cubes spawn at laptop and travel laptop to server along middle line"
+    },
+    {
+      "t": 1.09,
+      "word": "lose",
+      "action": "middle cube vanishes at x-50% with accent2=magenta red flash expanding and fading"
+    },
+    {
+      "t": 2.39,
+      "word": "before",
+      "action": "fg=white question mark springs in above gap and remaining cubes stall"
+    },
+    {
+      "t": 3.89,
+      "word": "laptop",
+      "action": "left laptop node glows accent=cyan and lifts up 20px with label LAPTOP highlighted"
+    },
+    {
+      "t": 4.59,
+      "word": "server",
+      "action": "right server rack glows accent2=magenta and lifts with label SERVER highlighted"
+    },
+    {
+      "t": 7.31,
+      "word": "handshake",
+      "action": "dashed accent=cyan line reconnects nodes with pill label NEED HANDSHAKE? in fg=white at y-62%"
+    }
+  ],
+  "duration": 8.36,
+  "attempts": 1,
+  "source": "how-does-the-tcp-handshake-work-97734a",
+  "created": "2026-10-31T04:39:42+00:00",
+  "starred": false
+}

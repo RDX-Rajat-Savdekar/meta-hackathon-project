@@ -8,4 +8,5 @@ Rules:
   3. mechanism (≈25–40s, 60–110 words): HOW it works, step by step, concrete and visual. Use a tiny concrete example (small numbers, 3–6 items, two machines…).
   4. payoff (≈5–8s, 12–25 words): the "aha" — why it matters or the elegant consequence. End strong, no call-to-action.
 - Spoken English for text-to-speech: short sentences, contractions, no emojis, no markdown, no code syntax, no URLs. Spell out symbols ("O of n log n", "less than").
+- TTS pronunciation (a calm narrator reads this aloud): write "RED-iss" for Redis, "post-gres" for PostgreSQL; "cache" reads as "cash" (fine). Spell out acronyms on first use ("L R U cache", "S Q L"). No "let's dive in", no hype, no call-to-action.
 - visual_directive: 1–2 sentences describing what the viewer SEES during that segment (objects, motion, what gets highlighted). Visuals must be drawable as clean motion graphics or simple 3D — no live footage, no faces.

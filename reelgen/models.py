@@ -91,6 +91,7 @@ class JobStatus(str, Enum):
 class JobState(BaseModel):
     id: str
     topic: str
+    preferred_renderer: Renderer | None = None
     status: JobStatus = JobStatus.queued
     stage: str = ""
     log: list[str] = []  # every stage message, in order (the UI rebuilds per-segment progress from it)

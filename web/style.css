@@ -308,6 +308,59 @@ footer { color: var(--muted); font-size: 13px; text-align: center; padding: 28px
 .composer form:focus-within { border-color: rgba(212,255,58,0.55); }
 .composer textarea { flex: 1; resize: none; border: 0; outline: 0; background: transparent; color: var(--fg); font: 16px/1.45 var(--font); max-height: 160px; padding: 9px 0; }
 .composer textarea::placeholder { color: var(--muted); }
+.composer .engine { position: relative; flex: none; align-self: center; }
+.engine-btn {
+  display: flex; align-items: center; gap: 7px; border-radius: 999px; border: 1px solid var(--line-strong);
+  background: rgba(0,0,0,0.35); color: var(--muted); font: 12.5px/1 var(--font); padding: 7px 11px;
+  cursor: pointer; outline: 0; white-space: nowrap;
+}
+.engine-btn:hover, .engine-btn[aria-expanded="true"] { color: var(--fg); border-color: rgba(212,255,58,0.55); }
+.engine-btn .chev { width: 13px; height: 13px; transition: transform 0.18s ease; }
+.engine-btn[aria-expanded="true"] .chev { transform: rotate(180deg); }
+.eng-logo { display: inline-grid; place-items: center; width: 20px; height: 20px; flex: none; }
+.eng-logo svg { width: 20px; height: 20px; overflow: visible; }
+.eng-menu {
+  position: fixed; z-index: 100; min-width: 248px; max-width: calc(100vw - 16px);
+  background: var(--panel-solid); border: 1px solid var(--line-strong); border-radius: 16px;
+  padding: 6px; box-shadow: 0 18px 50px rgba(0,0,0,0.55);
+}
+.eng-menu[hidden] { display: none; }
+.eng-menu > button {
+  display: flex; align-items: center; gap: 11px; width: 100%; text-align: left;
+  background: transparent; border: 0; border-radius: 11px; padding: 9px 10px; cursor: pointer;
+  color: var(--fg); font: 13.5px/1.3 var(--font);
+}
+.eng-menu > button:hover, .eng-menu > button:focus-visible { background: rgba(255,255,255,0.06); outline: 0; }
+.eng-menu .eng-logo { width: 26px; height: 26px; }
+.eng-menu .eng-logo svg { width: 26px; height: 26px; }
+.eng-name { flex: 1; display: grid; gap: 1px; }
+.eng-name small { color: var(--muted); font-size: 11.5px; }
+.eng-menu .tick { visibility: hidden; color: var(--cta); font-weight: 800; width: 16px; }
+.eng-menu > button[aria-selected="true"] .tick { visibility: visible; }
+/* Hover choreography — each logo performs on row hover */
+.eng-menu > button:hover .eng-logo[data-logo="manim"] .draw,
+.engine-btn:hover .eng-logo[data-logo="manim"] .draw { stroke-dasharray: 60; stroke-dashoffset: 60; animation: eng-draw 0.7s ease forwards; }
+@keyframes eng-draw { to { stroke-dashoffset: 0; } }
+.eng-menu > button:hover .eng-logo[data-logo="motion"] rect,
+.engine-btn:hover .eng-logo[data-logo="motion"] rect { transform-box: fill-box; transform-origin: center bottom; animation: eng-eq 0.8s ease-in-out infinite; }
+.eng-menu > button:hover .eng-logo[data-logo="motion"] rect:nth-child(2),
+.engine-btn:hover .eng-logo[data-logo="motion"] rect:nth-child(2) { animation-delay: 0.12s; }
+.eng-menu > button:hover .eng-logo[data-logo="motion"] rect:nth-child(3),
+.engine-btn:hover .eng-logo[data-logo="motion"] rect:nth-child(3) { animation-delay: 0.24s; }
+.eng-menu > button:hover .eng-logo[data-logo="motion"] rect:nth-child(4),
+.engine-btn:hover .eng-logo[data-logo="motion"] rect:nth-child(4) { animation-delay: 0.36s; }
+@keyframes eng-eq { 0%, 100% { transform: scaleY(0.55); } 50% { transform: scaleY(1.15); } }
+.eng-menu > button:hover .eng-logo[data-logo="three"] .spin,
+.engine-btn:hover .eng-logo[data-logo="three"] .spin { transform-box: fill-box; transform-origin: center; animation: eng-spin 1.6s linear infinite; }
+@keyframes eng-spin { to { transform: rotate(360deg); } }
+.eng-menu > button:hover .eng-logo[data-logo="auto"] svg,
+.engine-btn:hover .eng-logo[data-logo="auto"] svg { animation: eng-twinkle 0.9s ease-in-out infinite; }
+@keyframes eng-twinkle { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.55; transform: scale(0.88); } }
+@media (prefers-reduced-motion: reduce) {
+  .engine-btn .chev { transition: none; }
+  .eng-menu > button:hover .eng-logo svg, .eng-menu > button:hover .eng-logo rect, .eng-menu > button:hover .eng-logo .spin, .eng-menu > button:hover .eng-logo .draw,
+  .engine-btn:hover .eng-logo svg, .engine-btn:hover .eng-logo rect, .engine-btn:hover .eng-logo .spin, .engine-btn:hover .eng-logo .draw { animation: none; }
+}
 .send { width: 44px; height: 44px; flex: none; border-radius: 50%; border: 0; cursor: pointer; background: var(--cta); color: var(--cta-ink); display: grid; place-items: center; }
 .send:disabled { opacity: 0.35; cursor: not-allowed; }
 .send svg { width: 20px; height: 20px; }

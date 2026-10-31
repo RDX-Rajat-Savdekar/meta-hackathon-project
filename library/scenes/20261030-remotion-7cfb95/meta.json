@@ -1,0 +1,35 @@
+{
+  "id": "20261030-remotion-7cfb95",
+  "renderer": "remotion",
+  "topic": "how does the TCP handshake work",
+  "role": "hook",
+  "narration": "It can't talk till it shakes hands.",
+  "description": "Vertical 1080x1920 30fps, dark navy background. Frame 0 is bold: huge fg=white headline CAN'T TALK? centered at y-28%, plus two glowing nodes below in safe zone y-45 to y-60%. Left node accent=cyan circle with laptop icon labeled LAPTOP at x-25% y-50%. Right node accent2=magenta circle with server icon labeled SERVER at x-75% y-50%. Dashed muted=grey line connects them at y-50%. Center handshake icon accent3=yellow at x-50% y-50% scales in later. All important content kept between y-15% and y-70%, avoiding top 10% and bottom 25% for captions. Motion: headline pops with spring, dashed line pulses opacity, then morphs brighter and handshake pops.",
+  "beats": [
+    {
+      "t": 0.0,
+      "word": "It",
+      "action": "headline CAN'T TALK? in fg=white pops in at center and laptop and server nodes fade in left and right"
+    },
+    {
+      "t": 0.76,
+      "word": "talk",
+      "action": "dashed muted=grey line draws between nodes and pulses left-right"
+    },
+    {
+      "t": 1.46,
+      "word": "shakes",
+      "action": "center handshake icon in accent3=yellow pops over dashed line and line brightens to accent=cyan"
+    },
+    {
+      "t": 1.7,
+      "word": "hands.",
+      "action": "handshake scales up 1.5x and both nodes flash with outer glow"
+    }
+  ],
+  "duration": 2.61,
+  "attempts": 1,
+  "source": "how-does-the-tcp-handshake-work-97734a",
+  "created": "2026-10-31T04:39:23+00:00",
+  "starred": false
+}

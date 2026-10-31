@@ -1,0 +1,65 @@
+{
+  "id": "20261030-remotion-cb2cb4",
+  "renderer": "remotion",
+  "topic": "how does the TCP handshake work",
+  "role": "mechanism",
+  "narration": "Your laptop sends a sync message. It says, let's talk, my counter starts at one hundred. The server replies with sync ack. It says, got it, my counter starts at three hundred, I confirm your one hundred. Finally your laptop sends ack. It says, confirmed your three hundred. Now both sides know the other's starting number. So every later byte can be numbered and tracked. If one goes missing, they know exactly which one.",
+  "description": "Vertical 1080x1920, same dark stage. Left laptop panel at x-18% y-42% with counter chip above it, right server tower at x-82% y-42% with counter chip above it. Center corridor x-30% to x-70% y-40% to y-65% hosts three large horizontal arrows one at a time: Arrow1 accent=cyan left-to-right, Arrow2 accent2=magenta right-to-left, Arrow3 accent=cyan left-to-right. Chips: accent3=yellow SYN seq=100, SYN seq=300, ACK labels in fg=white. After handshake both counters become good=green locked boxes with lock icons. Later a row of small numbered byte blocks 101,102,103 flows below at y-65%. Single focus at a time. All content y-20% to y-70%, avoiding captions zones.",
+  "beats": [
+    {
+      "t": 0.53,
+      "word": "laptop",
+      "action": "left laptop pulses accent=cyan and Arrow1 outline prepares at left edge"
+    },
+    {
+      "t": 1.43,
+      "word": "sync",
+      "action": "Arrow1 SYN in accent=cyan travels laptop to server across center"
+    },
+    {
+      "t": 4.99,
+      "word": "one",
+      "action": "accent3=yellow chip SYN seq=100 pops above Arrow1 and 100 counter appears over laptop"
+    },
+    {
+      "t": 6.37,
+      "word": "replies",
+      "action": "right server flashes accent2=magenta and Arrow2 outline prepares at right edge"
+    },
+    {
+      "t": 10.31,
+      "word": "three",
+      "action": "Arrow2 SYN-ACK in accent2=magenta travels server to laptop with chips seq=300 and ACK your 100"
+    },
+    {
+      "t": 11.17,
+      "word": "confirm",
+      "action": "ACK your 100 chip turns good=green with checkmark over laptop 100"
+    },
+    {
+      "t": 13.99,
+      "word": "ack.",
+      "action": "Arrow3 ACK in accent=cyan travels laptop to server with chip ACK 301 confirmed your 300"
+    },
+    {
+      "t": 16.91,
+      "word": "Now",
+      "action": "both counter boxes lock in good=green with lock icons 100 locked left 300 locked right"
+    },
+    {
+      "t": 19.97,
+      "word": "byte",
+      "action": "row of small fg=white numbered blocks 101 102 103 appears below and slides left-to-right"
+    },
+    {
+      "t": 22.25,
+      "word": "missing,",
+      "action": "block 103 drops out leaving gap with red outline and magnifier highlights gap showing exact missing number"
+    }
+  ],
+  "duration": 24.38,
+  "attempts": 1,
+  "source": "how-does-the-tcp-handshake-work-97734a",
+  "created": "2026-10-31T04:39:39+00:00",
+  "starred": false
+}

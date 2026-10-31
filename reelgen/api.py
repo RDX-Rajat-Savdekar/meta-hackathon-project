@@ -23,6 +23,7 @@ _lock = threading.Lock()
 
 class JobRequest(BaseModel):
     topic: str = Field(min_length=3, max_length=500)
+    renderer: Renderer | None = Field(default=None, description="Preferred engine for every scene; null = director picks")
 
 
 class RetryRequest(BaseModel):
@@ -128,11 +129,14 @@ app = FastAPI(title="reelgen", lifespan=_lifespan)
 def create_job(req: JobRequest, background: BackgroundTasks) -> JobState:
     from reelgen.graph import run
 
-    job = JobState(id=uuid.uuid4().hex[:12], topic=req.topic.strip(), created=time.time())
+    job = JobState(id=uuid.uuid4().hex[:12], topic=req.topic.strip(), preferred_renderer=req.renderer,
+                   created=time.time())
     JOBS[job.id] = job
     _persist(job)
-    _emitter(job)("queued", topic=job.topic)
-    background.add_task(_execute, job, lambda emit: run(job.topic, _job_dir(job.id), emit))
+    _emitter(job)("queued", topic=job.topic,
+                  renderer=req.renderer.value if req.renderer else None)
+    background.add_task(_execute, job, lambda emit: run(job.topic, _job_dir(job.id), emit,
+                                                        preferred_renderer=(req.renderer.value if req.renderer else None)))
     return job
 
 

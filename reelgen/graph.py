@@ -55,6 +55,7 @@ def _stage(emit: Emit, stage: str) -> None:
 class State(TypedDict, total=False):
     job_dir: Path
     topic: str
+    preferred_renderer: str | None
     script: Script
     audio: list[SegmentAudio]
     specs: list[SceneSpec]
@@ -90,8 +91,10 @@ def voice_node(state: State, config: RunnableConfig) -> State:
     d = state["job_dir"]
     segments = state["script"].segments
     # One TTS request for the whole script (Gemini free tier allows 3/min), split by word timings after.
+    # The director style prompt steers delivery; only the TRANSCRIPT section is spoken.
+    from reelgen.prompts import load as _load_prompt
     full = d / "voice_full.wav"
-    text = "\n\n".join(s.narration for s in segments)
+    text = _load_prompt("vo_style").strip() + "\n\n#### TRANSCRIPT\n" + "\n\n".join(s.narration for s in segments)
     info: dict = {}
     duration = synthesize(text, full, info=info)
     emit("voice", duration=round(duration, 2), provider=info.get("provider", "gemini"), note=info.get("note", ""))
@@ -115,7 +118,8 @@ def voice_node(state: State, config: RunnableConfig) -> State:
 def plan_node(state: State, config: RunnableConfig) -> State:
     emit = _emit(config)
     _stage(emit, "plan")
-    specs = plan_scenes(MuseClient(), state["script"], state["audio"])
+    specs = plan_scenes(MuseClient(), state["script"], state["audio"],
+                        preferred=state.get("preferred_renderer"))
     _save(state["job_dir"], "plan.json", [s.model_dump() for s in specs])
     emit("plan", scenes=[
         {"index": s.index, "role": state["script"].segments[s.index].role, "renderer": s.renderer.value,
@@ -188,11 +192,11 @@ def build_graph():
     return g.compile()
 
 
-def run(topic: str, job_dir: Path, emit: Emit | None = None) -> Path:
+def run(topic: str, job_dir: Path, emit: Emit | None = None, preferred_renderer: str | None = None) -> Path:
     job_dir.mkdir(parents=True, exist_ok=True)
     (job_dir / "topic.txt").write_text(topic + "\n")
     state = build_graph().invoke(
-        {"topic": topic, "job_dir": job_dir, "results": []},
+        {"topic": topic, "job_dir": job_dir, "results": [], "preferred_renderer": preferred_renderer},
         config={"configurable": {"emit": emit or _noop}, "max_concurrency": 4},
     )
     return state["final"]
